@@ -1,0 +1,88 @@
+/* style.css */
+
+.root {
+    -fx-background-color: #f0f0f0; /* Colore di sfondo */
+    background-color: #f0f0f0; /* Colore di sfondo */
+}   
+
+.tab-pane {
+    -fx-background-color: #ffffff; /* Colore di sfondo dei tab */
+    background-color: #ffffff; /* Colore di sfondo dei tab */
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #e1ebea; /* Colore di sfondo della barra dei tab */
+    background-color: #d3d3d3; /* Colore di sfondo della barra dei tab */
+}
+
+.tab-pane .tab {
+    -fx-font-size: 15px; /* Dimensione del testo dei tab */
+    -fx-background-color: #ffffff8f; /* Colore di sfondo del tab */
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #ffffff; /* Colore di sfondo del tab selezionato */
+    background-color: #ffffff; /* Colore di sfondo del tab selezionato */
+    -fx-text-fill: #000000; /* Colore del testo del tab selezionato */
+    -fx-border-color: #ffffff00; /* Colore del bordo del tab selezionato */
+    /*-fx-background-top-left-radius: 8; 
+    -fx-background-top-right-radius: 8; */ 
+    -fx-background-radius: 8; /* Arrotonda gli angoli del tab selezionato */
+}
+
+.table-view {
+    -fx-table-cell-border-color: #7c7c7c; /* Nascondi i bordi delle celle della tabella */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #d3d3d3; /* Colore di sfondo dell'header della tabella */
+    background-color: #d3d3d3;
+}
+
+.table-row-cell {
+    -fx-background-color: #ffffff; /* Colore di sfondo delle righe della tabella */
+    background-color: #ffffff; /* Colore di sfondo delle righe della tabella */
+}
+
+.table-view .column-header {
+    -fx-font-size: 12px; /* Dimensione del testo nell'header della tabella */
+    -fx-font-weight: normal; /* Grassetto nell'header della tabella */
+    -fx-background-color: #e7eeee; /* Colore di sfondo dell'header della tabella */
+
+    /* Tra una colonna e l'altra ci deve essere un bordo*/
+    -fx-border-width: 0.1;
+    -fx-border-color: #7c7c7c;
+}
+
+.text-field {
+    -fx-font-size: 12px; /* Dimensione del testo nei campi di testo */
+    font-size: 12px; /* Dimensione del testo nei campi di testo */
+}
+
+.button {
+    -fx-font-size: 14px; /* Dimensione del testo nei pulsanti */
+    font-size: 14px; /* Dimensione del testo nei pulsanti */
+    -fx-background-color: #d3d3d3; /* Colore di sfondo dei pulsanti */
+}
+
+.label {
+    -fx-font-size: 12px; /* Dimensione del testo nelle etichette */
+    font-size: 18px; /* Dimensione del testo nelle etichette */
+}
+
+.label.title {
+    -fx-font-size: 24px; /* Dimensione del testo nelle etichette titolo */
+    -fx-background-color: #d3d3d3; /* Colore di sfondo delle etichette titolo */
+    -fx-background-radius: 10; /* Arrotonda gli angoli delle etichette titolo */
+}
+
+.label.time {
+    -fx-font-size: 18px; /* Dimensione del testo nelle etichette orario */
+    -fx-background-color: #d3d3d3; /* Colore di sfondo delle etichette orario */
+    -fx-background-radius: 10; /* Arrotonda gli angoli delle etichette orario */
+}
+
+.backTitle {
+    -fx-font-size: 18px; /* Dimensione del testo nelle etichette titolo */
+    -fx-background-color: #e1eaeb; /* Colore di sfondo delle etichette titolo */
+}
