@@ -71,13 +71,13 @@
 }
 
 .label.title {
-    -fx-font-size: 24px; /* Dimensione del testo nelle etichette titolo */
+    -fx-font-size: 30px; /* Dimensione del testo nelle etichette titolo */
     -fx-background-color: #d3d3d3; /* Colore di sfondo delle etichette titolo */
     -fx-background-radius: 10; /* Arrotonda gli angoli delle etichette titolo */
 }
 
 .label.time {
-    -fx-font-size: 18px; /* Dimensione del testo nelle etichette orario */
+    -fx-font-size: 30px; /* Dimensione del testo nelle etichette orario */
     -fx-background-color: #d3d3d3; /* Colore di sfondo delle etichette orario */
     -fx-background-radius: 10; /* Arrotonda gli angoli delle etichette orario */
 }
