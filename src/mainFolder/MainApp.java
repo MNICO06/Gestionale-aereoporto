@@ -10,11 +10,15 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
 import mainFolder.controller.mainController;
 import mainFolder.model.gestioneAerei;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -36,7 +40,7 @@ public class MainApp extends Application {
 
     }
     
-     public static void main(String[] args) {
+    public static void main(String[] args) {
         launch(args);
     }
     
@@ -48,8 +52,8 @@ public class MainApp extends Application {
             gestioneAerei gestione = new gestioneAerei();
             
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("mainGui.fxml"));
-            AnchorPane rootLayout = (AnchorPane) loader.load();
+            loader.setLocation(MainApp.class.getResource("./guiFolder/mainGui.fxml"));
+            BorderPane rootLayout = (BorderPane) loader.load();
             Scene scene = new Scene (rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
