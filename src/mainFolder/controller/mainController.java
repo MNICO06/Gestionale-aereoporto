@@ -19,7 +19,7 @@ import java.util.Date;
  *
  * @author molte
  */
-public class mainController {
+public class MainController {
 
     @FXML private Label orologio;
     @FXML private Label titolo;

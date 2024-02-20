@@ -15,8 +15,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
-import mainFolder.controller.mainController;
-import mainFolder.model.gestioneAerei;
+import mainFolder.controller.MainController;
+import mainFolder.model.GestioneAerei;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -26,7 +26,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class MainApp extends Application {
     private Stage primaryStage;
-    private mainController mainController;
+    private MainController mainController;
     
     
     @Override
@@ -49,7 +49,7 @@ public class MainApp extends Application {
     private void inizializza(){
         
         try{
-            gestioneAerei gestione = new gestioneAerei();
+            GestioneAerei gestione = new GestioneAerei();
             
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("./guiFolder/mainGui.fxml"));
