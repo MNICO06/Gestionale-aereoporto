@@ -62,7 +62,7 @@
 .button {
     -fx-font-size: 14px; /* Dimensione del testo nei pulsanti */
     font-size: 14px; /* Dimensione del testo nei pulsanti */
-    -fx-background-color: #d3d3d3; /* Colore di sfondo dei pulsanti */
+    -fx-background-color: #e1eaeb; /* Colore di sfondo dei pulsanti */
 }
 
 .label {
