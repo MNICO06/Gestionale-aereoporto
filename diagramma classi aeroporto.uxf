@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>60</y>
+      <w>300</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>Aereo
+-
+-modello: String final
+-provenienza: StringProperty
+-destinazione: StringProperty
+-compagniaAerea: String final
+-codiceRegistrazione: String final
+-numMaxPasseggeri: int final
+-numPasseggeri: IntegerProperty
+-gate: IntegerProperty
+-terminal: IntegerProperty
+-ritardo: Duration
+-giornoDiArrivo: LocalDate
+-oraDiArrivo: LocalTime
+-giornoDiPartenza: LocalDate
+-oraDiPartenza: LocalTime
+-intercorrenza: int
+-
+Aereo(modello, provenienza, destinazione
+compagnia, codice, numMax, giornoArrivo,
+oraArrivo, giornoPartenza, oraPartenza)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>60</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Utente
+-
+-nome: String
+-nognome: String
+-cellulare: String
+-mail: String
+-password: String
+-nazioneResidenza: String
+-paeseResidenza: String
+-viaResidenza: String
+-codiceCarta: String
+-scadenzaCarta: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>60</y>
+      <w>240</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>GestioneAerei
+-
+-listaAerei: ObservableList&lt;Aereo&gt;
+-
+GestioneAereo():
++inizialize(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
