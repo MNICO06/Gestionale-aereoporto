@@ -1,0 +1,11 @@
+Nome
+Cognome
+Cellulare
+E-mail
+Password
+Nazione di residenza
+Città di residenza
+Via di residenza
+Codice carta di credito
+Data di scadenza
+Acconsento alle normative Privacy e Sicurezza
