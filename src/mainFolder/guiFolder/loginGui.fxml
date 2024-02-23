@@ -13,6 +13,8 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="600.0" maxWidth="600.0" minHeight="540.0" minWidth="524.0" prefHeight="540.0" prefWidth="524.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
@@ -45,12 +47,12 @@
                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" prefHeight="80.0" prefWidth="215.0" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="80.0" prefWidth="215.0" text="Login" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="54.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="21.0" prefWidth="166.0" text="Non hai un account?" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Label prefHeight="21.0" prefWidth="166.0" text="Non hai un account?" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -58,12 +60,15 @@
                         <Insets right="50.0" />
                      </GridPane.margin>
                   </Label>
-                  <Hyperlink text="Registrati" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Hyperlink text="Registrati" textFill="#73eedc" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="150.0" />
                      </GridPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Hyperlink>
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="200.0" text="Email" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="200.0" text="Email" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -73,7 +78,7 @@
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="248.0" text="Password" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="248.0" text="Password" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -107,19 +112,30 @@
                      <font>
                         <Font size="20.0" />
                      </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" startY="1.0">
+                           <stops>
+                              <Stop color="#14a9ff" />
+                              <Stop color="#9500ff" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
                   </Button>
-                  <Label text="Password dimenticata?" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER">
+                  <Label text="Password dimenticata?" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets right="100.0" />
+                        <Insets right="125.0" />
                      </GridPane.margin>
                   </Label>
-                  <Hyperlink text="Resetta Password" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER">
+                  <Hyperlink text="Resetta Password" textFill="#73eedc" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER">
                      <GridPane.margin>
-                        <Insets left="150.0" />
+                        <Insets left="175.0" />
                      </GridPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Hyperlink>
                </children>
             </GridPane>
