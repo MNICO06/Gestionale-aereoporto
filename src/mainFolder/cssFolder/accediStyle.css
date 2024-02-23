@@ -1,4 +1,10 @@
+* {
+        -fx-primary-color: #3c90ea;
+        -fx-secondary-color: #4578d5;
+        -fx-light-grey-color: #d1d1d1;
 
+        -fx-focus-color: -fx-secondary-color;
+}
 
 .BorderPane{
     -fx-background-image: url('../immagini/bg-01.jpg');
@@ -8,28 +14,190 @@
 .text-field{
         -fx-background-color: #ffffff;
         -fx-background-radius: 20;
-        -fx-border-color: #00000079;
+        -fx-border-color: transparent;
         -fx-border-radius: 20;
 }
 
 .text-field:hover{
         -fx-background-color: #ffffff;
         -fx-background-radius: 20;
-        -fx-border-color: #000000;
+        -fx-border-color: #ffffff;
         -fx-border-radius: 20;
+        -fx-border-width: 2;
 }
 
-.button{
+.text-field .prompt-text{
+        -fx-text-fill: #000000;
+}
+
+.buttonCustom{
         -fx-background-color: #ffffff;
         -fx-background-radius: 20;
         -fx-border-color: #ffffff;
         -fx-border-radius: 20;
+        -fx-text-fill: linear-gradient(from 0% 0% to 100% 200%, #00bbff, #c300ff);
+        -fx-font-weight: bold;
+        -fx-font-size: 32px;
 }
 
+.buttonCustom:hover{
+        -fx-background-color: #ffffff;
+        -fx-background-radius: 20;
+        -fx-border-color: #ffffff;
+        -fx-border-radius: 20;
+        -fx-border-width: 2;
+}
+
+.buttonCustom:pressed{
+        -fx-background-color: -fx-primary-color;
+        -fx-background-radius: 20;
+        -fx-border-color: -fx-secondary-color;
+        -fx-border-radius: 20;
+        -fx-border-width: 2;
+}
 
 .myCheckBox {
     -fx-font-size: 16px;
     -fx-pref-width: 30px;
     -fx-pref-height: 30px;
     -fx-background-color: transparent;
+}
+
+.date-picker {
+        -fx-background-color: transparent;
+        -fx-background-radius: 20;       
+}
+
+.date-picker .text-field {
+        -fx-border-color: transparent;
+}
+
+.date-picker .arrow-button {
+        -fx-background-color: -fx-primary-color;
+        -fx-background-radius: 10;
+}
+
+.date-picker .arrow-button:hover {
+        -fx-background-color: -fx-secondary-color;
+}
+
+.date-picker .arrow-button .arrow {
+        -fx-background-color: white;
+}
+
+.date-picker .cell {
+        -fx-background-color: rgb(238, 238, 238);
+        -fx-background-radius: 10;
+}       
+
+.date-picker .cell:hover {
+        -fx-background-color: -fx-light-grey-color;
+        -fx-text-fill: black;
+}
+
+.date-picker .cell:focused {
+        -fx-background-color: -fx-light-grey-color;
+}
+
+.date-picker .selected {
+        -fx-background-color: -fx-primary-color;
+        -fx-text-fill: white;
+}
+
+.date-picker .selected:focused {
+       -fx-background-color: -fx-primary-color;
+        -fx-text-fill: white;
+}
+
+.date-picker .selected:hover {
+        -fx-background-color: -fx-primary-color;
+        -fx-text-fill: white;
+}
+
+
+.date-picker-popup {
+        -fx-background-color: -fx-primary-color;
+        -fx-background-radius: 20 20 2 2;
+        -fx-border-color: transparent;
+}
+
+.date-picker-popup .month-year-pane {
+        -fx-background-color: -fx-primary-color;
+        -fx-background-radius: 20;
+}
+
+.date-picker-popup .month-year-pane .label {
+        -fx-text-fill: white;
+}
+
+.date-picker-popup .week-number-cell {
+        -fx-text-fill: -fx-secondary-color;
+}
+
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+        -fx-background-color: white;
+        -fx-border-color: transparent;
+}
+
+.date-picker-popup .spinner .button .left-arrow:hover,
+.date-picker-popup .spinner .button .right-arrow:hover {
+        -fx-background-color: white;
+        -fx-border-color: transparent;
+}
+
+.date-picker-popup .spinner .button {
+        -fx-background-color: transparent;
+        -fx-background-radius: 6;
+        -fx-border-color: transparent;
+}
+.date-picker-popup .spinner .button:hover {
+        -fx-background-color: -fx-secondary-color;
+        -fx-background-radius: 6;
+        -fx-border-color: transparent;
+}
+
+.hyperlink {
+        -fx-border-color: transparent;
+    
+}
+
+.radio-button .radio {
+        -fx-background-color: white;
+        -fx-background-image: null;
+        -fx-padding: 3px;
+}
+
+.radio-button .radio:hover {
+        -fx-border-color: white;
+        -fx-border-width: 1;
+        -fx-border-radius: 15px;
+}
+
+.radio-button .radio:selected {
+        -fx-background-color: white;
+}
+
+.radio-button -radio:armed {
+        -fx-background-color: white;
+}
+
+.radio-button -radio:determinate {
+        -fx-background-color: white;
+}
+
+.radio-button -radio:indeterminate {
+        -fx-background-color: white;
+}
+.radio-button .dot {
+        -fx-background-radius: 15px;
+        -fx-padding: 8px;
+        -fx-background-color: white;
+}
+
+.radio-button:selected .dot {
+        -fx-background-radius: 15px;
+        -fx-padding: 8px;
+        -fx-background-color: -fx-primary-color;
+        -fx-translate-y: -1px;
 }
