@@ -8,7 +8,8 @@
 }
 
 .BorderPane {
-    -fx-background-image: url('../immagini/bg-01.jpg');
+    -fx-background-image: url('../immagini/foto1.jpg');
+    -fx-background-size: cover ;
 }
 
 .timeLabel {
@@ -21,7 +22,7 @@
 
 .titleLabel {
     -fx-font-size: 48px;
-    -fx-text-fill: -fx-white-color;
+    -fx-text-fill: -fx-primary-color;
     -fx-font-weight: bold;
 
 }
