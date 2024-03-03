@@ -9,6 +9,6 @@ package mainFolder.model;
  *
  * @author molte
  */
-public class GestioneAerei {
+public class gestioneAerei {
     
 }
