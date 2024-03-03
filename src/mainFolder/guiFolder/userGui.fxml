@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" styleClass="BorderPane" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" styleClass="BorderPane" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.userController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -34,13 +34,13 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <children>
-                  <DatePicker prefHeight="44.0" prefWidth="128.0" promptText="Data" styleClass="datePicker">
+                  <DatePicker fx:id="dataPartenze" prefHeight="44.0" prefWidth="128.0" promptText="Data" styleClass="datePicker">
                      <HBox.margin>
                         <Insets bottom="1.0" />
                      </HBox.margin>
                   </DatePicker>
-                  <TextField maxWidth="264.0" prefHeight="40.0" prefWidth="262.0" promptText="Ricerca" styleClass="ricercaTextField" />
-                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" styleClass="cercaButton" text="Cerca">
+                  <TextField fx:id="cercaTxt" maxWidth="264.0" prefHeight="40.0" prefWidth="262.0" promptText="Ricerca" styleClass="ricercaTextField" />
+                <Button fx:id="cercaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" styleClass="cercaButton" text="Cerca">
                      <HBox.margin>
                         <Insets bottom="1.0" />
                      </HBox.margin>
@@ -49,7 +49,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <children>
-                  <ToggleButton mnemonicParsing="false" prefWidth="150.0" text="Partenze">
+                  <ToggleButton fx:id="partenzeTglBtn" mnemonicParsing="false" prefWidth="150.0" text="Partenze">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -57,7 +57,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefWidth="150.0" text="Arrivi">
+                  <ToggleButton fx:id="arriviTglBtn" mnemonicParsing="false" prefWidth="150.0" text="Arrivi">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -69,22 +69,22 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonSx" text="Prenota">
+                  <Button fx:id="prenotaBtn" mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonSx" text="Prenota">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Button>
-                  <Button id="firstPageButton" mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonInternal" text="Partenze">
+                  <Button id="firstPageButton" fx:id="partenzeBtn" mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonInternal" text="Partenze">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonInternal" text="Arrivi">
+                  <Button fx:id="arriviBtn" mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonInternal" text="Arrivi">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonDx" text="Info">
+                  <Button fx:id="infoBtn" mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonDx" text="Info">
                      <font>
                         <Font size="23.0" />
                      </font>
@@ -97,8 +97,8 @@
    <top>
       <AnchorPane maxHeight="140.0" minHeight="65.0" prefHeight="140.0" prefWidth="845.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="134.0" styleClass="timeLabel" text="TIME" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-            <Button layoutX="537.0" layoutY="20.0" mnemonicParsing="false" styleClass="accediButton" text="Accedi" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Label fx:id="orologio" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="180.0" styleClass="timeLabel" text="TIME" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="accediBtn" layoutX="537.0" layoutY="20.0" mnemonicParsing="false" styleClass="accediButton" text="Accedi" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
             <Label alignment="CENTER" layoutX="159.0" layoutY="70.0" prefHeight="70.0" prefWidth="533.0" styleClass="titleLabel" text="Aeroporto MIO NOME" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="70.0" />
          </children>
       </AnchorPane>

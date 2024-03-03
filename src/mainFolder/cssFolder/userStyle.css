@@ -8,7 +8,7 @@
 }
 
 .BorderPane {
-    -fx-background-image: url('../immagini/foto1.jpg');
+    /*-fx-background-image: url('../immagini/foto1.jpg');*/
     -fx-background-size: cover ;
 }
 
