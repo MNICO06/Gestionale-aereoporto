@@ -29,7 +29,7 @@ public class userController {
 
     public void initialize() {
         // Inizializzo l'immagine di sfondo
-        //rootLayout.setStyle("-fx-background-image: url('');");
+        rootLayout.setStyle("-fx-background-image: url('');");
 
         // Animation timer
         AnimationTimer timer = new AnimationTimer() {
