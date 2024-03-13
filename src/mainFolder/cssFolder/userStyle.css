@@ -8,8 +8,8 @@
 }
 
 .BorderPane {
-    /*-fx-background-image: url('../immagini/foto1.jpg');*/
-    -fx-background-size: cover ;
+    /*-fx-background-image: url('../immagini/foto1.jpg');
+    -fx-background-size: cover ;*/
 }
 
 .timeLabel {
