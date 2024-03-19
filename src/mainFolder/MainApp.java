@@ -47,6 +47,7 @@ public class MainApp extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
             
+            // PROVA COMMENTO
 
         }catch(IOException e){
             e.printStackTrace();
