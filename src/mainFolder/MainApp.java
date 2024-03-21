@@ -9,7 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
-import mainFolder.model.gestioneAerei;
+import mainFolder.model.GestioneAerei;
 
 /**
  *
@@ -38,7 +38,7 @@ public class MainApp extends Application {
     private void inizializza(){
         
         try{
-            gestioneAerei gestione = new gestioneAerei();
+            GestioneAerei gestione = new GestioneAerei();
             
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("./guiFolder/userGui.fxml"));
