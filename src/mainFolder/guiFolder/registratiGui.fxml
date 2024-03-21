@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="707.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="707.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane prefHeight="481.0" prefWidth="643.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -59,7 +59,7 @@
                   <Insets right="80.0" />
                </GridPane.margin>
             </Label>
-            <Hyperlink text="Accedi" textFill="#73eedc" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Hyperlink fx:id="vaiAccedi" text="Accedi" textFill="#73eedc" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
@@ -94,12 +94,12 @@
                         <Insets left="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField promptText="Nome" GridPane.rowIndex="1">
+                  <TextField fx:id="inserimentoNome" promptText="Nome" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Cognome" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="inserimentoCognome" promptText="Cognome" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
@@ -125,12 +125,12 @@
                         <Insets left="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField promptText="MiaEmail@MioDominio.com" GridPane.rowIndex="1">
+                  <TextField fx:id="inserimentoMail" promptText="MiaEmail@MioDominio.com" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <DatePicker prefHeight="28.0" prefWidth="236.0" promptText="La mia data di nascita" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="selezionaData" prefHeight="28.0" prefWidth="236.0" promptText="La mia data di nascita" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="Data di nascita" textFill="WHITE" GridPane.columnIndex="2">
                      <font>
                         <Font size="15.0" />
@@ -165,8 +165,8 @@
                         <Insets left="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <PasswordField promptText="La mia Pssword" GridPane.rowIndex="1" />
-                  <PasswordField promptText="La mia Password" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <PasswordField fx:id="inserimentoPassword" promptText="La mia Pssword" GridPane.rowIndex="1" />
+                  <PasswordField fx:id="ripetizionePassword" promptText="La mia Password" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="11">
@@ -187,12 +187,12 @@
                         <Insets left="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField promptText="+00 111 222 3333" GridPane.rowIndex="1">
+                  <TextField fx:id="inserimentoTelefono" promptText="+00 111 222 3333" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="La mia nazione" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="inserimentoNazione" promptText="La mia nazione" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Nazione" textFill="WHITE" GridPane.columnIndex="1">
                      <font>
                         <Font size="15.0" />
@@ -222,12 +222,12 @@
                         <Insets left="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField promptText="La mia città" GridPane.rowIndex="1">
+                  <TextField fx:id="inserimentoCitta" promptText="La mia città" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Il mio indirizzo" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="inserimentoIndirizzo" promptText="Il mio indirizzo" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="Indirizzo" textFill="WHITE" GridPane.columnIndex="2">
                      <font>
                         <Font size="15.0" />
@@ -257,12 +257,12 @@
                         <Insets left="15.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField promptText="Il mio codice" GridPane.rowIndex="1">
+                  <TextField fx:id="inserimentoCarta" promptText="Il mio codice" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Data di scadenza" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="inserimentoScadenza" promptText="Data di scadenza" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="Data di scadenza" textFill="WHITE" GridPane.columnIndex="2">
                      <font>
                         <Font size="15.0" />
@@ -273,12 +273,12 @@
                   </Label>
                </children>
             </GridPane>
-            <RadioButton mnemonicParsing="false" text="Acconsento alle normative Privacy e Sicurezza" GridPane.columnIndex="1" GridPane.rowIndex="17">
+            <RadioButton fx:id="acconsenteNormative" mnemonicParsing="false" text="Acconsento alle normative Privacy e Sicurezza" GridPane.columnIndex="1" GridPane.rowIndex="17">
                <GridPane.margin>
                   <Insets left="5.0" />
                </GridPane.margin>
             </RadioButton>
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="253.0" styleClass="buttonCustom" text="Registrati" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="19" GridPane.valignment="CENTER">
+            <Button fx:id="registrati" mnemonicParsing="false" prefHeight="43.0" prefWidth="253.0" styleClass="buttonCustom" text="Registrati" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="19" GridPane.valignment="CENTER">
                <font>
                   <Font size="21.0" />
                </font>

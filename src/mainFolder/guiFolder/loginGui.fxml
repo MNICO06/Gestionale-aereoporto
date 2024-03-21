@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="600.0" minHeight="540.0" minWidth="524.0" prefHeight="540.0" prefWidth="524.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="600.0" maxWidth="600.0" minHeight="540.0" minWidth="524.0" prefHeight="540.0" prefWidth="524.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane minHeight="200.0" minWidth="200.0" prefHeight="540.0" prefWidth="790.0" BorderPane.alignment="CENTER">
          <children>
@@ -58,7 +58,7 @@
                         <Insets right="50.0" />
                      </GridPane.margin>
                   </Label>
-                  <Hyperlink text="Registrati" textFill="#73eedc" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Hyperlink fx:id="vaiRegistrati" text="Registrati" textFill="#73eedc" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="150.0" />
                      </GridPane.margin>
@@ -71,7 +71,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="40.0" prefWidth="361.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                  <TextField fx:id="inserisciMail" prefHeight="40.0" prefWidth="361.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="50.0" right="50.0" />
                      </GridPane.margin>
@@ -94,19 +94,19 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <PasswordField prefHeight="40.0" prefWidth="296.0" styleClass="..\cssFolder\loginStyle.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <PasswordField fx:id="inserisciPassword" prefHeight="40.0" prefWidth="296.0" styleClass="..\cssFolder\loginStyle.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets left="100.0" right="100.0" />
                            </GridPane.margin>
                         </PasswordField>
-                        <CheckBox alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="36.0" prefWidth="26.0" styleClass="myCheckBox" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                        <CheckBox fx:id="visualizzaPassword" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="36.0" prefWidth="26.0" styleClass="myCheckBox" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets right="100.0" />
                            </GridPane.margin>
                         </CheckBox>
                      </children>
                   </GridPane>
-                  <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="160.0" styleClass="buttonCustom" text=" Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="15">
+                  <Button fx:id="tastoLogin" mnemonicParsing="false" prefHeight="56.0" prefWidth="160.0" styleClass="buttonCustom" text=" Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="15">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
