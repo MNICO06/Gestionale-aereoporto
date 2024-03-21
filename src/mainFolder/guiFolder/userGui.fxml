@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" styleClass="BorderPane" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.userController">
+<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" styleClass="BorderPane" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.userController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -98,7 +98,7 @@
       <AnchorPane maxHeight="140.0" minHeight="65.0" prefHeight="140.0" prefWidth="845.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="orologio" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="180.0" styleClass="timeLabel" text="TIME" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-            <Button fx:id="accediBtn" layoutX="537.0" layoutY="20.0" mnemonicParsing="false" styleClass="accediButton" text="Accedi" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <Button fx:id="accediBtn" layoutX="537.0" layoutY="20.0" mnemonicParsing="false" onAction="#accediPage" styleClass="accediButton" text="Accedi" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
             <Label alignment="CENTER" layoutX="159.0" layoutY="70.0" prefHeight="70.0" prefWidth="533.0" styleClass="titleLabel" text="Aeroporto MIO NOME" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="70.0" />
          </children>
       </AnchorPane>

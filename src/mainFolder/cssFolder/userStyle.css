@@ -1,6 +1,7 @@
 * {
     -fx-primary-color: #3c90ea;
     -fx-secondary-color: #4578d5;
+    -fx-tertiary-color: #04376d;
     -fx-light-grey-color: #d1d1d1;
     -fx-white-color: #ffffff;
 
@@ -177,6 +178,11 @@
 
 .toggle-button:pressed {
     -fx-background-color: -fx-primary-color;
+}
+
+.toggle-button:selected {
+    -fx-background-color: -fx-tertiary-color;
+    -fx-background-radius: 5;
 }
 
 .pagesButtonInternal {

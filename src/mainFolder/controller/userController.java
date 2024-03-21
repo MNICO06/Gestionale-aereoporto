@@ -4,8 +4,12 @@ import javafx.animation.*;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -15,7 +19,9 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import mainFolder.MainApp;
 
 public class userController {
 
@@ -69,6 +75,23 @@ public class userController {
         startBackgroundTransition();
         // Start clock update animation
         startClockUpdateAnimation();
+
+        // Gestione toggle button
+        partenzeTglBtn.setOnAction(event -> {
+            if (partenzeTglBtn.isSelected()) {
+                arriviTglBtn.setSelected(false);
+            }
+        });
+
+        arriviTglBtn.setOnAction(event -> {
+            if (arriviTglBtn.isSelected()) {
+                partenzeTglBtn.setSelected(false);
+            }
+        });
+
+        // Imposto come bottone selezionato di default quello delle partenze
+        partenzeTglBtn.setSelected(true);
+
     }
 
     private void startBackgroundTransition() {
@@ -110,5 +133,24 @@ public class userController {
         };
         // Avvio l'animazione
         timer.start();
+    }
+
+    @FXML
+    private void accediPage() {
+        try {
+            // Carica la seconda GUI (FXML)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/loginGui.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Login GUI");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Chiudi la prima GUI (Finestra)
+            Stage primaryStage = (Stage) accediBtn.getScene().getWindow();
+            primaryStage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
