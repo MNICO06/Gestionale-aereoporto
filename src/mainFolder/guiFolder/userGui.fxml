@@ -69,7 +69,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
-                  <Button fx:id="prenotaBtn" mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonSx" text="Prenota">
+                  <Button fx:id="prenotaBtn" mnemonicParsing="false" onAction="#prenotaPage" prefWidth="150.0" styleClass="pagesButtonSx" text="Prenota">
                      <font>
                         <Font size="23.0" />
                      </font>

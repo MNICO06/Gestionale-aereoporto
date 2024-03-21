@@ -1,10 +1,7 @@
 package mainFolder.controller;
 
-import javafx.animation.*;
-import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,37 +15,23 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import mainFolder.MainApp;
 
 public class userController {
 
-    @FXML
-    private Label orologio;
-    @FXML
-    private Button accediBtn;
-    @FXML
-    private Button cercaBtn;
-    @FXML
-    private Button prenotaBtn;
-    @FXML
-    private Button partenzeBtn;
-    @FXML
-    private Button arriviBtn;
-    @FXML
-    private Button infoBtn;
-    @FXML
-    private ToggleButton partenzeTglBtn;
-    @FXML
-    private ToggleButton arriviTglBtn;
-    @FXML
-    private DatePicker dataPartenze;
-    @FXML
-    private TextField cercaTxt;
-    @FXML
-    private BorderPane rootLayout;
+    @FXML private Label orologio;
+    @FXML private Button accediBtn;
+    @FXML private Button cercaBtn;
+    @FXML private Button prenotaBtn;
+    @FXML private Button partenzeBtn;
+    @FXML private Button arriviBtn;
+    @FXML private Button infoBtn;
+    @FXML private ToggleButton partenzeTglBtn;
+    @FXML private ToggleButton arriviTglBtn;
+    @FXML private DatePicker dataPartenze;
+    @FXML private TextField cercaTxt;
+    @FXML private BorderPane rootLayout;
 
     // Imposto contatore delle immagini
     private int currentImageIndex = 0;
@@ -148,6 +131,26 @@ public class userController {
 
             // Chiudi la prima GUI (Finestra)
             Stage primaryStage = (Stage) accediBtn.getScene().getWindow();
+            primaryStage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void prenotaPage(){
+        System.out.println("Prenota");        
+        try {
+            // Carica la seconda GUI (FXML)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/prenotazioneGui.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Prenotazione GUI");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Chiudi la prima GUI (Finestra)
+            Stage primaryStage = (Stage) prenotaBtn.getScene().getWindow();
             primaryStage.close();
         } catch (Exception e) {
             e.printStackTrace();
