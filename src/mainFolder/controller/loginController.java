@@ -17,5 +17,14 @@ public class loginController {
     @FXML private Hyperlink vaiRegistrati;
 
     
+    @FXML
+    public void visualizza() {
+        if (visualizzaPassword.isSelected()){
+            
+        }
+        else if (visualizzaPassword.isSelected() == false){
+            inserisciPassword.setVisible(false);
+        }
+    }
 
 }
