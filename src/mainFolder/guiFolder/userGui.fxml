@@ -74,12 +74,12 @@
                         <Font size="23.0" />
                      </font>
                   </Button>
-                  <Button id="firstPageButton" fx:id="partenzeBtn" mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonInternal" text="Partenze">
+                  <Button id="firstPageButton" fx:id="partenzeBtn" mnemonicParsing="false" onAction="#userMainPage" prefWidth="150.0" styleClass="pagesButtonInternal" text="Partenze">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Button>
-                  <Button fx:id="arriviBtn" mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonInternal" text="Arrivi">
+                  <Button fx:id="arriviBtn" mnemonicParsing="false" onAction="#userMainPage" prefWidth="150.0" styleClass="pagesButtonInternal" text="Arrivi">
                      <font>
                         <Font size="23.0" />
                      </font>
