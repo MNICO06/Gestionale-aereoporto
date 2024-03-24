@@ -10,20 +10,28 @@ public class loginController {
 
     @FXML private TextField inserisciMail;
     @FXML private PasswordField inserisciPassword;
+    @FXML private TextField vediInserisciPassword;
 
 
     @FXML private CheckBox visualizzaPassword;
 
     @FXML private Hyperlink vaiRegistrati;
 
+    public void initialize() {
+        vediInserisciPassword.setEditable(false);
+    }
+    
     
     @FXML
     public void visualizza() {
         if (visualizzaPassword.isSelected()){
-            
+            inserisciPassword.setVisible(false);
+            vediInserisciPassword.setVisible(true);
+            vediInserisciPassword.setText(inserisciPassword.getText());
         }
         else if (visualizzaPassword.isSelected() == false){
-            inserisciPassword.setVisible(false);
+            inserisciPassword.setVisible(true);
+            vediInserisciPassword.setVisible(false);
         }
     }
 
