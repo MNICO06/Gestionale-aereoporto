@@ -63,18 +63,21 @@ public class userController {
         partenzeTglBtn.setOnAction(event -> {
             if (partenzeTglBtn.isSelected()) {
                 arriviTglBtn.setSelected(false);
+            } else {
+                arriviTglBtn.setSelected(true);
             }
         });
 
         arriviTglBtn.setOnAction(event -> {
             if (arriviTglBtn.isSelected()) {
                 partenzeTglBtn.setSelected(false);
+            }  else {
+                partenzeTglBtn.setSelected(true);
             }
         });
 
         // Imposto come bottone selezionato di default quello delle partenze
         partenzeTglBtn.setSelected(true);
-
     }
 
     private void startBackgroundTransition() {
@@ -140,13 +143,20 @@ public class userController {
     @FXML
     private void userMainPage() {
         try {
+
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/userMainGui.fxml"));
             Parent root = loader.load();
+            // Mando un messaggio al controller della seconda GUI
+            userMainController controller = loader.getController();
+            // in base a quale button chiama il metodo userMainPage, passo il valore true o false
+            controller.setPartenzeSelected(partenzeBtn.isFocused() && !arriviBtn.isFocused());
+
             Stage stage = new Stage();
             stage.setTitle("User Main GUI");
             stage.setScene(new Scene(root));
             stage.show();
+
 
             // Chiudi la prima GUI (Finestra)
             Stage primaryStage = (Stage) accediBtn.getScene().getWindow();
