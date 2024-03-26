@@ -17,7 +17,6 @@ public class loginController {
     @FXML private PasswordField inserisciPassword;
     @FXML private TextField vediInserisciPassword;
     @FXML private Button btnHome;
-    @FXML private Hyperlink hlinkRegistrati;
 
 
     @FXML private CheckBox visualizzaPassword;
@@ -79,7 +78,7 @@ public class loginController {
             stage.show();
 
             // Chiudi la prima GUI (Finestra)
-            Stage primaryStage = (Stage) btnHome.getScene().getWindow();
+            Stage primaryStage = (Stage) vaiRegistrati.getScene().getWindow();
             primaryStage.close();
         } catch (Exception e) {
             e.printStackTrace();

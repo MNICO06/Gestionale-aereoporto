@@ -9,11 +9,15 @@ import java.util.ArrayList;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import mainFolder.model.GestioneUtenti;
 import mainFolder.model.Utenti;
 import mainFolder.model.GestioneUtenti;
@@ -125,6 +129,25 @@ public class registratiController {
         return dataFormattata;
     }
 
+    
+    @FXML
+    private void handleAccedi() {
+        try {
+            // Carica la seconda GUI (FXML)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/loginGui.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Accedi page");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Chiudi la prima GUI (Finestra)
+            Stage primaryStage = (Stage) vaiAccedi.getScene().getWindow();
+            primaryStage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
   
 
     
