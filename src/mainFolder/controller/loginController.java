@@ -17,6 +17,7 @@ public class loginController {
     @FXML private PasswordField inserisciPassword;
     @FXML private TextField vediInserisciPassword;
     @FXML private Button btnHome;
+    @FXML private Hyperlink hlinkRegistrati;
 
 
     @FXML private CheckBox visualizzaPassword;
@@ -65,4 +66,23 @@ public class loginController {
         }
     }
 
+
+    @FXML
+    private void handleRegistrati() {
+        try {
+            // Carica la seconda GUI (FXML)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/registratiGui.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Registrati page");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Chiudi la prima GUI (Finestra)
+            Stage primaryStage = (Stage) btnHome.getScene().getWindow();
+            primaryStage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

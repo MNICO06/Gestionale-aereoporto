@@ -58,7 +58,7 @@
                         <Insets right="50.0" />
                      </GridPane.margin>
                   </Label>
-                  <Hyperlink fx:id="vaiRegistrati" text="Registrati" textFill="#73eedc" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Hyperlink fx:id="hlinkRegistrati" onAction="#handleRegistrati" text="Registrati" textFill="#73eedc" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="150.0" />
                      </GridPane.margin>
