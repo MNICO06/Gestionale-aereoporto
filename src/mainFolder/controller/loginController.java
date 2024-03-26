@@ -19,6 +19,10 @@ public class loginController {
 
     public void initialize() {
         vediInserisciPassword.setEditable(false);
+        vediInserisciPassword.setVisible(false);
+
+        inserisciPassword.setVisible(true);
+        inserisciPassword.setEditable(true);
     }
     
     
