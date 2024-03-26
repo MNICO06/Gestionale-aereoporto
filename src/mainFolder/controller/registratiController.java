@@ -1,11 +1,8 @@
 package mainFolder.controller;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+
 
 
 import javafx.fxml.FXML;
@@ -19,16 +16,14 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import mainFolder.model.GestioneUtenti;
-import mainFolder.model.Utenti;
-import mainFolder.model.GestioneUtenti;
 
 public class registratiController {
     
     @FXML private TextField inserimentoNome;
     @FXML private TextField inserimentoCognome;
+    @FXML private TextField inserimentoMail;
     @FXML private PasswordField inserimentoPassword;
     @FXML private PasswordField ripetizionePassword;
-    @FXML private TextField inserimentoMail;
     @FXML private TextField inserimentoTelefono;
     @FXML private TextField inserimentoNazione;
     @FXML private TextField inserimentoCitta;
@@ -36,7 +31,7 @@ public class registratiController {
     @FXML private TextField inserimentoCarta;
     @FXML private TextField inserimentoScadenza;
 
-    @FXML private RadioButton acconsentoNormative;
+    @FXML private RadioButton acconsenteNormative;
 
     @FXML private Hyperlink vaiAccedi;
 
@@ -56,17 +51,17 @@ public class registratiController {
     public void creaUtente(){
 
         //solo se l'utente acconsente alle normative
-        if (acconsentoNormative.isSelected()){
+        if (acconsenteNormative.isSelected()){
             if (sonoPieni() && confrontaPassword()){
 
                 gestioneUtenti.addUtenti(inserimentoNome.getText(), inserimentoCognome.getText(), inserimentoMail.getText(),
                 convertiData(), inserimentoPassword.getText(), inserimentoTelefono.getText(), inserimentoNazione.getText(),
                 inserimentoCitta.getText(), inserimentoIndirizzo.getText(), inserimentoCarta.getText(), inserimentoScadenza.getText());
-                
             }
-            
         }
     }
+
+
 
     public boolean sonoPieni(){
         if (inserimentoNome.getText().isEmpty()){
