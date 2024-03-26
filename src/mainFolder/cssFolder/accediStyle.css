@@ -201,3 +201,20 @@
         -fx-background-color: -fx-primary-color;
         -fx-translate-y: -1px;
 }
+
+.homeButton{
+        -fx-font-size: 20px;
+        -fx-font-weight: bold;
+        -fx-background-radius: 10;
+        -fx-background-color: #ffffff;
+        -fx-text-fill: linear-gradient(from 0% 0% to 100% 200%, #00bbff, #c300ff);
+}
+
+.homeButton:hover {
+        -fx-background-color: linear-gradient(from 0% 0% to 100% 200%, #00bbff, #c300ff);
+        -fx-text-fill: #ffffff
+}
+
+.homeButton:pressed {
+        -fx-background-color: -fx-primary-color;
+}

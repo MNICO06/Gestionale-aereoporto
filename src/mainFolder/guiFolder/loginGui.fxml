@@ -132,6 +132,11 @@
                         <Font size="15.0" />
                      </font>
                   </Hyperlink>
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="82.0" styleClass="homeButton" text="Home" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
                </children>
             </GridPane>
          </children>
