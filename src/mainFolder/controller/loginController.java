@@ -29,6 +29,7 @@ public class loginController {
 
         inserisciPassword.setVisible(true);
         inserisciPassword.setEditable(true);
+
     }
     
     
@@ -65,9 +66,8 @@ public class loginController {
         }
     }
 
-
     @FXML
-    private void handleRegistrati() {
+    private void handleRegistratiLink() {
         try {
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/registratiGui.fxml"));
