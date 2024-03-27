@@ -1,5 +1,7 @@
 package mainFolder.model;
 
+
+
 public class Utenti {
 
     public String mail;

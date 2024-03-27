@@ -4,59 +4,41 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-
 import mainFolder.model.Utenti;
 
 public class ScriviDati {
 
-    public void ScriviDati() {
+    // Costruttore
+    public ScriviDati() {
 
     }
 
+    // Metodo per scrivere i dati degli utenti su file
     public void scriviUtenti(ArrayList<Utenti> utenti) {
-        try{
-            FileWriter writer = new FileWriter ("utenti.txt");
-            try (BufferedWriter fileDaScrivere = new BufferedWriter(writer)) {
-                for (int i = 0; i < utenti.size(); i++) {
-                    fileDaScrivere.write(utenti.get(i).getNome());
-                    fileDaScrivere.write("+");
-                    fileDaScrivere.write(utenti.get(i).getCognome());
-                    fileDaScrivere.write("+");
-                    fileDaScrivere.write(utenti.get(i).getMail());
-                    fileDaScrivere.write("+");
-                    fileDaScrivere.write(utenti.get(i).getNascita());
-                    fileDaScrivere.write("+");
-                    fileDaScrivere.write(utenti.get(i).getPassword());
-                    fileDaScrivere.write("+");
-                    fileDaScrivere.write(utenti.get(i).getNumeroCellulare());
-                    fileDaScrivere.write("+");
-                    fileDaScrivere.write(utenti.get(i).getNazioneResideza());
-                    fileDaScrivere.write("+");
-                    fileDaScrivere.write(utenti.get(i).getCittaResidenza());
-                    fileDaScrivere.write("+");
-                    fileDaScrivere.write(utenti.get(i).getViaResidenza());
-                    fileDaScrivere.write("+");
-                    fileDaScrivere.write(utenti.get(i).getCodiceCarta());
-                    fileDaScrivere.write("+");
-                    fileDaScrivere.write(utenti.get(i).getScadenza());
-                    fileDaScrivere.write("+");
-
-                    fileDaScrivere.newLine();
-                }
-
-                fileDaScrivere.close();
+        try (BufferedWriter fileDaScrivere = new BufferedWriter(new FileWriter("utenti.txt"))) {
+            for (Utenti utente : utenti) {
+                // Concatenazione dei dati con '+' come delimitatore
+                fileDaScrivere.write(utente.getNome() + "+");
+                fileDaScrivere.write(utente.getCognome() + "+");
+                fileDaScrivere.write(utente.getMail() + "+");
+                fileDaScrivere.write(utente.getNascita() + "+");
+                fileDaScrivere.write(utente.getPassword() + "+");
+                fileDaScrivere.write(utente.getNumeroCellulare() + "+");
+                fileDaScrivere.write(utente.getNazioneResideza() + "+");
+                fileDaScrivere.write(utente.getCittaResidenza() + "+");
+                fileDaScrivere.write(utente.getViaResidenza() + "+");
+                fileDaScrivere.write(utente.getCodiceCarta() + "+");
+                fileDaScrivere.write(utente.getScadenza() + "+");
+                fileDaScrivere.newLine();
             }
 
-            
-            
-        }catch(IOException e){
-            e.printStackTrace();
+            fileDaScrivere.flush();
+
+            System.out.println("Dati scritti con successo.");
+
+
+        } catch (IOException e) {
+            System.err.println("Errore nella scrittura dei dati su file: " + e.getMessage());
         }
     }
-    
-
-    
-
-
 }
