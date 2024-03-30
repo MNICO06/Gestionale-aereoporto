@@ -9,8 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.PopupWindow.AnchorLocation;
-
 public class userMainController {
     
     @FXML private Label orologio;
