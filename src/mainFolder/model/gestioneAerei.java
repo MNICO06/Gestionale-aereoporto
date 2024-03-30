@@ -15,10 +15,10 @@ import javafx.collections.ObservableList;
  *
  * @author molte
  */
-public class gestioneAerei {
+public class GestioneAerei {
     private ObservableList<Aerei> elencoAerei = FXCollections.observableArrayList();
 
-    public gestioneAerei () {
+    public GestioneAerei () {
         //poi da fare apertura dati da database
     }
 
