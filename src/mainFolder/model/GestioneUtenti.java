@@ -16,17 +16,20 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+import mainFolder.salvataggioDati.ScriviDati;
+
 public class GestioneUtenti {
 
     private ArrayList<Utenti> listaUtenti = new ArrayList<Utenti>();
     private String percorsoFileUtenti= "file:src/mainFolder/documentiTesto/utenti.txt";
     String delimitatore = "+";
+    ScriviDati scrivi;
 
     // Chiave segreta per la cifratura AES
     private static final String SECRET_KEY = "0123456789abcdef";
 
     public GestioneUtenti (){
-
+        scrivi = new ScriviDati();
 
     }
     
@@ -36,6 +39,8 @@ public class GestioneUtenti {
         Utenti u = new Utenti(nome, cognome, mail, nascita, password, numCell, nazione, citta, via, codice, scadenza);
 
         listaUtenti.add(u);
+
+        scrivi.scriviUtenti(listaUtenti);
     }
 
     public void salvaUtenti() {
