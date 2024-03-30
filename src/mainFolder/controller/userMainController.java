@@ -6,7 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.PopupWindow.AnchorLocation;
 
 public class userMainController {
     
@@ -15,6 +18,12 @@ public class userMainController {
     @FXML private ToggleButton tglArrivi;
     @FXML private Button btnHome;
     @FXML private Button btnAccedi;
+
+    @FXML private TableView<?> tablePartenze;
+    @FXML private TableView<?> tableArrivi;
+    @FXML private StackPane stackPaneTable;
+    @FXML private AnchorPane anchPanePartenze;
+    @FXML private AnchorPane anchPaneArrivi;
 
     private boolean partenzeSelected;
 
@@ -26,7 +35,7 @@ public class userMainController {
     // Inizializzazione
     public void initialize() {
         startClockUpdateAnimation();
-
+                
         // Evento ToggleButton Partenze se selezionato disattiva l'altro ToggleButton e se deselezionato lo riattiva
         tglPartenze.setOnAction(e -> {
             if (tglPartenze.isSelected()) {
@@ -63,9 +72,18 @@ public class userMainController {
                 if (partenzeSelected) {
                     tglPartenze.setSelected(true);
                     tglArrivi.setSelected(false);
+
+                    // Visualizza la tabella delle partenze
+                    stackPaneTable.getChildren().clear();
+                    stackPaneTable.getChildren().add(anchPanePartenze);
+
                 } else {
                     tglPartenze.setSelected(false);
                     tglArrivi.setSelected(true);
+
+                    // Visualizza la tabella degli arrivi
+                    stackPaneTable.getChildren().clear();
+                    stackPaneTable.getChildren().add(anchPaneArrivi);
                 }
             }
         };
