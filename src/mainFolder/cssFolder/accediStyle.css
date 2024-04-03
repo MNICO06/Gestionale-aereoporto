@@ -46,6 +46,7 @@
         -fx-border-color: #ffffff;
         -fx-border-radius: 20;
         -fx-border-width: 2;
+        -fx-cursor: hand;
 }
 
 .buttonCustom:pressed{
@@ -79,6 +80,7 @@
 
 .date-picker .arrow-button:hover {
         -fx-background-color: -fx-secondary-color;
+        -fx-cursor: hand;
 }
 
 .date-picker .arrow-button .arrow {
@@ -155,6 +157,7 @@
         -fx-background-color: -fx-secondary-color;
         -fx-background-radius: 6;
         -fx-border-color: transparent;
+        -fx-cursor: hand;
 }
 
 .hyperlink {
@@ -172,6 +175,7 @@
         -fx-border-color: white;
         -fx-border-width: 1;
         -fx-border-radius: 15px;
+        -fx-cursor: hand;
 }
 
 .radio-button .radio:selected {
@@ -212,7 +216,8 @@
 
 .homeButton:hover {
         -fx-background-color: linear-gradient(from 0% 0% to 100% 200%, #00bbff, #c300ff);
-        -fx-text-fill: #ffffff
+        -fx-text-fill: #ffffff;
+        -fx-cursor: hand;
 }
 
 .homeButton:pressed {

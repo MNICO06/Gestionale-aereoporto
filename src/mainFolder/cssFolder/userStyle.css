@@ -38,6 +38,7 @@
 
 .accediButton:hover {
     -fx-background-color: -fx-secondary-color;
+    -fx-cursor: hand;
 }
 
 .accediButton:pressed {
@@ -58,6 +59,7 @@
 
 .cercaButton:hover {
     -fx-background-color: -fx-secondary-color;
+    -fx-cursor: hand;
 }
 
 .cercaButton:pressed {
@@ -92,6 +94,7 @@
 
 .date-picker .arrow-button:hover {
     -fx-background-color: -fx-secondary-color;
+    -fx-cursor: hand;
 }
 
 .date-picker .arrow-button .arrow {
@@ -169,6 +172,7 @@
     -fx-background-color: -fx-secondary-color;
     -fx-background-radius: 6;
     -fx-border-color: transparent;
+    -fx-cursor: hand;
 }
 
 .toggle-button {
@@ -185,6 +189,7 @@
 
 .toggle-button:hover {
     -fx-background-color: -fx-secondary-color;
+    -fx-cursor: hand;
 }
 
 .toggle-button:pressed {
@@ -213,6 +218,7 @@
 
 .pagesButtonInternal:hover {
     -fx-background-color: -fx-secondary-color;
+    -fx-cursor: hand;
 }
 
 .pagesButtonInternal:pressed {
@@ -229,6 +235,7 @@
 
 .pagesButtonDx:hover {
     -fx-background-color: -fx-secondary-color;
+    -fx-cursor: hand;
 }
 
 .pagesButtonDx:pressed {
@@ -245,6 +252,7 @@
 
 .pagesButtonSx:hover {
     -fx-background-color: -fx-secondary-color;
+    -fx-cursor: hand;
 }
 
 .pagesButtonSx:pressed {
@@ -277,5 +285,11 @@
 .table-column {
     -fx-background-color: -fx-primary-color;
     -fx-background-radius: 4;
-    -fx-background-insets: 1 1 0 1;   
+    -fx-background-insets: 1 1 0 1;
+    -fx-cursor: hand;
 }
+
+.table-column:hover {
+    -fx-background-color: -fx-secondary-color;
+}
+
