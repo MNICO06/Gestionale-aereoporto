@@ -11,6 +11,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import mainFolder.salvataggioDati.LeggiDati;
+
 public class loginController {
 
     @FXML private TextField inserisciMail;
@@ -23,6 +25,8 @@ public class loginController {
 
     @FXML private Hyperlink vaiRegistrati;
 
+    LeggiDati leggi;
+
     public void initialize() {
         vediInserisciPassword.setEditable(false);
         vediInserisciPassword.setVisible(false);
@@ -30,6 +34,7 @@ public class loginController {
         inserisciPassword.setVisible(true);
         inserisciPassword.setEditable(true);
 
+        leggi = new LeggiDati();
     }
     
     
@@ -83,5 +88,10 @@ public class loginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void login() {
+        
     }
 }

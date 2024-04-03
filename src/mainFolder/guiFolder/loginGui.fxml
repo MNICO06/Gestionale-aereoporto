@@ -111,7 +111,7 @@
                         </CheckBox>
                      </children>
                   </GridPane>
-                  <Button fx:id="tastoLogin" mnemonicParsing="false" prefHeight="56.0" prefWidth="160.0" styleClass="buttonCustom" text=" Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="15">
+                  <Button fx:id="tastoLogin" mnemonicParsing="false" onAction="#login" prefHeight="56.0" prefWidth="160.0" styleClass="buttonCustom" text=" Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="15">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
