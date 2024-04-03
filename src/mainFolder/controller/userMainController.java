@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import java.time.LocalDate;
+
 public class userMainController {
     
     @FXML private Label orologio;
@@ -23,7 +25,28 @@ public class userMainController {
     @FXML private AnchorPane anchPanePartenze;
     @FXML private AnchorPane anchPaneArrivi;
 
+    @FXML private TextField cercaTxfield;
+    @FXML private DatePicker dataDtpk;
+    @FXML private Button cercaBtn;
+
     private boolean partenzeSelected;
+
+    private String cercaText;
+    private LocalDate dataPartenze;
+
+    // Metodi per impostare i valori di ricerca
+    public void  setCercaTxt(String cercaText) {
+        this.cercaText = cercaText;
+        // Imposto la textfield con il testo di ricerca
+        cercaTxfield.setText(cercaText);
+        
+    }
+
+    public void setDataPartenze(LocalDate dataPartenze) {
+        this.dataPartenze = dataPartenze;
+        // Imposto il datepicker con la data di ricerca
+        dataDtpk.setValue(dataPartenze);
+    }
 
     // Metodo per impostare quali valori devono essere visualizzati (arrivi o partenze)
     public void setPartenzeSelected(boolean partenzeSelected) {

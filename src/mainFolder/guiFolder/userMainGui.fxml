@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.userMainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="800.0" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.userMainController">
    <top>
       <AnchorPane prefHeight="93.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
@@ -41,16 +42,18 @@
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="20.0" prefWidth="50.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="20.0" minHeight="3.0" prefHeight="5.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="263.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <ToggleButton fx:id="tglPartenze" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Partenze">
+                        <ToggleButton id="toggleButtonSecond" fx:id="tglPartenze" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Partenze">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -58,7 +61,7 @@
                               <Font size="25.0" />
                            </font>
                         </ToggleButton>
-                        <ToggleButton fx:id="tglArrivi" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Arrivi">
+                        <ToggleButton id="toggleButtonSecond" fx:id="tglArrivi" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Arrivi">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -68,7 +71,7 @@
                         </ToggleButton>
                      </children>
                   </HBox>
-                  <StackPane fx:id="stackPaneTable" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <StackPane fx:id="stackPaneTable" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <children>
                         <AnchorPane fx:id="anchPanePartenze">
                            <children>
@@ -108,13 +111,16 @@
                         </AnchorPane>
                      </children>
                   </StackPane>
+                  <HBox alignment="CENTER" prefHeight="21.0" prefWidth="700.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <children>
+                        <DatePicker fx:id="dataDtpk" prefHeight="31.0" prefWidth="137.0" promptText="Data" styleClass="datePicker" />
+                        <TextField id="ricercaTextFieldSecond" fx:id="cercaTxfield" prefHeight="31.0" prefWidth="252.0" promptText="Ricerca" styleClass="ricercaTextField" />
+                        <Button id="cercaButtonSecond" fx:id="cercaBtn" mnemonicParsing="false" styleClass="cercaButton" text="Cerca" />
+                     </children>
+                  </HBox>
                </children>
             </GridPane>
          </children>
       </AnchorPane>
    </center>
-   <stylesheets>
-      <URL value="@../cssFolder/userStyle.css" />
-      <URL value="@../cssFolder/accediStyle.css" />
-   </stylesheets>
 </BorderPane>

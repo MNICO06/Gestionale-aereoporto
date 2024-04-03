@@ -40,7 +40,7 @@
                      </HBox.margin>
                   </DatePicker>
                   <TextField fx:id="cercaTxt" maxWidth="264.0" prefHeight="40.0" prefWidth="262.0" promptText="Ricerca" styleClass="ricercaTextField" />
-                <Button fx:id="cercaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" styleClass="cercaButton" text="Cerca">
+                <Button fx:id="cercaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cercaPage" prefHeight="45.0" prefWidth="109.0" styleClass="cercaButton" text="Cerca">
                      <HBox.margin>
                         <Insets bottom="1.0" />
                      </HBox.margin>

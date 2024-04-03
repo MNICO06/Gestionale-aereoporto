@@ -177,12 +177,68 @@ public class userController {
             stage.setTitle("Prenotazione GUI");
             stage.setScene(new Scene(root));
             stage.show();
-
+            
             // Chiudi la prima GUI (Finestra)
             Stage primaryStage = (Stage) prenotaBtn.getScene().getWindow();
             primaryStage.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void cercaPage() {
+        System.out.println("Cerca");
+        // Chiamo un metodo che convalidi i dati inseriti prima di aprire la schermata di ricerca
+        if (controlloRicerca()) {
+            try {
+                // Carica la seconda GUI (FXML)
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/userMainGui.fxml"));
+                Parent root = loader.load();
+                Stage stage = new Stage();
+                stage.setTitle("User Main GUI");
+                stage.setScene(new Scene(root));
+                stage.show();
+
+                // Mando un messaggio al controller della seconda GUI
+                userMainController controller = loader.getController();
+                // in base a quale toggle è selezionato, passo il valore true o false
+                controller.setPartenzeSelected(partenzeTglBtn.isSelected());
+                // Altro controllo
+                if(controlloRicerca()){
+                    // Passo anche i valori da cercare e la data
+                    controller.setCercaTxt(cercaTxt.getText());
+                    controller.setDataPartenze(dataPartenze.getValue());
+                }
+                // Chiudi la prima GUI (Finestra)
+                Stage primaryStage = (Stage) cercaBtn.getScene().getWindow();
+                primaryStage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    private boolean controlloRicerca(){
+        // Controllo che la data sia stata inserita
+        if (dataPartenze.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText("Data non inserita");
+            alert.setContentText("Inserire una data per la ricerca");
+            alert.showAndWait();
+            return false;
+        }
+        // Controllo che il campo di ricerca non sia vuoto
+        if (cercaTxt.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText("Campo di ricerca vuoto");
+            alert.setContentText("Inserire un valore da cercare");
+            alert.showAndWait();
+            return false;
+        }
+
+        return true;
     }
 }
