@@ -17,6 +17,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.control.Alert;
 
 public class userController {
 
@@ -41,7 +42,7 @@ public class userController {
     private Duration transitionDuration = Duration.seconds(5);
     // Timeline per la transizione
     private Timeline timeline;
-
+    
     // Inizializzazione
     public void initialize() {
         // Imposto un immagine iniziale
@@ -78,6 +79,7 @@ public class userController {
 
         // Imposto come bottone selezionato di default quello delle partenze
         partenzeTglBtn.setSelected(true);
+
     }
 
     private void startBackgroundTransition() {
@@ -188,7 +190,6 @@ public class userController {
 
     @FXML
     private void cercaPage() {
-        System.out.println("Cerca");
         // Chiamo un metodo che convalidi i dati inseriti prima di aprire la schermata di ricerca
         if (controlloRicerca()) {
             try {
@@ -220,12 +221,14 @@ public class userController {
     }
     
     private boolean controlloRicerca(){
+        String css = getClass().getResource("../cssFolder/alert.css").toExternalForm();
         // Controllo che la data sia stata inserita
         if (dataPartenze.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Errore");
             alert.setHeaderText("Data non inserita");
             alert.setContentText("Inserire una data per la ricerca");
+            alert.getDialogPane().getScene().getStylesheets().add(css);
             alert.showAndWait();
             return false;
         }
@@ -235,6 +238,7 @@ public class userController {
             alert.setTitle("Errore");
             alert.setHeaderText("Campo di ricerca vuoto");
             alert.setContentText("Inserire un valore da cercare");
+            alert.getDialogPane().getScene().getStylesheets().add(css);
             alert.showAndWait();
             return false;
         }

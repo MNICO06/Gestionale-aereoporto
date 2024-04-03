@@ -1,0 +1,61 @@
+* {
+    -fx-primary-color: #3c90ea;
+    -fx-secondary-color: #4578d5;
+    -fx-tertiary-color: #04376d;
+    -fx-light-grey-color: #d1d1d1;
+    -fx-white-color: #ffffff;
+
+    -fx-focus-color: -fx-secondary-color;
+}
+
+.dialog-pane {
+    -fx-border-color: -fx-white-color;
+    -fx-border-width: 5.0px;
+}
+
+/**Costumization of The Bar where the buttons are located**/
+.dialog-pane>.button-bar>.container {
+    -fx-background-color: -fx-white-color;
+}
+
+/**Costumization of DialogPane Content**/
+.dialog-pane>.content.label {
+    -fx-padding: 10.0px;
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: -fx-white-color;
+    -fx-font-size: 16px;
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+}
+
+/**Costumization of DialogPane Header**/
+.dialog-pane:header .header-panel {
+    -fx-background-color: -fx-white-color;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-background-color: -fx-secondary-color;
+    -fx-background-radius: 10px;
+    -fx-text-fill: -fx-white-color;
+    -fx-font-size: 20px;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+
+/**Costumization of Buttons**/
+.dialog-pane .button {
+    -fx-font-size: 16px;
+    -fx-background-radius: 10px;
+    -fx-font-weight: normal;
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: -fx-white-color;
+    -fx-wrap-text: true; /*This is to wrap the text in the button*/
+    -fx-effect: dropshadow(three-pass-box, -fx-primary-color, 10.0, 0.0, 0.0, 0.0);
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: -fx-secondary-color;
+    -fx-font-weight: bold;
+}

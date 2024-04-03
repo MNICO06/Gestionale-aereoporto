@@ -10,8 +10,7 @@ import javafx.stage.Stage;
  *
  * @author molte
  */
-public class MainApp extends Application {
-        
+public class MainApp extends Application {        
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -19,7 +18,7 @@ public class MainApp extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("./guiFolder/userGui.fxml"));
         primaryStage.setTitle("Aeroporto - Gestione voli");
         primaryStage.setScene(new Scene(root));
-        primaryStage.show();      
+        primaryStage.show();
     }
     
     public static void main(String[] args) {
