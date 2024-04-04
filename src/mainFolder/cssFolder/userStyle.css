@@ -389,11 +389,15 @@
 .customTextField {
     -fx-font-size: 15px;
     -fx-background-color: -fx-white-color;
-    -fx-background-radius: 0 7 7 0;
+    -fx-background-radius: 7;
 }
 
 .customDatePicker {
     -fx-font-size: 14px;
     -fx-background-color: -fx-white-color;
-    -fx-background-radius: 7 0 0 7;
+    -fx-background-radius: 7;
+}
+
+.labelCustom1 {
+    -fx-text-fill: -fx-secondary-color;
 }
