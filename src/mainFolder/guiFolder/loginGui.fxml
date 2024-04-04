@@ -12,10 +12,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="600.0" maxWidth="600.0" minHeight="540.0" minWidth="524.0" prefHeight="540.0" prefWidth="524.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.loginController">
+<BorderPane maxHeight="600.0" maxWidth="600.0" minHeight="540.0" minWidth="524.0" prefHeight="540.0" prefWidth="524.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.loginController">
    <center>
       <AnchorPane minHeight="200.0" minWidth="200.0" prefHeight="540.0" prefWidth="790.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +27,7 @@
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
               </columnConstraints>
               <rowConstraints>
-                  <RowConstraints maxHeight="50.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="90.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="50.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
@@ -132,11 +133,20 @@
                         <Font size="15.0" />
                      </font>
                   </Hyperlink>
-                  <Button fx:id="btnHome" mnemonicParsing="false" onAction="#handleBtnHome" prefHeight="43.0" prefWidth="82.0" styleClass="homeButton" text="Home" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Button fx:id="btnHome" mnemonicParsing="false" onAction="#handleBtnHome" prefHeight="44.0" prefWidth="88.0" styleClass="homeButton" text="Home" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </Button>
+                  <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                     <children>
+                        <Label fx:id="segnalaErrore" alignment="CENTER" prefHeight="30.0" prefWidth="253.0" text="Inserire email e password" textFill="RED">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </GridPane>
          </children>
