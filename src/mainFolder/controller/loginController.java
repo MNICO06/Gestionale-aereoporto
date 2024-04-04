@@ -1,5 +1,7 @@
 package mainFolder.controller;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,10 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import mainFolder.model.GestioneUtenti;
+import mainFolder.model.Utenti;
 import mainFolder.salvataggioDati.LeggiDati;
 
 public class loginController {
@@ -25,6 +29,8 @@ public class loginController {
 
     @FXML private Hyperlink vaiRegistrati;
     @FXML private Hyperlink vaiResetPassword;
+
+    @FXML private Label segnalaErrore;
 
     LeggiDati leggi;
 
@@ -95,7 +101,28 @@ public class loginController {
 
     @FXML
     public void login() {
-        
+        ArrayList<Utenti> listaUtenti = new ArrayList<Utenti>();
+        listaUtenti = gestioneUtenti.getUtenti();
+        boolean utenteTtrovato = false;
+        if (inserisciMail.getText().isEmpty() && inserisciPassword.getText().isEmpty()) {
+        }else {
+            for(int i = 0; i < listaUtenti.size(); i++) {
+                if (listaUtenti.get(i).getMail().equals(inserisciMail.getText()) && 
+                    listaUtenti.get(i).getPassword().equals(inserisciPassword.getText())) {
+
+                    utenteTtrovato = true;
+                }
+            }
+            if (utenteTtrovato == false) {
+                segnalaErrore.setText("mail o password errati");
+            }
+        }
+        if (utenteTtrovato == true) {
+            System.out.println("login effettuato con successo");
+        }
+        else {
+            System.out.println("login non effettuato");
+        }
     }
 
     @FXML
