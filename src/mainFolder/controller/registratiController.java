@@ -42,14 +42,10 @@ public class registratiController {
 
     private LocalDate dataSelezionata;
 
-    
-
-
-    GestioneUtenti gestioneUtenti = new GestioneUtenti();
+    GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
 
 
     public void creaUtente(){
-
         //solo se l'utente acconsente alle normative
         if (acconsenteNormative.isSelected()){
             if (sonoPieni() && confrontaPassword()){
