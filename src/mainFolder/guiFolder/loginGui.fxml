@@ -125,7 +125,7 @@
                         <Insets right="125.0" />
                      </GridPane.margin>
                   </Label>
-                  <Hyperlink fx:id="resetPassword" onAction="#handleResetPassword" text="Resetta Password" textFill="#73eedc" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER">
+                  <Hyperlink fx:id="vaiResetPassword" onAction="#handlePasswChangeLink" text="Resetta Password" textFill="#73eedc" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="175.0" />
                      </GridPane.margin>
