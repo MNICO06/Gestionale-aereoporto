@@ -81,7 +81,7 @@
                   <Insets left="50.0" right="50.0" />
                </GridPane.margin></TextField>
             <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="183.0" styleClass="buttonCustom" text="Cambia" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="17" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" styleClass="homeButton" text="Home" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Button fx:id="btnHome" mnemonicParsing="false" onAction="#handleBtnHome" styleClass="homeButton" text="Home" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
          </children>
       </GridPane>
    </center>
