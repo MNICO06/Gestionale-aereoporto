@@ -15,7 +15,7 @@ public class ScriviDati {
 
     // Metodo per scrivere i dati degli utenti su file
     public void scriviUtenti(ArrayList<Utenti> utenti) {
-        try (BufferedWriter fileDaScrivere = new BufferedWriter(new FileWriter("utenti.txt"))) {
+        try (BufferedWriter fileDaScrivere = new BufferedWriter(new FileWriter("./src/mainFolder/salvataggioDati/utenti.txt"))) {
             for (Utenti utente : utenti) {
                 // Concatenazione dei dati con '+' come delimitatore
                 fileDaScrivere.write(utente.getNome() + "+");
