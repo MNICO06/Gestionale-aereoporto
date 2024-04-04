@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -17,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="786.0" styleClass="BorderPane" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.prenotazioneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="786.0" styleClass="BorderPane" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.prenotazioneController">
    <top>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -67,32 +68,39 @@
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
             </Label>
-            <HBox>
+            <HBox prefHeight="3.0" prefWidth="214.0">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
                <children>
-                  <DatePicker prefHeight="27.0" prefWidth="113.0" promptText="Data di partenza" />
-                  <TextField promptText="Destinazione" />
+                  <DatePicker prefHeight="47.0" prefWidth="78.0" promptText="Data di partenza" styleClass="customDatePicker" />
+                  <TextField prefHeight="63.0" prefWidth="126.0" promptText="Destinazione" styleClass="customTextField" />
                </children>
             </HBox>
+            <Separator prefWidth="200.0" />
             <HBox prefHeight="34.0" prefWidth="259.0">
                <children>
                   <Label prefHeight="34.0" prefWidth="81.0" text="Adulti (16+)" />
                   <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="157.0">
                      <children>
-                        <Button mnemonicParsing="false" text="-" />
+                        <Button mnemonicParsing="false" styleClass="minusButton" text="-" />
                         <Label text="0">
                            <font>
                               <Font size="17.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
                         </Label>
-                        <Button mnemonicParsing="false" text="+" />
+                        <Button mnemonicParsing="false" styleClass="plusButton" text="+">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></Button>
                      </children>
                   </HBox>
                </children>
                <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </HBox>
             <HBox prefHeight="34.0" prefWidth="259.0">
@@ -100,13 +108,16 @@
                   <Label prefHeight="41.0" prefWidth="90.0" text="Bambini" />
                   <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="126.0">
                      <children>
-                        <Button mnemonicParsing="false" text="-" />
+                        <Button mnemonicParsing="false" styleClass="minusButton" text="-" />
                         <Label text="0">
                            <font>
                               <Font size="17.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
                         </Label>
-                        <Button mnemonicParsing="false" text="+" />
+                        <Button mnemonicParsing="false" styleClass="plusButton" text="+" />
                      </children>
                   </HBox>
                </children>
@@ -114,7 +125,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </VBox.margin>
             </HBox>
-            <ComboBox prefHeight="25.0" prefWidth="75.0" promptText="Classe">
+            <ComboBox prefHeight="31.0" prefWidth="241.0" promptText="Classe" styleClass="customComboBox">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </VBox.margin>
@@ -124,13 +135,16 @@
                   <Label prefHeight="41.0" prefWidth="90.0" text="Bagagli" />
                   <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="129.0">
                      <children>
-                        <Button mnemonicParsing="false" text="-" />
+                        <Button mnemonicParsing="false" styleClass="minusButton" text="-" />
                         <Label text="0">
                            <font>
                               <Font size="17.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
                         </Label>
-                        <Button mnemonicParsing="false" text="+" />
+                        <Button mnemonicParsing="false" styleClass="plusButton" text="+" />
                      </children>
                   </HBox>
                </children>
@@ -138,7 +152,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </VBox.margin>
             </HBox>
-            <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="251.0" text="Prenota">
+            <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="251.0" styleClass="prenotaButton" text="Prenota">
                <font>
                   <Font size="30.0" />
                </font>
