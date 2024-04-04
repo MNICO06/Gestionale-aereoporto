@@ -24,7 +24,7 @@ public class loginController {
     @FXML private CheckBox visualizzaPassword;
 
     @FXML private Hyperlink vaiRegistrati;
-    @FXML private Hyperlink resetPassword;
+    @FXML private Hyperlink vaiResetPassword;
 
     LeggiDati leggi;
 
@@ -97,20 +97,19 @@ public class loginController {
     }
 
     @FXML
-    private void handleResetPassword() {
+    private void handlePasswChangeLink() {
         try {
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/passwChange.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("Reset Password page");
+            stage.setTitle("Passw Change page");
             stage.setScene(new Scene(root));
             stage.show();
 
             // Chiudi la prima GUI (Finestra)
-            Stage primaryStage = (Stage) resetPassword.getScene().getWindow();
+            Stage primaryStage = (Stage) vaiRegistrati.getScene().getWindow();
             primaryStage.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
