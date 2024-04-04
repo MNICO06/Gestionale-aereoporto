@@ -10,18 +10,20 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="369.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="445.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="15.0" prefWidth="20.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="300.0" prefWidth="325.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="350.0" prefWidth="400.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="15.0" prefWidth="20.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="50.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="15.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="5.0" prefHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -38,38 +40,48 @@
           <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Cambio Password" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label text="Cambio Password" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font></Label>
-            <Label text="Email" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label text="Email" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets left="15.0" />
+                  <Insets left="65.0" />
                </GridPane.margin>
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label text="Nuova Password" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <TextField promptText="MiaEmail@MioDominio.com" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
-                  <Insets left="15.0" />
+                  <Insets left="50.0" right="50.0" />
+               </GridPane.margin></TextField>
+            <Label text="Nuova Password" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="65.0" />
                </GridPane.margin>
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Label text="Conferma Nuova Password" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="11">
+            <TextField promptText="La mia Password" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <GridPane.margin>
-                  <Insets left="15.0" />
+                  <Insets left="50.0" right="50.0" />
+               </GridPane.margin></TextField>
+            <Label text="Conferma Nuova Password" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="13">
+               <GridPane.margin>
+                  <Insets left="65.0" />
                </GridPane.margin>
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="217.0" styleClass="buttonCustom" text="Cambia" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="15" GridPane.valignment="CENTER" />
+            <TextField promptText="La mia Password" GridPane.columnIndex="1" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets left="50.0" right="50.0" />
+               </GridPane.margin></TextField>
+            <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="183.0" styleClass="buttonCustom" text="Cambia" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="17" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" styleClass="homeButton" text="Home" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
          </children>
       </GridPane>
    </center>
