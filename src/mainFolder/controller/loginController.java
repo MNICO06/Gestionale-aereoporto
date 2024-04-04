@@ -10,7 +10,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import mainFolder.model.GestioneUtenti;
 import mainFolder.salvataggioDati.LeggiDati;
 
 public class loginController {
@@ -28,6 +28,8 @@ public class loginController {
 
     LeggiDati leggi;
 
+    GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
+
     public void initialize() {
         vediInserisciPassword.setEditable(false);
         vediInserisciPassword.setVisible(false);
@@ -35,7 +37,7 @@ public class loginController {
         inserisciPassword.setVisible(true);
         inserisciPassword.setEditable(true);
 
-        leggi = new LeggiDati();
+        gestioneUtenti.aggiornaLista();
     }
     
     
