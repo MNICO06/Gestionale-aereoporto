@@ -3,8 +3,6 @@ package mainFolder.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

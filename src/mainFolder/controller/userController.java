@@ -17,6 +17,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import mainFolder.model.GestioneUtenti;
 import javafx.scene.control.Alert;
 
 public class userController {
@@ -42,6 +43,9 @@ public class userController {
     private Duration transitionDuration = Duration.seconds(5);
     // Timeline per la transizione
     private Timeline timeline;
+
+    //per tenere controllato se si è loggati
+    GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
     
     // Inizializzazione
     public void initialize() {
@@ -80,6 +84,7 @@ public class userController {
         // Imposto come bottone selezionato di default quello delle partenze
         partenzeTglBtn.setSelected(true);
 
+        checkLogin(); 
     }
 
     private void startBackgroundTransition() {
@@ -245,4 +250,11 @@ public class userController {
 
         return true;
     }
+
+    private void checkLogin() {
+        if (gestioneUtenti.isLogged()) {
+            accediBtn.setText(gestioneUtenti.getUtenti().get(gestioneUtenti.getIndice()).getNome());
+        }
+    }
 }
+    

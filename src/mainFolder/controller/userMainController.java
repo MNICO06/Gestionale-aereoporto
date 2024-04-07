@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import mainFolder.model.GestioneUtenti;
+
 import java.time.LocalDate;
 
 public class userMainController {
@@ -33,6 +35,8 @@ public class userMainController {
 
     private String cercaText;
     private LocalDate dataPartenze;
+
+    
 
     // Metodi per impostare i valori di ricerca
     public void  setCercaTxt(String cercaText) {
@@ -77,6 +81,9 @@ public class userMainController {
                 partenzeSelected = true;
             }
         });
+
+
+       
     }
 
     private void startClockUpdateAnimation() {

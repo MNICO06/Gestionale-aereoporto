@@ -33,6 +33,7 @@ public class loginController {
     @FXML private Label segnalaErrore;
 
     LeggiDati leggi;
+    private int indice;
 
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
 
@@ -83,6 +84,7 @@ public class loginController {
     @FXML
     private void handleRegistratiLink() {
         try {
+
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/registratiGui.fxml"));
             Parent root = loader.load();
@@ -109,19 +111,17 @@ public class loginController {
             for(int i = 0; i < listaUtenti.size(); i++) {
                 if (listaUtenti.get(i).getMail().equals(inserisciMail.getText()) && 
                     listaUtenti.get(i).getPassword().equals(inserisciPassword.getText())) {
-
+                    indice = i;
                     utenteTtrovato = true;
                 }
             }
-            if (utenteTtrovato == false) {
-                segnalaErrore.setText("mail o password errati");
-            }
+        }
+        if (utenteTtrovato == false) {
+            segnalaErrore.setText("mail o password errati");
         }
         if (utenteTtrovato == true) {
-            System.out.println("login effettuato con successo");
-        }
-        else {
-            System.out.println("login non effettuato");
+            gestioneUtenti.setLogin(indice);
+            handleBtnHome();
         }
     }
 

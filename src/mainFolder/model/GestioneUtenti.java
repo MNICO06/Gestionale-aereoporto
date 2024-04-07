@@ -11,6 +11,9 @@ public class GestioneUtenti {
     ScriviDati scrivi;
     LeggiDati leggo;
 
+    private boolean loggato = false;
+    private int indice;
+
 
     public GestioneUtenti (){
         scrivi = new ScriviDati();
@@ -38,8 +41,25 @@ public class GestioneUtenti {
         listaUtenti = leggo.leggiUtente();
     }
 
+    public void scriviUtenti() {
+        scrivi.scriviUtenti(listaUtenti);
+    }
+
     public ArrayList<Utenti> getUtenti() {
         return listaUtenti;
     }
+
+    public void setLogin(int indice) {
+        loggato = true;
+        this.indice = indice;
+    }
+
+    public boolean isLogged() {
+        return loggato;
+    }
+    public int getIndice() {
+        return indice;
+    }
+
 
 }

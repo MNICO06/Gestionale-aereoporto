@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="445.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.passChangeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="445.0" styleClass="BorderPane" stylesheets="@../cssFolder/accediStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.passChangeController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -52,10 +53,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField promptText="MiaEmail@MioDominio.com" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets left="50.0" right="50.0" />
-               </GridPane.margin></TextField>
             <Label text="Nuova Password" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets left="65.0" />
@@ -64,10 +61,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField promptText="La mia Password" GridPane.columnIndex="1" GridPane.rowIndex="11">
-               <GridPane.margin>
-                  <Insets left="50.0" right="50.0" />
-               </GridPane.margin></TextField>
             <Label text="Conferma Nuova Password" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="13">
                <GridPane.margin>
                   <Insets left="65.0" />
@@ -76,12 +69,22 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField promptText="La mia Password" GridPane.columnIndex="1" GridPane.rowIndex="15">
+            <Button mnemonicParsing="false" onAction="#changePass" prefHeight="71.0" prefWidth="183.0" styleClass="buttonCustom" text="Cambia" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="17" GridPane.valignment="CENTER" />
+            <Button fx:id="btnHome" mnemonicParsing="false" onAction="#handleBtnHome" styleClass="homeButton" text="Home" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <TextField fx:id="inserisciMail" promptText="MiaEmail@MioDominio.com" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets left="50.0" right="50.0" />
                </GridPane.margin></TextField>
-            <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="183.0" styleClass="buttonCustom" text="Cambia" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="17" GridPane.valignment="CENTER" />
-            <Button fx:id="btnHome" mnemonicParsing="false" onAction="#handleBtnHome" styleClass="homeButton" text="Home" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <PasswordField fx:id="inserisciPassword" promptText="la mia password" GridPane.columnIndex="1" GridPane.rowIndex="11">
+               <GridPane.margin>
+                  <Insets left="50.0" right="50.0" />
+               </GridPane.margin>
+            </PasswordField>
+            <PasswordField fx:id="confermaNuovaPassword" promptText="la mia password" GridPane.columnIndex="1" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets left="50.0" right="50.0" />
+               </GridPane.margin>
+            </PasswordField>
          </children>
       </GridPane>
    </center>
