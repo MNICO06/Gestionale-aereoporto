@@ -36,6 +36,8 @@ public class userMainController {
     private String cercaText;
     private LocalDate dataPartenze;
 
+    //per tenere controllato se si è loggati
+    GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
     
 
     // Metodi per impostare i valori di ricerca
@@ -82,8 +84,7 @@ public class userMainController {
             }
         });
 
-
-       
+        checkLogin();
     }
 
     private void startClockUpdateAnimation() {
@@ -117,6 +118,12 @@ public class userMainController {
         };
         // Avvio l'animazione
         timer.start();
+    }
+
+    private void checkLogin() {
+        if (gestioneUtenti.isLogged()) {
+            btnAccedi.setText(gestioneUtenti.getUtenti().get(gestioneUtenti.getIndice()).getNome());
+        }
     }
 
     // Metodo per il tasto Home

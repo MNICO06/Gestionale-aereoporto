@@ -7,12 +7,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import mainFolder.model.GestioneUtenti;
 
 public class prenotazioneController {
     
     @FXML private Label lblOrologio;
     @FXML private Button btnHome;
     @FXML private Button btnAccedi;
+
+    //per tenere controllato se si è loggati
+    GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
 
     public void initialize() {
         startClockUpdateAnimation();
@@ -33,8 +37,15 @@ public class prenotazioneController {
         };
         // Avvio l'animazione
         timer.start();
+
+        checkLogin();
     }
 
+    private void checkLogin() {
+        if (gestioneUtenti.isLogged()) {
+            btnAccedi.setText(gestioneUtenti.getUtenti().get(gestioneUtenti.getIndice()).getNome());
+        }
+    }
 
     @FXML
     private void handleBtnHome() {
