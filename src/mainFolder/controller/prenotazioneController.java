@@ -69,6 +69,7 @@ public class prenotazioneController {
     @FXML
     private void handleBtnAccedi() {
         try {
+            gestioneUtenti.setSchermataPrecedente("PrenotaPage");
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/loginGui.fxml"));
             Parent root = loader.load();

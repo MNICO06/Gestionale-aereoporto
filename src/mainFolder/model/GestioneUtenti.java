@@ -11,6 +11,8 @@ public class GestioneUtenti {
     ScriviDati scrivi;
     LeggiDati leggo;
 
+    private String schermataPrecedente = null;
+
     private boolean loggato = false;
     private int indice;
 
@@ -61,5 +63,12 @@ public class GestioneUtenti {
         return indice;
     }
 
+    // Getter e setter di schermataPrecedente
+    public String getSchermataPrecedente() {
+        return schermataPrecedente;
+    }
 
+    public void setSchermataPrecedente(String schermataPrecedente) {
+        this.schermataPrecedente = schermataPrecedente;
+    }
 }

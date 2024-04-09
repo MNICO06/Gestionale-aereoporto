@@ -131,6 +131,7 @@ public class userController {
     @FXML
     private void accediPage() {
         try {
+            gestioneUtenti.setSchermataPrecedente("Home");
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/loginGui.fxml"));
             Parent root = loader.load();

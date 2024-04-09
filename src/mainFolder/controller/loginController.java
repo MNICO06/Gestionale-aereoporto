@@ -18,6 +18,7 @@ import mainFolder.model.Utenti;
 import mainFolder.salvataggioDati.LeggiDati;
 
 public class loginController {
+    private String schermataPrecedente;
 
     @FXML private TextField inserisciMail;
     @FXML private PasswordField inserisciPassword;
@@ -81,6 +82,24 @@ public class loginController {
         }
     }
 
+    private void prenotaPage() {
+        try {
+            // Carica la seconda GUI (FXML)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/prenotazioneGui.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("User GUI");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Chiudi la prima GUI (Finestra)
+            Stage primaryStage = (Stage) btnHome.getScene().getWindow();
+            primaryStage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void handleRegistratiLink() {
         try {
@@ -121,7 +140,18 @@ public class loginController {
         }
         if (utenteTtrovato == true) {
             gestioneUtenti.setLogin(indice);
-            handleBtnHome();
+            switch (gestioneUtenti.getSchermataPrecedente()) {
+                case "Home": 
+                    handleBtnHome();
+                    break;
+                case "PrenotaPage":
+                    prenotaPage();
+                    break;
+                case "":
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -143,5 +173,7 @@ public class loginController {
             e.printStackTrace();
         }
     }
+
+
 
 }
