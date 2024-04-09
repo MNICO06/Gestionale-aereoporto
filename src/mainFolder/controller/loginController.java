@@ -88,7 +88,31 @@ public class loginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/prenotazioneGui.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("User GUI");
+            stage.setTitle("Prenotazione GUI");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Chiudi la prima GUI (Finestra)
+            Stage primaryStage = (Stage) btnHome.getScene().getWindow();
+            primaryStage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void userMainPage(int partenze) {
+        try {
+            // Carica la seconda GUI (FXML)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/userMainGui.fxml"));
+            Parent root = loader.load();
+            // Mando un messaggio al controller della seconda GUI
+            userMainController controller = loader.getController();
+            // in base a quale button chiama il metodo userMainPage, passo il valore true o
+            // false
+            controller.setPartenzeSelected((partenze==1));
+
+            Stage stage = new Stage();
+            stage.setTitle("User Main GUI");
             stage.setScene(new Scene(root));
             stage.show();
 
@@ -147,8 +171,11 @@ public class loginController {
                 case "PrenotaPage":
                     prenotaPage();
                     break;
-                case "":
+                case "UserMainPageA":
+                    userMainPage(0);
                     break;
+                case "UserMainPageP":
+                    userMainPage(1);
                 default:
                     break;
             }

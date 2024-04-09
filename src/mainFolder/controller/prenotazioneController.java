@@ -44,6 +44,8 @@ public class prenotazioneController {
     private void checkLogin() {
         if (gestioneUtenti.isLogged()) {
             btnAccedi.setText(gestioneUtenti.getUtenti().get(gestioneUtenti.getIndice()).getNome());
+            btnAccedi.setDisable(true);
+            btnAccedi.setOpacity(1);
         }
     }
 

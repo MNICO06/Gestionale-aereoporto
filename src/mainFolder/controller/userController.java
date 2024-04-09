@@ -255,6 +255,8 @@ public class userController {
     private void checkLogin() {
         if (gestioneUtenti.isLogged()) {
             accediBtn.setText(gestioneUtenti.getUtenti().get(gestioneUtenti.getIndice()).getNome());
+            accediBtn.setDisable(true);
+            accediBtn.setOpacity(1);
         }
     }
 }

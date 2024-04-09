@@ -123,6 +123,8 @@ public class userMainController {
     private void checkLogin() {
         if (gestioneUtenti.isLogged()) {
             btnAccedi.setText(gestioneUtenti.getUtenti().get(gestioneUtenti.getIndice()).getNome());
+            btnAccedi.setDisable(true);
+            btnAccedi.setOpacity(1);
         }
     }
 
@@ -137,7 +139,7 @@ public class userMainController {
             stage.setTitle("User GUI");
             stage.setScene(new Scene(root));
             stage.show();
-
+            
             // Chiudi la prima GUI (Finestra)
             Stage primaryStage = (Stage) btnHome.getScene().getWindow();
             primaryStage.close();
@@ -145,11 +147,16 @@ public class userMainController {
             e.printStackTrace();
         }
     }
-
+    
     // Metodo per il tasto Accedi
     @FXML
     private void handleBtnAccedi() {
         try {
+            if (partenzeSelected){
+                gestioneUtenti.setSchermataPrecedente("UserMainPageP");
+            } else {
+                gestioneUtenti.setSchermataPrecedente("UserMainPageA");
+            }
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/loginGui.fxml"));
             Parent root = loader.load();
