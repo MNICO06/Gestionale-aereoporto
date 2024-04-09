@@ -127,7 +127,7 @@ public class loginController {
     @FXML
     private void handleRegistratiLink() {
         try {
-
+            gestioneUtenti.setSchermataPrecedente(gestioneUtenti.getSchermataPrecedente());
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/registratiGui.fxml"));
             Parent root = loader.load();
