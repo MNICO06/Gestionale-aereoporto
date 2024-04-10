@@ -401,3 +401,19 @@
 .labelCustom1 {
     -fx-text-fill: -fx-secondary-color;
 }
+
+/* Stile per l'ImageView */
+.infoImage {
+    -fx-opacity: 0.9;
+}
+
+
+.text-area {
+    -fx-font-size: 25px;
+    -fx-background-color: -fx-white-color;
+    -fx-background-radius: 7;
+}
+
+.text-area .content {
+    -fx-background-color: -fx-white-color;
+}

@@ -4,103 +4,143 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" styleClass="BorderPane" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.userController">
-   <center>
-      <GridPane BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="30.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="120.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="60.0" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+<StackPane fx:id="stackPane" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.userController">
+   <children>
+      <BorderPane fx:id="infoPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="BorderPane">
+         <top>
+            <AnchorPane maxHeight="140.0" minHeight="65.0" prefHeight="140.0" prefWidth="845.0" BorderPane.alignment="CENTER">
                <children>
-                  <DatePicker fx:id="dataPartenze" prefHeight="44.0" prefWidth="128.0" promptText="Data" styleClass="datePicker">
-                     <HBox.margin>
-                        <Insets bottom="1.0" />
-                     </HBox.margin>
-                  </DatePicker>
-                  <TextField fx:id="cercaTxt" maxWidth="264.0" prefHeight="40.0" prefWidth="262.0" promptText="Ricerca" styleClass="ricercaTextField" />
-                <Button fx:id="cercaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cercaPage" prefHeight="45.0" prefWidth="109.0" styleClass="cercaButton" text="Cerca">
-                     <HBox.margin>
-                        <Insets bottom="1.0" />
-                     </HBox.margin>
-                  </Button>
+                  <Label fx:id="orologio1" alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="11.0" prefHeight="44.0" prefWidth="155.0" styleClass="timeLabel" text="TIME" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="11.0" />
+                  <Button fx:id="accedBtn1" layoutX="537.0" layoutY="20.0" mnemonicParsing="false" onAction="#accediPage2" styleClass="accediButton" text="Accedi" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <Label alignment="CENTER" layoutX="159.0" layoutY="70.0" prefHeight="70.0" prefWidth="533.0" styleClass="titleLabel" text="Sky Gateway" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="70.0" />
+                  <Button fx:id="homeBtn1" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" onAction="#homePage" prefHeight="46.0" prefWidth="110.0" styleClass="accediButton" text="Home" />
                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            </AnchorPane>
+         </top>
+         <center>
+            <TextArea fx:id="infoTxt" editable="false" prefHeight="289.0" prefWidth="350.0" text="Benvenuti all'aeroporto internazionale &quot;SkyGateway&quot;, un hub globale che collega il mondo intero con un unico terminal. Situato strategicamente al centro di una rete di rotte aeree internazionali, SkyGateway offre un'esperienza aeroportuale senza pari, caratterizzata da una vasta gamma di servizi e comfort per i viaggiatori." wrapText="true" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextArea>
+         </center>
+         <left>
+            <ImageView fx:id="infoImage" fitHeight="323.0" fitWidth="354.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                  <image>
+                     <Image url="@../immagini/Areoporto4.jpeg" />
+                  </image>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="20.0" top="20.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </left>
+      </BorderPane>
+      <BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" styleClass="BorderPane" stylesheets="@../cssFolder/userStyle.css">
+         <center>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="600.0" prefWidth="600.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="30.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="120.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="60.0" minHeight="50.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <ToggleButton fx:id="partenzeTglBtn" mnemonicParsing="false" prefWidth="150.0" text="Partenze">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </ToggleButton>
-                  <ToggleButton fx:id="arriviTglBtn" mnemonicParsing="false" prefWidth="150.0" text="Arrivi">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </ToggleButton>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <children>
+                        <DatePicker fx:id="dataPartenze" prefHeight="44.0" prefWidth="128.0" promptText="Data" styleClass="datePicker">
+                           <HBox.margin>
+                              <Insets bottom="1.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                        <TextField fx:id="cercaTxt" maxWidth="264.0" prefHeight="40.0" prefWidth="262.0" promptText="Ricerca" styleClass="ricercaTextField" />
+                      <Button fx:id="cercaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cercaPage" prefHeight="45.0" prefWidth="109.0" styleClass="cercaButton" text="Cerca">
+                           <HBox.margin>
+                              <Insets bottom="1.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <children>
+                        <ToggleButton fx:id="partenzeTglBtn" mnemonicParsing="false" prefWidth="150.0" text="Partenze">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </ToggleButton>
+                        <ToggleButton fx:id="arriviTglBtn" mnemonicParsing="false" prefWidth="150.0" text="Arrivi">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </ToggleButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <children>
+                        <Button fx:id="prenotaBtn" mnemonicParsing="false" onAction="#prenotaPage" prefWidth="150.0" styleClass="pagesButtonSx" text="Prenota">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Button>
+                        <Button id="firstPageButton" fx:id="partenzeBtn" mnemonicParsing="false" onAction="#userMainPage" prefWidth="150.0" styleClass="pagesButtonInternal" text="Partenze">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="arriviBtn" mnemonicParsing="false" onAction="#userMainPage" prefWidth="150.0" styleClass="pagesButtonInternal" text="Arrivi">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="infoBtn" mnemonicParsing="false" onAction="#infoPage" prefWidth="150.0" styleClass="pagesButtonDx" text="Info">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            </GridPane>
+         </center>
+         <top>
+            <AnchorPane maxHeight="140.0" minHeight="65.0" prefHeight="140.0" prefWidth="845.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="prenotaBtn" mnemonicParsing="false" onAction="#prenotaPage" prefWidth="150.0" styleClass="pagesButtonSx" text="Prenota">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Button>
-                  <Button id="firstPageButton" fx:id="partenzeBtn" mnemonicParsing="false" onAction="#userMainPage" prefWidth="150.0" styleClass="pagesButtonInternal" text="Partenze">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="arriviBtn" mnemonicParsing="false" onAction="#userMainPage" prefWidth="150.0" styleClass="pagesButtonInternal" text="Arrivi">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="infoBtn" mnemonicParsing="false" prefWidth="150.0" styleClass="pagesButtonDx" text="Info">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                  </Button>
+                  <Label fx:id="orologio" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="155.0" styleClass="timeLabel" text="TIME" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <Button fx:id="accediBtn" layoutX="537.0" layoutY="20.0" mnemonicParsing="false" onAction="#accediPage1" styleClass="accediButton" text="Accedi" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <Label alignment="CENTER" layoutX="159.0" layoutY="70.0" prefHeight="70.0" prefWidth="533.0" styleClass="titleLabel" text="Aeroporto Molte Berto" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="70.0" />
                </children>
-            </HBox>
-         </children>
-      </GridPane>
-   </center>
-   <top>
-      <AnchorPane maxHeight="140.0" minHeight="65.0" prefHeight="140.0" prefWidth="845.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="orologio" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="155.0" styleClass="timeLabel" text="TIME" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-            <Button fx:id="accediBtn" layoutX="537.0" layoutY="20.0" mnemonicParsing="false" onAction="#accediPage" styleClass="accediButton" text="Accedi" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-            <Label alignment="CENTER" layoutX="159.0" layoutY="70.0" prefHeight="70.0" prefWidth="533.0" styleClass="titleLabel" text="Aeroporto Molte Berto" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="70.0" />
-         </children>
-      </AnchorPane>
-   </top>
-</BorderPane>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>

@@ -9,12 +9,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import mainFolder.model.GestioneUtenti;
@@ -22,6 +25,9 @@ import javafx.scene.control.Alert;
 
 public class userController {
 
+    @FXML private StackPane stackPane;
+
+    @FXML private BorderPane rootLayout;
     @FXML private Label orologio;
     @FXML private Button accediBtn;
     @FXML private Button cercaBtn;
@@ -33,7 +39,13 @@ public class userController {
     @FXML private ToggleButton arriviTglBtn;
     @FXML private DatePicker dataPartenze;
     @FXML private TextField cercaTxt;
-    @FXML private BorderPane rootLayout;
+
+    @FXML private BorderPane infoPage;
+    @FXML private ImageView infoImage;
+    @FXML private Label orologio1;
+    @FXML private Button accedBtn1;
+    @FXML private Button homeBtn1;
+    @FXML private TextArea infoTxt;
 
     // Imposto contatore delle immagini
     private int currentImageIndex = 0;
@@ -49,6 +61,11 @@ public class userController {
     
     // Inizializzazione
     public void initialize() {
+        // Rimuovo i figli dello stackPane
+        stackPane.getChildren().clear();
+        // Aggiungo il layout principale
+        stackPane.getChildren().add(rootLayout);
+
         // Imposto un immagine iniziale
         Image backgroundImage = new Image("file:src/mainFolder/immagini/" + sfondi[0]);
         BackgroundImage backgroundImg = new BackgroundImage(backgroundImage,
@@ -122,6 +139,10 @@ public class userController {
                         java.time.LocalTime.now().getHour(),
                         java.time.LocalTime.now().getMinute(), 
                         java.time.LocalTime.now().getSecond()));
+                orologio1.setText(String.format("%02d:%02d:%02d",
+                        java.time.LocalTime.now().getHour(),
+                        java.time.LocalTime.now().getMinute(),
+                        java.time.LocalTime.now().getSecond()));
             }
         };
         // Avvio l'animazione
@@ -129,7 +150,7 @@ public class userController {
     }
 
     @FXML
-    private void accediPage() {
+    private void accediPage1() {
         try {
             gestioneUtenti.setSchermataPrecedente("Home");
             // Carica la seconda GUI (FXML)
@@ -142,6 +163,26 @@ public class userController {
 
             // Chiudi la prima GUI (Finestra)
             Stage primaryStage = (Stage) accediBtn.getScene().getWindow();
+            primaryStage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void accediPage2() {
+        try {
+            gestioneUtenti.setSchermataPrecedente("Home");
+            // Carica la seconda GUI (FXML)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/loginGui.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Login GUI");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Chiudi la prima GUI (Finestra)
+            Stage primaryStage = (Stage) accedBtn1.getScene().getWindow();
             primaryStage.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -258,6 +299,42 @@ public class userController {
             accediBtn.setDisable(true);
             accediBtn.setOpacity(1);
         }
+    }
+
+    @FXML
+    private void infoPage() {
+        // Rimuovo i figli dello stackPane
+        stackPane.getChildren().clear();
+        // Aggiungo il layout principale della infoPage
+        stackPane.getChildren().add(infoPage);
+
+        // Inizializzo il cambio dell'immagine automatico
+        startImageTransition();
+        // Inizializzo l'orologio
+        startClockUpdateAnimation();
+    }
+
+    @FXML
+    private void homePage() {
+        // Rimuovo i figli dello stackPane
+        stackPane.getChildren().clear();
+        // Aggiungo il layout principale
+        stackPane.getChildren().add(rootLayout);
+    }
+
+    private void startImageTransition() {
+        // Cambio info image ogni 10 secondi
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
+            // Random da 0 a 4
+            int i = (int) (Math.random() * 4 + 1);
+            System.out.println(i);
+            Image img = new Image("file:src/mainFolder/immagini/Areoporto" + i + ".jpeg");
+            // Imposto la nuova immagine sull'ImageView
+            infoImage.setImage(img);
+        }));
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 }
     
