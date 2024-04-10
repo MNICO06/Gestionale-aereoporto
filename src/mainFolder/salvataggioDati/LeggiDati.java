@@ -32,7 +32,8 @@ public class LeggiDati {
                 String [] dati = linea.split("\\+");
                 datiArrayList.addAll(Arrays.asList(dati));
             }
-
+            
+            int temp = 0;
             for (int i = 0; i < numLinee; i++) {
                 String nome = "";
                 String cognome = "";
@@ -48,39 +49,40 @@ public class LeggiDati {
                 for (int j = 0; j < 11; j++) {
                     
                     if (j == 0) {
-                        nome = datiArrayList.get(j);
+                        nome = datiArrayList.get(j+temp);
                     }
                     if (j == 1) {
-                        cognome = datiArrayList.get(j);
+                        cognome = datiArrayList.get(j+temp);
                     }
                     if (j == 2) {
-                        mail = datiArrayList.get(j);
+                        mail = datiArrayList.get(j+temp);
                     }
                     if (j == 3) {
-                        nascita = datiArrayList.get(j);
+                        nascita = datiArrayList.get(j+temp);
                     }
                     if (j == 4) {
-                        password = datiArrayList.get(j);
+                        password = datiArrayList.get(j+temp);
                     }
                     if (j == 5) {
-                        numCell = datiArrayList.get(j);
+                        numCell = datiArrayList.get(j+temp);
                     }
                     if (j == 6) {
-                        nazione = datiArrayList.get(j);
+                        nazione = datiArrayList.get(j+temp);
                     }
                     if (j == 7) {
-                        citta = datiArrayList.get(j);
+                        citta = datiArrayList.get(j+temp);
                     }
                     if (j == 8) {
-                        via = datiArrayList.get(j);
+                        via = datiArrayList.get(j+temp);
                     }
                     if (j == 9) {
-                        codice = datiArrayList.get(j);
+                        codice = datiArrayList.get(j+temp);
                     }
                     if (j == 10) {
-                        scadenza = datiArrayList.get(j);
+                        scadenza = datiArrayList.get(j+temp);
                     }
                 }
+                temp+=11;
                 Utenti u = new Utenti(nome, cognome, mail, nascita, password, numCell, nazione, citta, via, codice, scadenza);
                 listaUtenti.add(u);
             }
