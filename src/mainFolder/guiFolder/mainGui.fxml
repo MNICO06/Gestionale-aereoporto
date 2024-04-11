@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="540.0" minWidth="840.0" prefHeight="540.0" prefWidth="840.0" stylesheets="@../cssFolder/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.mainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="540.0" minWidth="840.0" prefHeight="540.0" prefWidth="840.0" stylesheets="@../cssFolder/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.mainController">
    <top>
       <AnchorPane prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,7 +27,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="709.0" layoutY="8.0" mnemonicParsing="false" text="Accedi" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="8.0">
+            <Button fx:id="accedi" layoutX="709.0" layoutY="8.0" mnemonicParsing="false" text="Admin" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="8.0">
                <font>
                   <Font size="15.0" />
                </font>
