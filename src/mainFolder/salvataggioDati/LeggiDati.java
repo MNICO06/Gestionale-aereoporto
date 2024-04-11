@@ -87,6 +87,7 @@ public class LeggiDati {
                 listaUtenti.add(u);
             }
 
+            fileDaLeggere.close();
             return listaUtenti;
 
         }catch (IOException e) {
