@@ -25,22 +25,22 @@ public class userMainController {
 
     // Tabella partenze
     @FXML private TableView<GestioneAerei> tableArrivi;
-    @FXML private TableColumn<GestioneAerei, Aerei> colOrarioArrivo;
-    @FXML private TableColumn<GestioneAerei, Aerei> colRitardoArrivi;
-    @FXML private TableColumn<GestioneAerei, Aerei> colProvenienza;
-    @FXML private TableColumn<GestioneAerei, Aerei> colCodiceArrivi;
-    @FXML private TableColumn<GestioneAerei, Aerei> colGateArrivi;
-    @FXML private TableColumn<GestioneAerei, Aerei> colCompagniaArrivi;
-    @FXML private TableColumn<GestioneAerei, Aerei> colStatoArrivi;
+    @FXML private TableColumn<GestioneAerei, String> colOrarioArrivo;
+    @FXML private TableColumn<GestioneAerei, String> colRitardoArrivi;
+    @FXML private TableColumn<GestioneAerei, String> colProvenienza;
+    @FXML private TableColumn<GestioneAerei, String> colCodiceArrivi;
+    @FXML private TableColumn<GestioneAerei, String> colGateArrivi;
+    @FXML private TableColumn<GestioneAerei, String> colCompagniaArrivi;
+    @FXML private TableColumn<GestioneAerei, String> colStatoArrivi;
     // Tabella arrivi
     @FXML private TableView<GestioneAerei> tablePartenze;
-    @FXML private TableColumn<GestioneAerei, Aerei> colOrarioPartenza;
-    @FXML private TableColumn<GestioneAerei, Aerei> colRitardoPartenze;
-    @FXML private TableColumn<GestioneAerei, Aerei> colDestinazione;
-    @FXML private TableColumn<GestioneAerei, Aerei> colCodicePartenze;
-    @FXML private TableColumn<GestioneAerei, Aerei> colGatePartenze;
-    @FXML private TableColumn<GestioneAerei, Aerei> colCompagniaPartenze;
-    @FXML private TableColumn<GestioneAerei, Aerei> colStatoPartenze;
+    @FXML private TableColumn<GestioneAerei, String> colOrarioPartenza;
+    @FXML private TableColumn<GestioneAerei, String> colRitardoPartenze;
+    @FXML private TableColumn<GestioneAerei, String> colDestinazione;
+    @FXML private TableColumn<GestioneAerei, String> colCodicePartenze;
+    @FXML private TableColumn<GestioneAerei, String> colGatePartenze;
+    @FXML private TableColumn<GestioneAerei, String> colCompagniaPartenze;
+    @FXML private TableColumn<GestioneAerei, String> colStatoPartenze;
 
     @FXML private StackPane stackPaneTable;
     @FXML private AnchorPane anchPanePartenze;
@@ -104,7 +104,10 @@ public class userMainController {
             }
         });
 
-        checkLogin();        
+        checkLogin();    
+        
+        // Imposto le colonne delle tabelle
+        colDestinazione.setCellValueFactory(cellData -> cellData.getValue().getElencoAerei().get(0).getDestinazioneProperty());
     }
 
     private void startClockUpdateAnimation() {
