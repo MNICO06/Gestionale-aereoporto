@@ -63,6 +63,52 @@ public class loginController {
     }
 
     // Metodo per il tasto Home
+    
+
+    @FXML
+    public void login() {
+        ArrayList<Utenti> listaUtenti = new ArrayList<Utenti>();
+        listaUtenti = gestioneUtenti.getUtenti();
+        boolean utenteTtrovato = false;
+        if (inserisciMail.getText().isEmpty() && inserisciPassword.getText().isEmpty()) {
+        }else {
+            //controllo per admin
+            if (inserisciMail.getText().equals("admin") && inserisciPassword.getText().equals("admin")) {
+                handleAdminPage();
+            }
+
+            //controllo per utenti
+            for(int i = 0; i < listaUtenti.size(); i++) {
+                if (listaUtenti.get(i).getMail().equals(inserisciMail.getText()) && 
+                    listaUtenti.get(i).getPassword().equals(inserisciPassword.getText())) {
+                    indice = i;
+                    utenteTtrovato = true;
+                }
+            }
+        }
+        if (utenteTtrovato == false) {
+            segnalaErrore.setText("mail o password errati");
+        }
+        if (utenteTtrovato == true) {
+            gestioneUtenti.setLogin(indice);
+            switch (gestioneUtenti.getSchermataPrecedente()) {
+                case "Home":
+                    handleBtnHome();
+                    break;
+                case "PrenotaPage":
+                    prenotaPage();
+                    break;
+                case "UserMainPageA":
+                    userMainPage(0);
+                    break;
+                case "UserMainPageP":
+                    userMainPage(1);
+                default:
+                    break;
+            }
+        }
+    }
+
     @FXML
     private void handleBtnHome() {
         try {
@@ -145,44 +191,6 @@ public class loginController {
     }
 
     @FXML
-    public void login() {
-        ArrayList<Utenti> listaUtenti = new ArrayList<Utenti>();
-        listaUtenti = gestioneUtenti.getUtenti();
-        boolean utenteTtrovato = false;
-        if (inserisciMail.getText().isEmpty() && inserisciPassword.getText().isEmpty()) {
-        }else {
-            for(int i = 0; i < listaUtenti.size(); i++) {
-                if (listaUtenti.get(i).getMail().equals(inserisciMail.getText()) && 
-                    listaUtenti.get(i).getPassword().equals(inserisciPassword.getText())) {
-                    indice = i;
-                    utenteTtrovato = true;
-                }
-            }
-        }
-        if (utenteTtrovato == false) {
-            segnalaErrore.setText("mail o password errati");
-        }
-        if (utenteTtrovato == true) {
-            gestioneUtenti.setLogin(indice);
-            switch (gestioneUtenti.getSchermataPrecedente()) {
-                case "Home": 
-                    handleBtnHome();
-                    break;
-                case "PrenotaPage":
-                    prenotaPage();
-                    break;
-                case "UserMainPageA":
-                    userMainPage(0);
-                    break;
-                case "UserMainPageP":
-                    userMainPage(1);
-                default:
-                    break;
-            }
-        }
-    }
-
-    @FXML
     private void handlePasswChangeLink() {
         try {
             // Carica la seconda GUI (FXML)
@@ -201,6 +209,23 @@ public class loginController {
         }
     }
 
+    @FXML
+    private void handleAdminPage() {
+        try {
+            // Carica la seconda GUI (FXML)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/mainGui.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Admin page");
+            stage.setScene(new Scene(root));
+            stage.show();
 
+            // Chiudi la prima GUI (Finestra)
+            Stage primaryStage = (Stage) vaiRegistrati.getScene().getWindow();
+            primaryStage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
