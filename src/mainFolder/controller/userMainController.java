@@ -14,6 +14,7 @@ import mainFolder.model.GestioneAerei;
 import mainFolder.model.GestioneUtenti;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class userMainController {
     
@@ -24,23 +25,23 @@ public class userMainController {
     @FXML private Button btnAccedi;
 
     // Tabella partenze
-    @FXML private TableView<GestioneAerei> tableArrivi;
-    @FXML private TableColumn<GestioneAerei, String> colOrarioArrivo;
-    @FXML private TableColumn<GestioneAerei, String> colRitardoArrivi;
-    @FXML private TableColumn<GestioneAerei, String> colProvenienza;
-    @FXML private TableColumn<GestioneAerei, String> colCodiceArrivi;
-    @FXML private TableColumn<GestioneAerei, String> colGateArrivi;
-    @FXML private TableColumn<GestioneAerei, String> colCompagniaArrivi;
-    @FXML private TableColumn<GestioneAerei, String> colStatoArrivi;
+    @FXML private TableView<Aerei> tableArrivi;
+    @FXML private TableColumn<Aerei, LocalTime> colOrarioArrivo;
+    @FXML private TableColumn<Aerei, String> colRitardoArrivi;
+    @FXML private TableColumn<Aerei, String> colProvenienza;
+    @FXML private TableColumn<Aerei, String> colCodiceArrivi;
+    @FXML private TableColumn<Aerei, String> colGateArrivi;
+    @FXML private TableColumn<Aerei, String> colCompagniaArrivi;
+    @FXML private TableColumn<Aerei, String> colStatoArrivi;
     // Tabella arrivi
-    @FXML private TableView<GestioneAerei> tablePartenze;
-    @FXML private TableColumn<GestioneAerei, String> colOrarioPartenza;
-    @FXML private TableColumn<GestioneAerei, String> colRitardoPartenze;
-    @FXML private TableColumn<GestioneAerei, String> colDestinazione;
-    @FXML private TableColumn<GestioneAerei, String> colCodicePartenze;
-    @FXML private TableColumn<GestioneAerei, String> colGatePartenze;
-    @FXML private TableColumn<GestioneAerei, String> colCompagniaPartenze;
-    @FXML private TableColumn<GestioneAerei, String> colStatoPartenze;
+    @FXML private TableView<Aerei> tablePartenze;
+    @FXML private TableColumn<Aerei, String> colOrarioPartenza;
+    @FXML private TableColumn<Aerei, String> colRitardoPartenze;
+    @FXML private TableColumn<Aerei, String> colDestinazione;
+    @FXML private TableColumn<Aerei, String> colCodicePartenze;
+    @FXML private TableColumn<Aerei, String> colGatePartenze;
+    @FXML private TableColumn<Aerei, String> colCompagniaPartenze;
+    @FXML private TableColumn<Aerei, String> colStatoPartenze;
 
     @FXML private StackPane stackPaneTable;
     @FXML private AnchorPane anchPanePartenze;
@@ -107,7 +108,16 @@ public class userMainController {
         checkLogin();    
         
         // Imposto le colonne delle tabelle
-        colDestinazione.setCellValueFactory(cellData -> cellData.getValue().getElencoAerei().get(0).getDestinazioneProperty());
+        
+        //TODO: Aggiungere i valori nelle colonne
+        //colOrarioArrivo.setCellValueFactory(cellData -> cellData.getValue().);
+
+        //colDestinazione.setCellValueFactory(cellData -> cellData.getValue().getElencoAerei().get(0).getDestinazioneProperty());
+    }
+
+    // Metodo che viene chiamato dal main per passare il riferimento al modello
+    public void setMainModel(GestioneAerei aerei) {
+        tableArrivi.setItems(gestioneAerei.getElencoAerei());
     }
 
     private void startClockUpdateAnimation() {

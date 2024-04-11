@@ -6,16 +6,17 @@ import java.time.format.DateTimeFormatter;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Aerei {
-    private final String modelloAereo;
+    private final StringProperty modelloAereo;
     private StringProperty provenienza;
     private StringProperty destinazione;
-    private final String compagniaAerea;
-    private final String codiceRegistrazione;
+    private final StringProperty compagniaAerea;
+    private final StringProperty codiceRegistrazione;
 
     private final int numeroMassimoPasseggeri;
     private IntegerProperty numeroPostiOccupati;
@@ -42,28 +43,31 @@ public class Aerei {
 
 
 
-    public Aerei (String modello, String provenienza, String destinazione, String compagnia, String codice,
-         int numMax, LocalDate giornoDiArrivo, LocalTime oraArrivo, 
-          LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo){
+    public Aerei(String modello, String provenienza, String destinazione, String compagnia, String codice,
+            int numMax, LocalDate giornoDiArrivo, LocalTime oraArrivo,
+            LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo) {
 
-        this.modelloAereo = modello;
-        this.provenienza = new SimpleStringProperty (provenienza);
-        this.destinazione = new SimpleStringProperty (destinazione);
-        this.compagniaAerea = compagnia;
-        this.codiceRegistrazione = codice;
+        this.modelloAereo = new SimpleStringProperty(modello);
+        this.provenienza = new SimpleStringProperty(provenienza);
+        this.destinazione = new SimpleStringProperty(destinazione);
+        this.compagniaAerea = new SimpleStringProperty(compagnia);
+        this.codiceRegistrazione = new SimpleStringProperty(codice);
         this.numeroMassimoPasseggeri = numMax;
-        this.giornoDiArrivo = new SimpleObjectProperty<> (giornoDiArrivo);
-        this.oraArrivo = new SimpleObjectProperty<> (oraArrivo);
-        this.giornoDiPartenza = new SimpleObjectProperty<> (giornoPartenza);
-        this.oraPartenza = new SimpleObjectProperty<> (oraPartenza);
+        this.giornoDiArrivo = new SimpleObjectProperty<>(giornoDiArrivo);
+        this.oraArrivo = new SimpleObjectProperty<>(oraArrivo);
+        this.giornoDiPartenza = new SimpleObjectProperty<>(giornoPartenza);
+        this.oraPartenza = new SimpleObjectProperty<>(oraPartenza);
         this.intervalloDiGiorni = intervallo;
-        ritardo.set(0);
-        
+        this.ritardo = new SimpleIntegerProperty(0); // Inizializzazione di ritardo
     }
 
     //---------------------------getter------------------------------------------------
 
     public String getModello() {
+        return modelloAereo.get();
+    }
+
+    public StringProperty getModelloProperty() {
         return modelloAereo;
     }
 
@@ -81,12 +85,20 @@ public class Aerei {
         return destinazione.get();
     }
 
-    public String getCompagnia() {
+    public StringProperty getCompagniaProperty() {
         return compagniaAerea;
     }
 
-    public String getCodice() {
+    public String getCompagnia() {
+        return compagniaAerea.get();
+    }
+
+    public StringProperty getCodiceProperty() {
         return codiceRegistrazione;
+    }
+
+    public String getCodice() {
+        return codiceRegistrazione.get();
     }
 
     public int postiMassimi () {
