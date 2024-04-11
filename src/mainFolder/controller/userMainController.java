@@ -57,6 +57,7 @@ public class userMainController {
 
     //per tenere controllato se si è loggati
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
+    GestioneAerei gestioneAerei = GestioneAerei.getInstance();
     
 
     // Metodi per impostare i valori di ricerca
@@ -103,7 +104,7 @@ public class userMainController {
             }
         });
 
-        checkLogin();
+        checkLogin();        
     }
 
     private void startClockUpdateAnimation() {

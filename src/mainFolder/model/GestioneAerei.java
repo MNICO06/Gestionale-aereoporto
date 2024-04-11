@@ -92,4 +92,9 @@ public class GestioneAerei {
                 2);
 
     }
+
+    // Getter
+    public ObservableList<Aerei> getElencoAerei() {
+        return elencoAerei;
+    }
 }
