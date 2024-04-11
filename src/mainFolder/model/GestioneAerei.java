@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
  * @author molte
  */
 public class GestioneAerei {
+    private static GestioneAerei instance;
     private ObservableList<Aerei> elencoAerei = FXCollections.observableArrayList();
 
     public GestioneAerei () {
@@ -26,20 +27,22 @@ public class GestioneAerei {
         return elencoAerei;
     }
 
+    public static GestioneAerei getInstance() {
+        if (instance == null) {
+            instance = new GestioneAerei();
+        }
+        return instance;
+    }
+
     public void addAereo(String modello, String provenienza, String destinazione, String compagnia, String codice, 
      int numMax, LocalDate giornoArrivo, LocalTime oraArrivo, 
       LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo) {
 
         Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo);
         elencoAerei.add(a);
-
     }
 
     public void rimuoviAereo(Aerei a) {
         elencoAerei.remove(a);
     }
-
-    
-
-
 }
