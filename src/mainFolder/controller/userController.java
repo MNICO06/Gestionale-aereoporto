@@ -103,7 +103,7 @@ public class userController {
         // Imposto come bottone selezionato di default quello delle partenze
         partenzeTglBtn.setSelected(true);
 
-        checkLogin(); 
+        checkLogin();
     }
 
     private void startBackgroundTransition() {

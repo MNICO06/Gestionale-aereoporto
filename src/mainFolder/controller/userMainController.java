@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import mainFolder.model.Aerei;
+import mainFolder.model.GestioneAerei;
 import mainFolder.model.GestioneUtenti;
 
 import java.time.LocalDate;
@@ -21,8 +23,25 @@ public class userMainController {
     @FXML private Button btnHome;
     @FXML private Button btnAccedi;
 
-    @FXML private TableView<?> tablePartenze;
-    @FXML private TableView<?> tableArrivi;
+    // Tabella partenze
+    @FXML private TableView<GestioneAerei> tableArrivi;
+    @FXML private TableColumn<GestioneAerei, Aerei> colOrarioArrivo;
+    @FXML private TableColumn<GestioneAerei, Aerei> colRitardoArrivi;
+    @FXML private TableColumn<GestioneAerei, Aerei> colProvenienza;
+    @FXML private TableColumn<GestioneAerei, Aerei> colCodiceArrivi;
+    @FXML private TableColumn<GestioneAerei, Aerei> colGateArrivi;
+    @FXML private TableColumn<GestioneAerei, Aerei> colCompagniaArrivi;
+    @FXML private TableColumn<GestioneAerei, Aerei> colStatoArrivi;
+    // Tabella arrivi
+    @FXML private TableView<GestioneAerei> tablePartenze;
+    @FXML private TableColumn<GestioneAerei, Aerei> colOrarioPartenza;
+    @FXML private TableColumn<GestioneAerei, Aerei> colRitardoPartenze;
+    @FXML private TableColumn<GestioneAerei, Aerei> colDestinazione;
+    @FXML private TableColumn<GestioneAerei, Aerei> colCodicePartenze;
+    @FXML private TableColumn<GestioneAerei, Aerei> colGatePartenze;
+    @FXML private TableColumn<GestioneAerei, Aerei> colCompagniaPartenze;
+    @FXML private TableColumn<GestioneAerei, Aerei> colStatoPartenze;
+
     @FXML private StackPane stackPaneTable;
     @FXML private AnchorPane anchPanePartenze;
     @FXML private AnchorPane anchPaneArrivi;
