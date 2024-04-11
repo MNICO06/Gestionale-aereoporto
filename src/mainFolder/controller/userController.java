@@ -20,6 +20,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import mainFolder.model.GestioneAerei;
 import mainFolder.model.GestioneUtenti;
 import javafx.scene.control.Alert;
 
@@ -58,6 +59,7 @@ public class userController {
 
     //per tenere controllato se si è loggati
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
+    GestioneAerei gestioneAerei = GestioneAerei.getInstance();
     
     // Inizializzazione
     public void initialize() {
