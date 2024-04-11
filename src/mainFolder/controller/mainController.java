@@ -12,6 +12,8 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+import mainFolder.model.GestioneUtenti;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,6 +26,8 @@ public class mainController {
     @FXML private Label orologio;
     @FXML private Label titolo;
     @FXML private Button accedi;
+    GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
+    
 
 
     public void initialize() {
@@ -34,6 +38,10 @@ public class mainController {
         }), new KeyFrame(Duration.seconds(1)));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
+
+        accedi.setDisable(true);
+        accedi.setOpacity(1);
     }
+
     
 }
