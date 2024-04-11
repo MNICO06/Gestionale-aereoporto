@@ -217,7 +217,6 @@ public class userController {
 
     @FXML
     private void prenotaPage(){
-        System.out.println("Prenota");        
         try {
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/prenotazioneGui.fxml"));
@@ -327,7 +326,6 @@ public class userController {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
             // Random da 0 a 4
             int i = (int) (Math.random() * 4 + 1);
-            System.out.println(i);
             Image img = new Image("file:src/mainFolder/immagini/Areoporto" + i + ".jpeg");
             // Imposto la nuova immagine sull'ImageView
             infoImage.setImage(img);

@@ -15,6 +15,34 @@ public class prenotazioneController {
     @FXML private Button btnHome;
     @FXML private Button btnAccedi;
 
+    // Ricerca volo
+    @FXML private DatePicker dpDataPartenza;
+    @FXML private TextField txtDestinazione;
+    // Prenota volo
+    @FXML private Label lblAdulti;
+    @FXML private Button btnAdultiPlus;
+    @FXML private Button btnAdultiMinus;
+    @FXML private Label lblBambini;
+    @FXML private Button btnBambiniPlus;
+    @FXML private Button btnBambiniMinus;
+    @FXML private Label lblBagagli;
+    @FXML private Button btnBagagliPlus;
+    @FXML private Button btnBagagliMinus;
+    @FXML private ComboBox<String> cbClasse;
+    @FXML private Button btnPrenota;
+
+    // Tabella voli
+    @FXML private TableView<?> tblVoli;
+    // Le colonne sono: Orario, ritardo, destinazione, n° volo, gate, compagnia aerea, stato
+    @FXML private TableColumn<?, ?> colOrario;
+    @FXML private TableColumn<?, ?> colRitardo;
+    @FXML private TableColumn<?, ?> colDestinazione;
+    @FXML private TableColumn<?, ?> colNVolo;
+    @FXML private TableColumn<?, ?> colGate;
+    @FXML private TableColumn<?, ?> colCompagnia;
+    @FXML private TableColumn<?, ?> colStato;
+
+
     //per tenere controllato se si è loggati
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
 

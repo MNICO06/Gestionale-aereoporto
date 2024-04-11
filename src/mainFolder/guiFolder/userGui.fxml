@@ -18,9 +18,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackPane" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.userController">
+<StackPane fx:id="stackPane" prefWidth="850.0" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.userController">
    <children>
-      <BorderPane fx:id="infoPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="BorderPane">
+      <BorderPane fx:id="infoPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="BorderPane">
          <top>
             <AnchorPane maxHeight="140.0" minHeight="65.0" prefHeight="140.0" prefWidth="845.0" BorderPane.alignment="CENTER">
                <children>
@@ -52,7 +52,7 @@
             </ImageView>
          </left>
       </BorderPane>
-      <BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" styleClass="BorderPane" stylesheets="@../cssFolder/userStyle.css">
+      <BorderPane fx:id="rootLayout" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" styleClass="BorderPane" stylesheets="@../cssFolder/userStyle.css">
          <center>
             <GridPane BorderPane.alignment="CENTER">
               <columnConstraints>
