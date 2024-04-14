@@ -27,19 +27,19 @@ public class userMainController {
     // Tabella partenze
     @FXML private TableView<Aerei> tableArrivi;
     @FXML private TableColumn<Aerei, LocalTime> colOrarioArrivo;
-    @FXML private TableColumn<Aerei, String> colRitardoArrivi;
+    @FXML private TableColumn<Aerei, Integer> colRitardoArrivi;
     @FXML private TableColumn<Aerei, String> colProvenienza;
     @FXML private TableColumn<Aerei, String> colCodiceArrivi;
-    @FXML private TableColumn<Aerei, String> colGateArrivi;
+    @FXML private TableColumn<Aerei, Integer> colGateArrivi;
     @FXML private TableColumn<Aerei, String> colCompagniaArrivi;
     @FXML private TableColumn<Aerei, String> colStatoArrivi;
     // Tabella arrivi
     @FXML private TableView<Aerei> tablePartenze;
-    @FXML private TableColumn<Aerei, String> colOrarioPartenza;
-    @FXML private TableColumn<Aerei, String> colRitardoPartenze;
+    @FXML private TableColumn<Aerei, LocalTime> colOrarioPartenza;
+    @FXML private TableColumn<Aerei, Integer> colRitardoPartenze;
     @FXML private TableColumn<Aerei, String> colDestinazione;
     @FXML private TableColumn<Aerei, String> colCodicePartenze;
-    @FXML private TableColumn<Aerei, String> colGatePartenze;
+    @FXML private TableColumn<Aerei, Integer> colGatePartenze;
     @FXML private TableColumn<Aerei, String> colCompagniaPartenze;
     @FXML private TableColumn<Aerei, String> colStatoPartenze;
 
@@ -106,18 +106,39 @@ public class userMainController {
         });
 
         checkLogin();    
-        
-        // Imposto le colonne delle tabelle
-        
-        //TODO: Aggiungere i valori nelle colonne
-        //colOrarioArrivo.setCellValueFactory(cellData -> cellData.getValue().);
-
-        //colDestinazione.setCellValueFactory(cellData -> cellData.getValue().getElencoAerei().get(0).getDestinazioneProperty());
+        //initializeTable();
     }
+
+    /* considerare che il metodo setMainModel non viene chiamato
+    private void initializeTable() {
+        // Inizializzazione delle colonne della tabella delle partenze
+        colOrarioArrivo.setCellValueFactory(cellData -> cellData.getValue().getOraArrivoProperty());
+        colRitardoArrivi.setCellValueFactory(cellData -> cellData.getValue().getRitardoProperty().asObject());
+        colProvenienza.setCellValueFactory(cellData -> cellData.getValue().getProvenienzaProperty());
+        colCodiceArrivi.setCellValueFactory(cellData -> cellData.getValue().getCodiceProperty());
+        colGateArrivi.setCellValueFactory(cellData -> cellData.getValue().getGateProperty().asObject());
+        colCompagniaArrivi.setCellValueFactory(cellData -> cellData.getValue().getCompagniaProperty());
+        colStatoArrivi.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
+    
+        // Inizializzazione delle colonne della tabella degli arrivi
+        colOrarioPartenza.setCellValueFactory(cellData -> cellData.getValue().getOraPartenzaProperty());
+        colRitardoPartenze.setCellValueFactory(cellData -> cellData.getValue().getRitardoProperty().asObject());
+        colDestinazione.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
+        colCodicePartenze.setCellValueFactory(cellData -> cellData.getValue().getCodiceProperty());
+        colGatePartenze.setCellValueFactory(cellData -> cellData.getValue().getGateProperty().asObject());
+        colCompagniaPartenze.setCellValueFactory(cellData -> cellData.getValue().getCompagniaProperty());
+        colStatoPartenze.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
+
+        tableArrivi.setItems(gestioneAerei.getElencoLista());
+        tablePartenze.setItems(gestioneAerei.getElencoLista());
+    }
+    */
+    
 
     // Metodo che viene chiamato dal main per passare il riferimento al modello
     public void setMainModel(GestioneAerei aerei) {
-        tableArrivi.setItems(gestioneAerei.getElencoAerei());
+        tableArrivi.setItems(gestioneAerei.getElencoLista());
+        tablePartenze.setItems(gestioneAerei.getElencoLista());
     }
 
     private void startClockUpdateAnimation() {
