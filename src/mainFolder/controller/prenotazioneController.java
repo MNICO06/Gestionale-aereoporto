@@ -1,5 +1,7 @@
 package mainFolder.controller;
 
+import java.time.LocalTime;
+
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import mainFolder.model.Aerei;
+import mainFolder.model.GestioneAerei;
 import mainFolder.model.GestioneUtenti;
 
 public class prenotazioneController {
@@ -32,22 +36,36 @@ public class prenotazioneController {
     @FXML private Button btnPrenota;
 
     // Tabella voli
-    @FXML private TableView<?> tblVoli;
+    @FXML private TableView<Aerei> tblVoli;
     // Le colonne sono: Orario, ritardo, destinazione, n° volo, gate, compagnia aerea, stato
-    @FXML private TableColumn<?, ?> colOrario;
-    @FXML private TableColumn<?, ?> colRitardo;
-    @FXML private TableColumn<?, ?> colDestinazione;
-    @FXML private TableColumn<?, ?> colNVolo;
-    @FXML private TableColumn<?, ?> colGate;
-    @FXML private TableColumn<?, ?> colCompagnia;
-    @FXML private TableColumn<?, ?> colStato;
+    @FXML private TableColumn<Aerei, LocalTime> colOrario;
+    @FXML private TableColumn<Aerei, Integer> colRitardo;
+    @FXML private TableColumn<Aerei, String> colDestinazione;
+    @FXML private TableColumn<Aerei, String> colNVolo;
+    @FXML private TableColumn<Aerei, Integer> colGate;
+    @FXML private TableColumn<Aerei, String> colCompagnia;
+    @FXML private TableColumn<Aerei, String> colStato;
 
 
     //per tenere controllato se si è loggati
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
+    GestioneAerei gestioneAerei = GestioneAerei.getInstance();
 
     public void initialize() {
         startClockUpdateAnimation();
+        initializeTable();
+    }
+
+    public void initializeTable() {
+        colOrario.setCellValueFactory(cellData -> cellData.getValue().getOraPartenzaProperty());
+        colRitardo.setCellValueFactory(cellData -> cellData.getValue().getRitardoProperty().asObject());
+        colDestinazione.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
+        colNVolo.setCellValueFactory(cellData -> cellData.getValue().getCodiceProperty());
+        colGate.setCellValueFactory(cellData -> cellData.getValue().getGateProperty().asObject());
+        colCompagnia.setCellValueFactory(cellData -> cellData.getValue().getCompagniaProperty());
+        colStato.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
+
+        tblVoli.setItems(gestioneAerei.getElencoLista());
     }
 
     
