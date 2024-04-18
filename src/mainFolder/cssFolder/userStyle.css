@@ -469,3 +469,16 @@
 .text-area .content {
     -fx-background-color: -fx-white-color;
 }
+
+/*Stile per anchor pane info aerei*/
+.infoAerei {
+    -fx-background-color: -fx-light-blue-color1;
+    -fx-background-radius: 10 0 0 0;
+}
+
+.infoAereiImage {
+    -fx-background-color: -fx-light-blue-color1;
+    -fx-background-radius: 20;
+    -fx-background-insets: 20;
+
+}
