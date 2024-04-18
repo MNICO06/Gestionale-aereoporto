@@ -24,6 +24,7 @@ public class Aerei {
     private IntegerProperty terminal;
 
 
+
     private IntegerProperty ritardo;
     private ObjectProperty<LocalDate> giornoDiArrivo;
     private ObjectProperty<LocalTime> oraArrivo;
@@ -59,6 +60,7 @@ public class Aerei {
         this.oraPartenza = new SimpleObjectProperty<>(oraPartenza);
         this.intervalloDiGiorni = intervallo;
         this.ritardo = new SimpleIntegerProperty(0); // Inizializzazione di ritardo
+        this.gate = new SimpleIntegerProperty(-1); // Inizializzazione di gate
     }
 
     //---------------------------getter------------------------------------------------

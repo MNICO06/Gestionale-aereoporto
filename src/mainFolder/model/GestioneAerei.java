@@ -7,6 +7,7 @@ package mainFolder.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,10 +19,18 @@ import javafx.collections.ObservableList;
 public class GestioneAerei {
     private static GestioneAerei instance;
     private ObservableList<Aerei> elencoAerei = FXCollections.observableArrayList();
+    private ArrayList<Boolean> gate = new ArrayList<Boolean>();
 
     public GestioneAerei () {
-        //poi da fare apertura dati da database
+        riempiGate();
+        //poi da fare apertura dati
         caricaDati();
+    }
+
+    public void riempiGate() {
+        for (int i = 0; i < 70; i++) {
+                gate.add(false);
+        }
     }
 
     public ObservableList<Aerei> getElencoLista() {
@@ -40,11 +49,25 @@ public class GestioneAerei {
       LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo) {
 
         Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo);
+        a.setGate(assegnaGate());
         elencoAerei.add(a);
     }
 
     public void rimuoviAereo(Aerei a) {
         elencoAerei.remove(a);
+    }
+
+    public int assegnaGate() {
+        boolean correct = false;
+        while (correct == false) {
+                int index = (int) (Math.random() * 70);
+                if (gate.get(index) == false) {
+                        correct = true;
+                        gate.set(index, true);
+                        return index;
+                }
+        }
+        return -1;
     }
 
     private void caricaDati() {
