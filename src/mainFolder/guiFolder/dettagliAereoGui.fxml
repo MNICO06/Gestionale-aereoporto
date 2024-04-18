@@ -35,7 +35,11 @@
       </AnchorPane>
    </top>
    <left>
-      <AnchorPane id="imageAereo" prefHeight="388.0" prefWidth="440.0" styleClass="infoAereiImage" BorderPane.alignment="CENTER" />
+      <AnchorPane id="imageAereo" prefHeight="388.0" prefWidth="440.0" styleClass="infoAereiImage" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="15.0" layoutY="45.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+         </children>
+      </AnchorPane>
    </left>
    <center>
       <AnchorPane prefHeight="388.0" prefWidth="240.0" styleClass="infoAerei" BorderPane.alignment="CENTER">
@@ -66,7 +70,7 @@
                   <Label styleClass="labelCustom1" text="Provenienza" GridPane.rowIndex="1" />
                   <Label styleClass="labelCustom1" text="Destinazione" GridPane.rowIndex="2" />
                   <Label styleClass="labelCustom1" text="Posti totali" GridPane.rowIndex="11" />
-                  <Label styleClass="labelCustom1" text="Posti disponibili" GridPane.rowIndex="12" />
+                  <Label styleClass="labelCustom1" text="Posti occupati" GridPane.rowIndex="12" />
                   <Label styleClass="labelCustom1" text="Terminal" GridPane.rowIndex="3" />
                   <Label styleClass="labelCustom1" text="Gate" GridPane.rowIndex="4" />
                   <Label styleClass="labelCustom1" text="Giorno arrivo" GridPane.rowIndex="5" />
