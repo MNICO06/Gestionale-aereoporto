@@ -106,10 +106,10 @@ public class userMainController {
         });
 
         checkLogin();    
-        //initializeTable();
+        initializeTable();
     }
 
-    /* considerare che il metodo setMainModel non viene chiamato
+    //considerare che il metodo setMainModel non viene chiamato
     private void initializeTable() {
         // Inizializzazione delle colonne della tabella delle partenze
         colOrarioArrivo.setCellValueFactory(cellData -> cellData.getValue().getOraArrivoProperty());
@@ -132,7 +132,7 @@ public class userMainController {
         tableArrivi.setItems(gestioneAerei.getElencoLista());
         tablePartenze.setItems(gestioneAerei.getElencoLista());
     }
-    */
+    
     
 
     // Metodo che viene chiamato dal main per passare il riferimento al modello
