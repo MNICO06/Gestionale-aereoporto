@@ -23,8 +23,6 @@ public class Aerei {
     private IntegerProperty gate;
     private IntegerProperty terminal;
 
-
-
     private IntegerProperty ritardo;
     private ObjectProperty<LocalDate> giornoDiArrivo;
     private ObjectProperty<LocalTime> oraArrivo;
@@ -230,6 +228,5 @@ public class Aerei {
     public void setIntervalloGiorni(int intervallo) {
         this.intervalloDiGiorni = intervallo;
     }
-
     
 }
