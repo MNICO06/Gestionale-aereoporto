@@ -42,8 +42,6 @@ public class Aerei {
     private boolean caricoBagagli = false;
     private boolean imbarco = false;
 
-
-
     public Aerei(String modello, String provenienza, String destinazione, String compagnia, String codice,
             int numMax, LocalDate giornoDiArrivo, LocalTime oraArrivo,
             LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo) {
