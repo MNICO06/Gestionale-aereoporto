@@ -47,8 +47,15 @@ public class GestioneAerei {
     public void addAereo(String modello, String provenienza, String destinazione, String compagnia, String codice, 
      int numMax, LocalDate giornoArrivo, LocalTime oraArrivo, 
       LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo) {
+        LocalDate arrivo = giornoArrivo;
+        LocalDate partenza = giornoPartenza;
+        while (arrivo.isBefore(LocalDate.now())) {
+                arrivo = arrivo.plusDays(intervallo);
+                partenza = partenza.plusDays(intervallo);
+        }
 
-        Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo);
+        
+        Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo);
         a.setGate(assegnaGate());
         elencoAerei.add(a);
     }
