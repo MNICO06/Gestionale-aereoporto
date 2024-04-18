@@ -101,7 +101,7 @@ public class Aerei {
         return codiceRegistrazione.get();
     }
 
-    public int postiMassimi () {
+    public int getPostiMassimi () {
         return numeroMassimoPasseggeri;
     }
 

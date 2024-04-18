@@ -110,7 +110,7 @@ public class GestioneAerei {
                 200, LocalDate.of(2024, 04, 11), LocalTime.of(8, 45), LocalDate.of(2024, 04, 11), LocalTime.of(11, 30),
                 2);
 
-        addAereo("Airbus A319", "MUC", "AMS", "KLM", "KL123",
+        addAereo("Boeing 747", "MUC", "AMS", "KLM", "KL123",
                 150, LocalDate.of(2024, 04, 11), LocalTime.of(10, 0), LocalDate.of(2024, 04, 11), LocalTime.of(12, 45),
                 2);
 

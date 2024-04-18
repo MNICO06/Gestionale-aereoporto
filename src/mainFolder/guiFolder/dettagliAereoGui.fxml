@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -36,11 +35,7 @@
       </AnchorPane>
    </top>
    <left>
-      <AnchorPane id="imageAereo" prefHeight="388.0" prefWidth="440.0" styleClass="infoAereiImage" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="348.0" fitWidth="397.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="20.0" />
-         </children>
-      </AnchorPane>
+      <AnchorPane id="imageAereo" prefHeight="388.0" prefWidth="440.0" styleClass="infoAereiImage" BorderPane.alignment="CENTER" />
    </left>
    <center>
       <AnchorPane prefHeight="388.0" prefWidth="240.0" styleClass="infoAerei" BorderPane.alignment="CENTER">
@@ -67,18 +62,18 @@
               </rowConstraints>
                <children>
                   <Label styleClass="labelCustom1" text="Modello aereo" />
-                  <Label styleClass="labelCustom1" text="Compagnia aerea" GridPane.rowIndex="7" />
+                  <Label styleClass="labelCustom1" text="Compagnia aerea" GridPane.rowIndex="10" />
                   <Label styleClass="labelCustom1" text="Provenienza" GridPane.rowIndex="1" />
-                  <Label styleClass="labelCustom1" text="Destinazione" GridPane.rowIndex="8" />
-                  <Label styleClass="labelCustom1" text="Posti totali" GridPane.rowIndex="2" />
-                  <Label styleClass="labelCustom1" text="Posti disponibili" GridPane.rowIndex="9" />
+                  <Label styleClass="labelCustom1" text="Destinazione" GridPane.rowIndex="2" />
+                  <Label styleClass="labelCustom1" text="Posti totali" GridPane.rowIndex="11" />
+                  <Label styleClass="labelCustom1" text="Posti disponibili" GridPane.rowIndex="12" />
                   <Label styleClass="labelCustom1" text="Terminal" GridPane.rowIndex="3" />
-                  <Label styleClass="labelCustom1" text="Gate" GridPane.rowIndex="10" />
-                  <Label styleClass="labelCustom1" text="Giorno arrivo" GridPane.rowIndex="4" />
-                  <Label styleClass="labelCustom1" text="Ora arrivo" GridPane.rowIndex="11" />
-                  <Label styleClass="labelCustom1" text="Giorno Partenza" GridPane.rowIndex="5" />
-                  <Label styleClass="labelCustom1" text="Ora partenza" GridPane.rowIndex="12" />
-                  <Label styleClass="labelCustom1" text="Ritardo" GridPane.rowIndex="6" />
+                  <Label styleClass="labelCustom1" text="Gate" GridPane.rowIndex="4" />
+                  <Label styleClass="labelCustom1" text="Giorno arrivo" GridPane.rowIndex="5" />
+                  <Label styleClass="labelCustom1" text="Ora arrivo" GridPane.rowIndex="8" />
+                  <Label styleClass="labelCustom1" text="Giorno Partenza" GridPane.rowIndex="6" />
+                  <Label styleClass="labelCustom1" text="Ora partenza" GridPane.rowIndex="7" />
+                  <Label styleClass="labelCustom1" text="Ritardo" GridPane.rowIndex="9" />
                   <Label fx:id="modelloAereo" text="Label" GridPane.columnIndex="1" />
                   <Label fx:id="provenienza" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label fx:id="postDisponibili" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
