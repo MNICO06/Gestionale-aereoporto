@@ -42,9 +42,22 @@ public class GestioneAerei {
     public ObservableList<Aerei> getElencoListaPartenze(LocalDate giorno, String destinazione) {
         elencoAereiFiltrati.clear();
         for (int i = 0; i < elencoAerei.size(); i++) {
-                if (giorno.equals(elencoAerei.get(i).getGiornoPartenzaProperty()) || destinazione.equals(elencoAerei.get(i).getDestinazioneString())) {
-                        elencoAereiFiltrati.add(elencoAerei.get(i));
+                if (giorno == null) {
+                        if (destinazione.equals(elencoAerei.get(i).getDestinazioneString())) {
+                                elencoAereiFiltrati.add(elencoAerei.get(i));
+                        }
                 }
+                else if (destinazione == null) {
+                        if (giorno.equals(elencoAerei.get(i).getGiornoPartenzaProperty())) {
+                                elencoAereiFiltrati.add(elencoAerei.get(i));
+                        }
+                }
+                else {
+                        if (giorno.equals(elencoAerei.get(i).getGiornoPartenzaProperty()) || destinazione.equals(elencoAerei.get(i).getDestinazioneString())) {
+                                elencoAereiFiltrati.add(elencoAerei.get(i));
+                        }
+                }
+                
         }
         return elencoAereiFiltrati;
     }
@@ -58,7 +71,7 @@ public class GestioneAerei {
         return elencoAereiFiltrati;
     }
 
-    
+
     public static GestioneAerei getInstance() {
         if (instance == null) {
             instance = new GestioneAerei();
