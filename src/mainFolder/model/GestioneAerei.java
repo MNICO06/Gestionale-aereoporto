@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 public class GestioneAerei {
     private static GestioneAerei instance;
     private ObservableList<Aerei> elencoAerei = FXCollections.observableArrayList();
+    private ObservableList<Aerei> elencoAereiFiltrati = FXCollections.observableArrayList();
     private ArrayList<Boolean> gate = new ArrayList<Boolean>();
 
     public GestioneAerei () {
@@ -37,6 +38,27 @@ public class GestioneAerei {
         return elencoAerei;
     }
 
+    //metodo da chiamare dall'user main controller per la ricerca 
+    public ObservableList<Aerei> getElencoListaPartenze(LocalDate giorno, String destinazione) {
+        elencoAereiFiltrati.clear();
+        for (int i = 0; i < elencoAerei.size(); i++) {
+                if (giorno.equals(elencoAerei.get(i).getGiornoPartenzaProperty()) || destinazione.equals(elencoAerei.get(i).getDestinazioneString())) {
+                        elencoAereiFiltrati.add(elencoAerei.get(i));
+                }
+        }
+        return elencoAereiFiltrati;
+    }
+    public ObservableList<Aerei> getElencoListaArrivi(LocalDate giorno, String provenienza) {
+        elencoAereiFiltrati.clear();
+        for (int i = 0; i < elencoAerei.size(); i++) {
+                if (giorno.equals(elencoAerei.get(i).getGiornoArrivoProperty()) || provenienza.equals(elencoAerei.get(i).getProvenienzaString())) {
+                        elencoAereiFiltrati.add(elencoAerei.get(i));
+                }
+        }
+        return elencoAereiFiltrati;
+    }
+
+    
     public static GestioneAerei getInstance() {
         if (instance == null) {
             instance = new GestioneAerei();
