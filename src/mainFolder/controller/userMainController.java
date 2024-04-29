@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -81,8 +82,12 @@ public class userMainController {
     }
 
     // Inizializzazione
-    public void initialize() {
+    @FXML
+    private void initialize() {
         startClockUpdateAnimation();
+        checkLogin();    
+        initializeTable();
+        setupRowSelectionListener();
                 
         // Evento ToggleButton Partenze se selezionato disattiva l'altro ToggleButton e se deselezionato lo riattiva
         tglPartenze.setOnAction(e -> {
@@ -105,8 +110,22 @@ public class userMainController {
             }
         });
 
-        checkLogin();    
-        initializeTable();
+    }
+
+    private void setupRowSelectionListener() {
+        // Aggiunge un listener di selezione alla tabella degli arrivi
+        tableArrivi.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                handleDoubleClick(newSelection);
+            }
+        });
+
+        // Aggiunge un listener di selezione alla tabella delle partenze
+        tablePartenze.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                handleDoubleClick(newSelection);
+            }
+        });
     }
 
     //considerare che il metodo setMainModel non viene chiamato
@@ -131,6 +150,7 @@ public class userMainController {
 
         tableArrivi.setItems(gestioneAerei.getElencoLista());
         tablePartenze.setItems(gestioneAerei.getElencoLista());
+
     }
     
     
@@ -222,6 +242,25 @@ public class userMainController {
             // Chiudi la prima GUI (Finestra)
             Stage primaryStage = (Stage) btnHome.getScene().getWindow();
             primaryStage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Metodo per gestire il doppio click
+    private void handleDoubleClick(Aerei aereo) {
+        try {
+            // Carica la seconda GUI (FXML)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/dettagliAereoGui.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Dettagli Aereo");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Passo l'aereo alla seconda GUI
+            dettagliAereoController controller = loader.getController();
+            controller.setAereo(aereo);
         } catch (Exception e) {
             e.printStackTrace();
         }
