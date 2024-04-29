@@ -57,6 +57,8 @@ public class Aerei {
         this.intervalloDiGiorni = intervallo;
         this.ritardo = new SimpleIntegerProperty(0); // Inizializzazione di ritardo
         this.gate = new SimpleIntegerProperty(-1); // Inizializzazione di gate
+        this.terminal = new SimpleIntegerProperty(-1); // Inizializzazione di terminal
+        this.numeroPostiOccupati = new SimpleIntegerProperty(0); // Inizializzazione di posti occupati
     }
 
     //---------------------------getter------------------------------------------------

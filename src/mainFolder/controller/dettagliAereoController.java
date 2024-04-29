@@ -13,17 +13,19 @@ public class dettagliAereoController {
 
     @FXML private Label lblModello;
     @FXML private Label lblProvenienza;
-    @FXML private Label lblPostiTotali;
-    @FXML private Label lblTerminal;
-    @FXML private Label lblGiornoArrivo;
-    @FXML private Label lblGiornoPartenza;
-    @FXML private Label lblRitardo;
-    @FXML private Label lblCompagniaAerea;
     @FXML private Label lblDestinazione;
-    @FXML private Label lblPostiOccupati;
-    @FXML private Label lblGate;
+    @FXML private Label lblCompagniaAerea;
+    // Codice Registrazione
+    @FXML private Label lblGiornoArrivo;
     @FXML private Label lblOrarioArrivo;
+    @FXML private Label lblGiornoPartenza;
     @FXML private Label lblOrarioPartenza;
+    @FXML private Label lblPostiTotali;
+    @FXML private Label lblRitardo;
+    @FXML private Label lblGate;
+
+    @FXML private Label lblTerminal;
+    @FXML private Label lblPostiOccupati;
 
     @FXML private Label orologio;
 
@@ -43,14 +45,13 @@ public class dettagliAereoController {
         lblDestinazione.setText(aereo.getDestinazioneString());
         lblGate.setText(String.valueOf(aereo.getGateInt()));
         lblOrarioArrivo.setText(aereo.getOraArrivoString());
+        lblGiornoArrivo.setText(aereo.getGiornoArrivoString());
+        lblOrarioPartenza.setText(aereo.getOraPartenzaString());
+        lblPostiOccupati.setText(String.valueOf(aereo.getNumeroPostiOccupatiInt()));
+        lblTerminal.setText(String.valueOf(aereo.getTerminalInt()));
 
-        //// NON ANCORA IMPLEMENTATI
-        /* 
-        //lblPostiOccupati.setText(String.valueOf(aereo.getNumeroPostiOccupatiInt()));
-        //lblTerminal.setText(String.valueOf(aereo.getTerminalInt()));
-        //lblGiornoArrivo.setText(aereo.getGiornoArrivoString());
-        //lblOrarioPartenza.setText(aereo.getOraPartenzaString());
-        */
+        // Chiamo metodo che imposta l'immagine dell'aereo corretto
+        setImage(aereo.getModello(), aereo.getCompagnia());
     }
 
     // Initialize method
@@ -73,5 +74,45 @@ public class dettagliAereoController {
         };
         // Avvio l'animazione
         timer.start();
+    }
+
+    private void setImage(String modello, String compagnia) {
+        String temp = "-fx-background-size: contain; -fx-background-repeat: no-repeat; -fx-background-position: center";
+        switch (modello+compagnia) {
+            case "Airbus A380Quatar Airways":
+                // Imposta l'immagine dell'aereo
+                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A380Quatar.png'); " + temp);
+                break;
+            case "Airbus A320American Airlines":
+                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A320AmericanAirlines.jpg');" + temp);
+                break;
+            case "Boeing 787 DreamlinerQantas":
+                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B787Qantas.jpeg'); "+ temp);
+                break;
+            case "Airbus A350Singapore Airlines":
+                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A350SingaporeAirlines.jpg');" + temp);
+                break;
+            case "Boeing 737Delta Air Lines":
+                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B737Delta.jpg');" + temp);
+                break;
+            case "Airbus A330Emirates":
+                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A330Emirates.jpg');" + temp);
+                break;
+            case "Boeing 777Korean Air":
+                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B777KoreanAir.jpg');" + temp);
+                break;
+            case "Airbus A380Virgin Atlantic":
+                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A380VirginAtlantic.jpg');" + temp);
+                break;
+            case "Boeing 757United Airlines":
+                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B757United.jpg');" + temp);
+                break;
+            case "Boeing 747KLM":
+                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B747KLM.jpg');" + temp);
+                break;
+
+            default:
+                break;
+        }
     }
 }

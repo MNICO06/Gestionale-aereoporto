@@ -92,6 +92,7 @@ public class GestioneAerei {
         
         Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo);
         a.setGate(assegnaGate());
+        a.setTerminal(1); // Un unico terminal
         elencoAerei.add(a);
     }
 
