@@ -194,6 +194,26 @@ public class userMainController {
         timer.start();
     }
 
+    @FXML
+    public void cercaAerei() {
+        if (tglPartenze.isSelected()) {
+            if (cercaTxfield.getText().isEmpty()) {
+                //tablePartenze.setItems(gestioneAerei.getElencoListaPartenze(dataDtpk.getValue(), null));
+            }
+            else {
+                //tablePartenze.setItems(gestioneAerei.getElencoListaPartenze(dataDtpk.getValue(), cercaTxfield.getText()));
+            }
+        }
+        else if (tglArrivi.isSelected()) {
+            if (cercaTxfield.getText().isEmpty()) {
+                //tableArrivi.setItems(gestioneAerei.getElencoListaArrivi(dataDtpk.getValue(), null));
+            }
+            else {
+                //tableArrivi.setItems(gestioneAerei.getElencoListaArrivi(dataDtpk.getValue(), cercaTxfield.getText()));
+            }
+        }
+    }
+
     private void checkLogin() {
         if (gestioneUtenti.isLogged()) {
             btnAccedi.setText(gestioneUtenti.getUtenti().get(gestioneUtenti.getIndice()).getNome());
