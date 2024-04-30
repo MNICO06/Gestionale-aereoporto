@@ -18,8 +18,10 @@ import javafx.collections.ObservableList;
  */
 public class GestioneAerei {
     private static GestioneAerei instance;
-    private ObservableList<Aerei> elencoAerei = FXCollections.observableArrayList();
-    private ObservableList<Aerei> elencoAereiFiltrati = FXCollections.observableArrayList();
+    private ObservableList<Aerei> elencoAereiPartenza = FXCollections.observableArrayList();
+    private ObservableList<Aerei> elencoAereiArrivo = FXCollections.observableArrayList();
+    private ObservableList<Aerei> elencoAereiTutti = FXCollections.observableArrayList();
+    private ObservableList<Aerei> elencoAereiDeposito = FXCollections.observableArrayList();
     private ArrayList<Boolean> gate = new ArrayList<Boolean>();
 
     public GestioneAerei () {
@@ -35,7 +37,13 @@ public class GestioneAerei {
     }
 
     public ObservableList<Aerei> getElencoLista() {
-        return elencoAerei;
+        return elencoAereiTutti;
+    }
+    public ObservableList<Aerei> getElencoListaArrivi() {
+        return elencoAereiArrivo;
+    }
+    public ObservableList<Aerei> getElencoListaPartenze() {
+        return elencoAereiPartenza;
     }
 
     //metodo da chiamare dall'user main controller per la ricerca 
@@ -93,11 +101,12 @@ public class GestioneAerei {
         Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo);
         a.setGate(assegnaGate());
         a.setTerminal(1); // Un unico terminal
-        elencoAerei.add(a);
+        elencoAereiTutti.add(a);
     }
 
     public void rimuoviAereo(Aerei a) {
-        elencoAerei.remove(a);
+        elencoAereiTutti.remove(a);
+
     }
 
     public int assegnaGate() {
@@ -111,6 +120,59 @@ public class GestioneAerei {
                 }
         }
         return -1;
+    }
+
+    //basta chiamare questo metodo con la date voluta e cambia la lista visualizzata con appunto la data pssata
+    public void setDataPartenza(LocalDate data) {
+        elencoAereiDeposito.clear();
+
+        for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                elencoAereiDeposito.add(elencoAereiTutti.get(i));
+        }
+
+        elencoAereiPartenza.clear();
+
+        for (int i = 0; i < elencoAereiDeposito.size(); i++) {
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data)) {
+                        elencoAereiPartenza.add(elencoAereiDeposito.get(i));
+                }
+        }
+
+        bubbleSortByOraPartenza(elencoAereiPartenza);
+    }
+
+    //basta chiamare questo metodo con la date voluta e cambia la lista visualizzata con appunto la data pssata
+    public void setDataArrivo(LocalDate data) {
+        elencoAereiDeposito.clear();
+
+        for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                elencoAereiDeposito.add(elencoAereiTutti.get(i));
+        }
+
+        elencoAereiArrivo.clear();
+
+        for (int i = 0; i < elencoAereiDeposito.size(); i++) {
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data)) {
+                        elencoAereiArrivo.add(elencoAereiDeposito.get(i));
+                }
+        }
+
+        bubbleSortByOraPartenza(elencoAereiArrivo);
+    }
+
+    private void bubbleSortByOraPartenza(ObservableList<Aerei> list) {
+        int n = list.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                // Confronto le ore di partenza degli aerei
+                if (list.get(j).getOraPartenzaProperty().getValue().isAfter(list.get(j + 1).getOraPartenzaProperty().getValue())) {
+                    // Scambio gli elementi se l'ora di partenza del primo aereo è successiva a quella del secondo aereo
+                    Aerei temp = list.get(j);
+                    list.set(j, list.get(j + 1));
+                    list.set(j + 1, temp);
+                }
+            }
+        }
     }
 
     private void caricaDati() {
