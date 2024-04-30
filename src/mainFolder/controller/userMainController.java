@@ -84,6 +84,8 @@ public class userMainController {
     // Inizializzazione
     @FXML
     private void initialize() {
+        gestioneAerei.setDataPartenza(LocalDate.now());
+        gestioneAerei.setDataArrivo(LocalDate.now());
         startClockUpdateAnimation();
         checkLogin();    
         initializeTable();
@@ -148,8 +150,8 @@ public class userMainController {
         colCompagniaPartenze.setCellValueFactory(cellData -> cellData.getValue().getCompagniaProperty());
         colStatoPartenze.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
 
-        tableArrivi.setItems(gestioneAerei.getElencoLista());
-        tablePartenze.setItems(gestioneAerei.getElencoLista());
+        tableArrivi.setItems(gestioneAerei.getElencoListaArrivi());
+        tablePartenze.setItems(gestioneAerei.getElencoListaPartenze());
 
     }
     
@@ -212,6 +214,11 @@ public class userMainController {
                 //tableArrivi.setItems(gestioneAerei.getElencoListaArrivi(dataDtpk.getValue(), cercaTxfield.getText()));
             }
         }
+    }
+
+    private void changeData() {
+        //gestioneAerei.setDataArrivo(dataDtpk.getValue());
+        //gestioneAerei.setDataPartenza(dataDtpk.getValue());
     }
 
     private void checkLogin() {
