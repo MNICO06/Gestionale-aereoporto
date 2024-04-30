@@ -84,12 +84,17 @@ public class userMainController {
     // Inizializzazione
     @FXML
     private void initialize() {
-        gestioneAerei.setDataPartenza(LocalDate.now());
-        gestioneAerei.setDataArrivo(LocalDate.now());
+        
         startClockUpdateAnimation();
         checkLogin();    
         initializeTable();
         setupRowSelectionListener();
+
+        if (dataDtpk.getValue() == null) {
+            dataDtpk.setValue(LocalDate.now());
+        }
+
+        changeData();
                 
         // Evento ToggleButton Partenze se selezionato disattiva l'altro ToggleButton e se deselezionato lo riattiva
         tglPartenze.setOnAction(e -> {
@@ -110,6 +115,10 @@ public class userMainController {
                 tglPartenze.setSelected(true);
                 partenzeSelected = true;
             }
+        });
+
+        dataDtpk.valueProperty().addListener((observable, oldValue, newValue) -> {
+            changeData();
         });
 
     }
@@ -156,13 +165,6 @@ public class userMainController {
     }
     
     
-
-    // Metodo che viene chiamato dal main per passare il riferimento al modello
-    public void setMainModel(GestioneAerei aerei) {
-        tableArrivi.setItems(gestioneAerei.getElencoLista());
-        tablePartenze.setItems(gestioneAerei.getElencoLista());
-    }
-
     private void startClockUpdateAnimation() {
         // Animazione per l'orologio
         AnimationTimer timer = new AnimationTimer() {
@@ -198,27 +200,13 @@ public class userMainController {
 
     @FXML
     public void cercaAerei() {
-        if (tglPartenze.isSelected()) {
-            if (cercaTxfield.getText().isEmpty()) {
-                //tablePartenze.setItems(gestioneAerei.getElencoListaPartenze(dataDtpk.getValue(), null));
-            }
-            else {
-                //tablePartenze.setItems(gestioneAerei.getElencoListaPartenze(dataDtpk.getValue(), cercaTxfield.getText()));
-            }
-        }
-        else if (tglArrivi.isSelected()) {
-            if (cercaTxfield.getText().isEmpty()) {
-                //tableArrivi.setItems(gestioneAerei.getElencoListaArrivi(dataDtpk.getValue(), null));
-            }
-            else {
-                //tableArrivi.setItems(gestioneAerei.getElencoListaArrivi(dataDtpk.getValue(), cercaTxfield.getText()));
-            }
-        }
+        
     }
 
-    private void changeData() {
-        //gestioneAerei.setDataArrivo(dataDtpk.getValue());
-        //gestioneAerei.setDataPartenza(dataDtpk.getValue());
+    @FXML
+    public void changeData() {
+        gestioneAerei.setDataArrivo(dataDtpk.getValue());
+        gestioneAerei.setDataPartenza(dataDtpk.getValue());
     }
 
     private void checkLogin() {

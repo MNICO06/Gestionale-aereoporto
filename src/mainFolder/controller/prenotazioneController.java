@@ -1,5 +1,6 @@
 package mainFolder.controller;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import javafx.animation.AnimationTimer;
@@ -54,6 +55,17 @@ public class prenotazioneController {
     public void initialize() {
         startClockUpdateAnimation();
         initializeTable();
+
+        if (dpDataPartenza.getValue() == null) {
+            dpDataPartenza.setValue(LocalDate.now());
+        }
+        
+        changeData();
+
+        dpDataPartenza.valueProperty().addListener((observable, oldValue, newValue) -> {
+            changeData();
+        });
+        
     }
 
     public void initializeTable() {
@@ -65,7 +77,7 @@ public class prenotazioneController {
         colCompagnia.setCellValueFactory(cellData -> cellData.getValue().getCompagniaProperty());
         colStato.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
 
-        tblVoli.setItems(gestioneAerei.getElencoLista());
+        tblVoli.setItems(gestioneAerei.getElencoListaPartenze());
     }
 
     
@@ -85,6 +97,12 @@ public class prenotazioneController {
         timer.start();
 
         checkLogin();
+    }
+
+    @FXML
+    public void changeData() {
+        gestioneAerei.setDataArrivo(dpDataPartenza.getValue());
+        gestioneAerei.setDataPartenza(dpDataPartenza.getValue());
     }
 
     private void checkLogin() {
