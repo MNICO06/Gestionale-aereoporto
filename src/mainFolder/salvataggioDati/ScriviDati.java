@@ -1,9 +1,15 @@
 package mainFolder.salvataggioDati;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import javafx.collections.ObservableList;
+import mainFolder.model.Aerei;
 import mainFolder.model.Utenti;
 
 public class ScriviDati {
@@ -40,5 +46,31 @@ public class ScriviDati {
         } catch (IOException e) {
             System.err.println("Errore nella scrittura dei dati su file: " + e.getMessage());
         }
+    }
+
+    public void scriviAerei(ObservableList<Aerei> aerei) {
+        try (FileWriter writer = new FileWriter("./src/mainFolder/salvataggioDati/aerei.csv")) {
+            // Scrivi l'intestazione
+            writer.write("Modello,Provenienza,Destinazione,Compagnia,Codice,NumMax,GiornoArrivo,OraArrivo,GiornoPartenza,OraPartenza,Intervallo\n");
+
+            // Scrivi i dati degli aerei
+            for (Aerei aereo : aerei) {
+                writer.write(String.format("%s,%s,%s,%s,%s,%d,%s,%s,%s,%s,%d\n",
+                        aereo.getModello(),
+                        aereo.getProvenienzaString(),
+                        aereo.getDestinazioneString(),
+                        aereo.getCompagnia(),
+                        aereo.getCodice(),
+                        aereo.getNumeroPostiOccupatiInt(),
+                        aereo.getGiornoArrivoString(),
+                        aereo.getOraArrivoString(),
+                        aereo.getGiornoPartenzaString(),
+                        aereo.getOraPartenzaString(),
+                        aereo.getIntervallo()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }       
+
     }
 }

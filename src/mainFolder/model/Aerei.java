@@ -173,6 +173,10 @@ public class Aerei {
         return imbarco;
     }
 
+    public int getIntervallo() {
+        return intervalloDiGiorni;
+    }
+
     //---------------------------setter-----------------------------------------
 
     public void setProvenienza(String provenienzaString) {

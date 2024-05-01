@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import mainFolder.salvataggioDati.ScriviDati;
 
 /**
  *
@@ -24,7 +25,10 @@ public class GestioneAerei {
     private ObservableList<Aerei> elencoAereiDeposito = FXCollections.observableArrayList();
     private ArrayList<Boolean> gate = new ArrayList<Boolean>();
 
+    ScriviDati scrivi;
+
     public GestioneAerei () {
+        scrivi = new ScriviDati();
         riempiGate();
         //poi da fare apertura dati
         caricaDati();
@@ -186,6 +190,7 @@ public class GestioneAerei {
                 150, LocalDate.of(2024, 04, 11), LocalTime.of(10, 0), LocalDate.of(2024, 04, 11), LocalTime.of(12, 45),
                 2);
 
+        scrivi.scriviAerei(elencoAereiTutti);
     }
 
 }
