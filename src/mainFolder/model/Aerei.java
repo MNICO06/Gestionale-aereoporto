@@ -177,6 +177,14 @@ public class Aerei {
         return intervalloDiGiorni;
     }
 
+    public String getProvenienza() {
+        return provenienza.get();
+    }
+
+    public String getDestinazione() {
+        return destinazione.get();
+    }
+
     //---------------------------setter-----------------------------------------
 
     public void setProvenienza(String provenienzaString) {

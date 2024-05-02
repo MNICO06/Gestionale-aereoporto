@@ -63,7 +63,7 @@ public class userMainController {
     private Stage infoStage; // Memorizza il riferimento alla finestra delle informazioni aperta    
 
     // Metodi per impostare i valori di ricerca
-    public void  setCercaTxt(String cercaText) {
+    public void setCercaTxt(String cercaText) {
         // Imposto la textfield con il testo di ricerca
         cercaTxfield.setText(cercaText);
         
@@ -117,6 +117,14 @@ public class userMainController {
 
         dataDtpk.valueProperty().addListener((observable, oldValue, newValue) -> {
             changeData();
+        });
+
+        // On change detected in the search textfield
+        cercaTxfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() == 0) {
+                // Reset filter
+                gestioneAerei.resetFilter();                
+            }
         });
 
     }
@@ -194,11 +202,6 @@ public class userMainController {
         };
         // Avvio l'animazione
         timer.start();
-    }
-
-    @FXML
-    public void cercaAerei() {
-        
     }
 
     @FXML
@@ -293,6 +296,23 @@ public class userMainController {
             infoStage.show();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    // Metodo per il tasto Cerca
+    @FXML
+    private void cercaAerei() {
+        // 1. Retrieve search criteria
+        String searchTerm = cercaTxfield.getText().toLowerCase(); // Convert to lowercase
+        LocalDate searchDate = dataDtpk.getValue();
+
+        // 2. Filter airplanes based on search criteria
+        if (partenzeSelected) {
+            // Filter departures
+            gestioneAerei.filterPartenze(searchTerm, searchDate);
+        } else {
+            // Filter arrivals
+            gestioneAerei.filterArrivi(searchTerm, searchDate);
         }
     }
 }

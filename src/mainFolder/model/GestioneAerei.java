@@ -193,4 +193,88 @@ public class GestioneAerei {
         scrivi.scriviAerei(elencoAereiTutti);
     }
 
+    public void filterPartenze(String searchTerm, LocalDate searchDate) {
+            elencoAereiDeposito.clear();
+
+            for (Aerei aereo : elencoAereiPartenza) {
+                    // Check if the modello or provenienza matches the search term and the
+                    // giornoPartenza matches the search date
+                    if ((aereo.getModello().toLowerCase().contains(searchTerm) ||
+                        aereo.getDestinazione().toLowerCase().contains(searchTerm) ||
+                        aereo.getProvenienza().toLowerCase().contains(searchTerm) ||
+                        aereo.getCompagnia().toLowerCase().contains(searchTerm) ||
+                        aereo.getCodice().toLowerCase().contains(searchTerm)) &&
+                        aereo.getGiornoPartenzaProperty().getValue().isEqual(searchDate)) {
+                                elencoAereiDeposito.add(aereo);
+                    }
+            }
+
+            elencoAereiPartenza.clear();
+
+            for (int i = 0; i < elencoAereiDeposito.size(); i++) {
+                elencoAereiPartenza.add(elencoAereiDeposito.get(i));    
+            }
+
+            bubbleSortByOraPartenza(elencoAereiDeposito);
+    }
+
+    public void filterArrivi(String searchTerm, LocalDate searchDate) {
+            elencoAereiDeposito.clear();
+
+            for (Aerei aereo : elencoAereiArrivo) {
+                    // Check if the modello or destinazione matches the search term and the
+                    // giornoArrivo matches the search date
+                    if ((aereo.getModello().toLowerCase().contains(searchTerm) ||
+                        aereo.getDestinazione().toLowerCase().contains(searchTerm) ||
+                        aereo.getProvenienza().toLowerCase().contains(searchTerm) ||
+                        aereo.getCompagnia().toLowerCase().contains(searchTerm) ||
+                        aereo.getCodice().toLowerCase().contains(searchTerm))&& 
+                        aereo.getGiornoArrivoProperty().getValue().isEqual(searchDate)) {
+                                elencoAereiDeposito.add(aereo);
+                    }
+            }
+
+            elencoAereiArrivo.clear();
+
+            for (int i = 0; i < elencoAereiDeposito.size(); i++) {
+                elencoAereiArrivo.add(elencoAereiDeposito.get(i));
+            }
+
+            bubbleSortByOraPartenza(elencoAereiArrivo);
+    }
+
+    public ObservableList<Aerei> getFilteredPartenze() {
+            return elencoAereiDeposito;
+    }
+
+    public ObservableList<Aerei> getFilteredArrivi() {
+            return elencoAereiDeposito;
+    }
+
+        // Reset partenze
+        public void resetPartenze() {
+                elencoAereiPartenza.clear();
+
+                for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                elencoAereiPartenza.add(elencoAereiTutti.get(i));
+                }
+
+                bubbleSortByOraPartenza(elencoAereiPartenza);
+        }
+
+        // Reset arrivi
+        public void resetArrivi() {
+                elencoAereiArrivo.clear();
+
+                for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                elencoAereiArrivo.add(elencoAereiTutti.get(i));
+                }
+
+                bubbleSortByOraPartenza(elencoAereiArrivo);
+        }
+
+        public void resetFilter() {
+                resetArrivi();
+                resetPartenze();
+        }
 }
