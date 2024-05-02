@@ -3,12 +3,13 @@ package mainFolder.controller;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import mainFolder.model.Aerei;
 import mainFolder.model.GestioneAerei;
@@ -60,7 +61,9 @@ public class userMainController {
     //per tenere controllato se si è loggati
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
     GestioneAerei gestioneAerei = GestioneAerei.getInstance();
-    
+
+    // Var per la finestra dei dettagli dell'aereo
+    private Stage infoStage; // Memorizza il riferimento alla finestra delle informazioni aperta    
 
     // Metodi per impostare i valori di ricerca
     public void  setCercaTxt(String cercaText) {
@@ -264,21 +267,37 @@ public class userMainController {
 
     // Metodo per gestire il doppio click
     private void handleDoubleClick(Aerei aereo) {
+        if (infoStage != null && infoStage.isShowing()) {
+            // Chiudi la finestra delle informazioni esistente se è già aperta
+            infoStage.close();
+        }
+
         try {
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/dettagliAereoGui.fxml"));
             Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Dettagli Aereo");
-            stage.setScene(new Scene(root));
-            stage.show();
+            infoStage = new Stage();
+            infoStage.setTitle("Dettagli Aereo");
+            infoStage.setScene(new Scene(root));
 
             // Passo l'aereo alla seconda GUI
             dettagliAereoController controller = loader.getController();
             controller.setAereo(aereo);
+
+            // Aggiungi un listener per gestire la chiusura della finestra delle
+            // informazioni
+            infoStage.setOnCloseRequest(event -> infoStage = null);
+
+            // Imposta le coordinate della finestra
+            Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+            double xOffset = 20; // spostamento orizzontale
+            double yOffset = 20; // spostamento verticale
+            infoStage.setX(primaryScreenBounds.getMinX() + xOffset);
+            infoStage.setY(primaryScreenBounds.getMinY() + yOffset);
+
+            infoStage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }

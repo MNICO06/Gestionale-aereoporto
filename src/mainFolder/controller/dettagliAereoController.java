@@ -35,7 +35,7 @@ public class dettagliAereoController {
 
     public void setAereo(Aerei aereo) {
         this.aereo = aereo;
-
+        nomeAereo.setText(aereo.getModello());
         lblModello.setText(aereo.getModello());
         lblProvenienza.setText(aereo.getProvenienzaString());
         lblPostiTotali.setText(String.valueOf(aereo.getPostiMassimi()));
