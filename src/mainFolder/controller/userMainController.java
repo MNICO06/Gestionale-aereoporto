@@ -55,9 +55,6 @@ public class userMainController {
 
     private boolean partenzeSelected;
 
-    private String cercaText;
-    private LocalDate dataPartenze;
-
     //per tenere controllato se si è loggati
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
     GestioneAerei gestioneAerei = GestioneAerei.getInstance();
@@ -67,14 +64,12 @@ public class userMainController {
 
     // Metodi per impostare i valori di ricerca
     public void  setCercaTxt(String cercaText) {
-        this.cercaText = cercaText;
         // Imposto la textfield con il testo di ricerca
         cercaTxfield.setText(cercaText);
         
     }
 
     public void setDataPartenze(LocalDate dataPartenze) {
-        this.dataPartenze = dataPartenze;
         // Imposto il datepicker con la data di ricerca
         dataDtpk.setValue(dataPartenze);
     }

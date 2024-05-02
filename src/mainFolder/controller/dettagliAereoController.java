@@ -31,10 +31,7 @@ public class dettagliAereoController {
 
     @FXML private AnchorPane anchImage;
 
-    private Aerei aereo;
-
     public void setAereo(Aerei aereo) {
-        this.aereo = aereo;
         nomeAereo.setText(aereo.getModello());
         lblModello.setText(aereo.getModello());
         lblProvenienza.setText(aereo.getProvenienzaString());
