@@ -3,9 +3,15 @@ package mainFolder.salvataggioDati;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import mainFolder.model.Aerei;
 import mainFolder.model.Utenti;
 
 
@@ -94,11 +100,12 @@ public class LeggiDati {
             e.printStackTrace();
             return null;
         }
+    }
 
     public ObservableList<Aerei> leggiAerei() {
         ObservableList<Aerei> aerei = FXCollections.observableArrayList();
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         try (BufferedReader reader = new BufferedReader(new FileReader("./src/mainFolder/salvataggioDati/aerei.csv"))) {
             String line;
@@ -123,8 +130,11 @@ public class LeggiDati {
                 }
             }
 
+            return aerei;
+
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         
     }

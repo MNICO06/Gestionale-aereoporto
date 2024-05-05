@@ -7,10 +7,12 @@ package mainFolder.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import mainFolder.salvataggioDati.LeggiDati;
 import mainFolder.salvataggioDati.ScriviDati;
 
 /**
@@ -26,9 +28,11 @@ public class GestioneAerei {
     private ArrayList<Boolean> gate = new ArrayList<Boolean>();
 
     ScriviDati scrivi;
+    LeggiDati leggi;
 
     public GestioneAerei () {
         scrivi = new ScriviDati();
+        leggi = new LeggiDati();
         riempiGate();
         //poi da fare apertura dati
         caricaDati();
@@ -147,48 +151,11 @@ public class GestioneAerei {
     }
 
     private void caricaDati() {
-         
-        addAereo("Airbus A380", "MXP", "FCO", "Quatar Airways", "ABC123", 
-            517, LocalDate.of(2024, 04, 11) , LocalTime.of(9,45), LocalDate.of(2024, 04, 11),LocalTime.of(9,0), 3);
-        addAereo("Boeing 747", "JFK", "LHR", "British Airways", "BA123",
-                450, LocalDate.of(2024, 04, 11), LocalTime.of(12, 30), LocalDate.of(2024, 04, 11), LocalTime.of(13, 45),
-                2);
 
-        addAereo("Airbus A320", "LAX", "ORD", "American Airlines", "AA456",
-                180, LocalDate.of(2024, 04, 11), LocalTime.of(8, 15), LocalDate.of(2024, 04, 11), LocalTime.of(10, 0),
-                2);
-
-        addAereo("Boeing 787 Dreamliner", "HND", "SYD", "Qantas", "QF789",
-                250, LocalDate.of(2024, 04, 11), LocalTime.of(14, 0), LocalDate.of(2024, 04, 11), LocalTime.of(23, 30),
-                1);
-
-        addAereo("Airbus A350", "CDG", "SIN", "Singapore Airlines", "SQ123",
-                300, LocalDate.of(2024, 04, 11), LocalTime.of(10, 45), LocalDate.of(2024, 04, 11), LocalTime.of(19, 15),
-                1);
-
-        addAereo("Boeing 737", "ATL", "MCO", "Delta Air Lines", "DL456",
-                160, LocalDate.of(2024, 04, 11), LocalTime.of(11, 30), LocalDate.of(2024, 04, 11), LocalTime.of(13, 0),
-                2);
-
-        addAereo("Airbus A330", "FRA", "DXB", "Emirates", "EK789",
-                280, LocalDate.of(2024, 04, 11), LocalTime.of(9, 0), LocalDate.of(2024, 04, 11), LocalTime.of(16, 45),
-                1);
-
-        addAereo("Boeing 777", "SFO", "ICN", "Korean Air", "KE789",
-                350, LocalDate.of(2024, 04, 11), LocalTime.of(13, 45), LocalDate.of(2024, 04, 11), LocalTime.of(22, 30),
-                1);
-
-        addAereo("Airbus A380", "LHR", "JFK", "Virgin Atlantic", "VS123",
-                500, LocalDate.of(2024, 04, 11), LocalTime.of(16, 30), LocalDate.of(2024, 04, 11), LocalTime.of(20, 15),
-                3);
-
-        addAereo("Boeing 757", "SEA", "DEN", "United Airlines", "UA456",
-                200, LocalDate.of(2024, 04, 11), LocalTime.of(8, 45), LocalDate.of(2024, 04, 11), LocalTime.of(11, 30),
-                2);
-
-        addAereo("Boeing 747", "MUC", "AMS", "KLM", "KL123",
-                150, LocalDate.of(2024, 04, 11), LocalTime.of(10, 0), LocalDate.of(2024, 04, 11), LocalTime.of(12, 45),
-                2);
+        for (Aerei aereo : leggi.leggiAerei()) {
+                addAereo(aereo.getModello(), aereo.getProvenienza(),aereo.getDestinazione(), aereo.getCompagnia(), aereo.getCodice(), aereo.getPostiMassimi(), 
+                aereo.getGiornoArrivoLocalDate(), aereo.getOraArrivoLocalTime(), aereo.getGiornoPartenzaLocalDate(), aereo.getOraPartenzaLocalTime(), aereo.getIntervallo());
+        }
 
         scrivi.scriviAerei(elencoAereiTutti);
     }

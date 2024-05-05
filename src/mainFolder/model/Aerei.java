@@ -136,12 +136,18 @@ public class Aerei {
     public ObjectProperty<LocalDate> getGiornoArrivoProperty() {
         return giornoDiArrivo;
     }
+    public LocalDate getGiornoArrivoLocalDate() {
+        return giornoDiArrivo.get();
+    }
     public String getGiornoArrivoString() {
         return giornoDiArrivo.get().format(formatterData);
     }
 
     public ObjectProperty<LocalTime> getOraArrivoProperty () {
         return oraArrivo;
+    }
+    public LocalTime getOraArrivoLocalTime() {
+        return oraArrivo.get();
     }
     public String getOraArrivoString() {
         return oraArrivo.get().format(formatterOre);
@@ -150,12 +156,18 @@ public class Aerei {
     public ObjectProperty<LocalDate> getGiornoPartenzaProperty() {
         return giornoDiPartenza;
     }
+    public LocalDate getGiornoPartenzaLocalDate() {
+        return giornoDiPartenza.get();
+    }
     public String getGiornoPartenzaString() {
         return giornoDiPartenza.get().format(formatterData);
     }
 
     public ObjectProperty<LocalTime> getOraPartenzaProperty() {
         return oraPartenza;
+    }
+    public LocalTime getOraPartenzaLocalTime() {
+        return oraPartenza.get();
     }
     public String getOraPartenzaString() {
         return oraPartenza.get().format(formatterOre);
