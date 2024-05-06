@@ -84,7 +84,7 @@ public class userMainController {
     private void initialize() {
         
         startClockUpdateAnimation();
-        checkLogin();    
+        checkLogin();
         initializeTable();
         setupRowSelectionListener();
 

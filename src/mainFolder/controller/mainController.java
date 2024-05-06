@@ -7,6 +7,7 @@ package mainFolder.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -32,6 +33,8 @@ public class mainController {
     @FXML private Label orologio;
     @FXML private Label titolo;
     @FXML private Button accedi;
+    @FXML private DatePicker datePicker;
+
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
     GestioneAerei gestioneAerei = GestioneAerei.getInstance();
 
@@ -83,9 +86,22 @@ public class mainController {
         accedi.setDisable(true);
         accedi.setOpacity(1);
 
+        if (datePicker.getValue() == null) {
+            setData(LocalDate.now());
+        }
+
         initializeTable();
 
+        datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
+            changeData();
+        });
+
     }
+
+    private void setData(LocalDate date) {
+        datePicker.setValue(date);
+    }
+
 
     public void initializeTable() {
         colonnaOrarioArrivo.setCellValueFactory(cellData -> cellData.getValue().getOraArrivoProperty());
@@ -122,7 +138,15 @@ public class mainController {
         colonnaHangarManutenzione.setCellValueFactory(cellData -> cellData.getValue().getHangarProperty());
 
     
-        
+        tabellaArrivo.setItems(gestioneAerei.getElencoListaArrivi());
+        tabellaPartenza.setItems(gestioneAerei.getElencoListaPartenze());
+    }
+
+    
+    @FXML
+    public void changeData() {
+        gestioneAerei.setDataArrivo(datePicker.getValue());
+        gestioneAerei.setDataPartenza(datePicker.getValue());
     }
 
     

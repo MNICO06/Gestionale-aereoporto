@@ -289,7 +289,7 @@
                                  </GridPane.margin>
                               </TextField>
                               <Label text="Giorno:" GridPane.columnIndex="4" />
-                              <DatePicker prefHeight="25.0" prefWidth="255.0" GridPane.columnIndex="5">
+                              <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="255.0" GridPane.columnIndex="5">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
