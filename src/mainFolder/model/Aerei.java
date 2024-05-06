@@ -17,6 +17,8 @@ public class Aerei {
     private StringProperty destinazione;
     private final StringProperty compagniaAerea;
     private final StringProperty codiceRegistrazione;
+    private StringProperty stato;
+    private StringProperty hangar;
 
     private final int numeroMassimoPasseggeri;
     private IntegerProperty numeroPostiOccupati;
@@ -29,7 +31,9 @@ public class Aerei {
     private ObjectProperty<LocalDate> giornoDiPartenza;
     private ObjectProperty<LocalTime> oraPartenza;
     private int intervalloDiGiorni;
-    // .plusDays(intervallo giorni)
+
+    private ObjectProperty<LocalDate> inizioManutenzione;
+    private ObjectProperty<LocalDate> fineManutenzione;
 
 
     DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -39,6 +43,10 @@ public class Aerei {
     private boolean scaricoBagagli = false;
     private boolean caricoBagagli = false;
     private boolean imbarco = false;
+
+    
+
+    
 
     public Aerei(String modello, String provenienza, String destinazione, String compagnia, String codice,
             int numMax, LocalDate giornoDiArrivo, LocalTime oraArrivo,
@@ -59,6 +67,10 @@ public class Aerei {
         this.gate = new SimpleIntegerProperty(-1); // Inizializzazione di gate
         this.terminal = new SimpleIntegerProperty(-1); // Inizializzazione di terminal
         this.numeroPostiOccupati = new SimpleIntegerProperty(0); // Inizializzazione di posti occupati
+        inizioManutenzione = new SimpleObjectProperty<>(null);
+        fineManutenzione = new SimpleObjectProperty<>(null);
+        stato = new SimpleStringProperty("in servizio");
+        hangar = new SimpleStringProperty(null);
     }
 
     //---------------------------getter------------------------------------------------
@@ -197,6 +209,41 @@ public class Aerei {
         return destinazione.get();
     }
 
+    public ObjectProperty<LocalDate> getInizioManutenzione() {
+        return inizioManutenzione;
+    }
+    public LocalDate getInizioManutenzioneLocalDate() {
+        return inizioManutenzione.get();
+    }
+    public String getInizioManutenzioneString() {
+        return inizioManutenzione.get().format(formatterData);
+    }
+
+    public ObjectProperty<LocalDate> getFineManutenzione() {
+        return fineManutenzione;
+    }
+    public LocalDate getFineManutenzioneLocalDate() {
+        return fineManutenzione.get();
+    }
+    public String getFineManutenzioneString() {
+        return fineManutenzione.get().format(formatterData);
+    }
+
+    public StringProperty getStatoProperty() {
+        return stato;
+    }
+    public String getStatoString() {
+        return stato.get();
+    }
+
+    public StringProperty getHangarProperty() {
+        return hangar;
+    }
+    public String getHangarString() {
+        return hangar.get();
+    }
+
+
     //---------------------------setter-----------------------------------------
 
     public void setProvenienza(String provenienzaString) {
@@ -254,5 +301,22 @@ public class Aerei {
     public void setIntervalloGiorni(int intervallo) {
         this.intervalloDiGiorni = intervallo;
     }
+
+    public void setGiornoInizioManutenzione(LocalDate inizioM) {
+        this.inizioManutenzione.set(inizioM);
+    }
+
+    public void setGiornoFineManutenzione(LocalDate fineM) {
+        this.fineManutenzione.set(fineM);
+    }
+
+    public void setStato(String stato) {
+        this.stato.set(stato);
+    }
+
+    public void setHangar(String hangar) {
+        this.hangar.set(hangar);
+    }
+
     
 }
