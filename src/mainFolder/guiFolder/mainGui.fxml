@@ -93,7 +93,7 @@
                                  </GridPane.margin>
                               </TextField>
                               <Label text="Giorno:" GridPane.columnIndex="4" />
-                              <DatePicker prefHeight="25.0" prefWidth="191.0" GridPane.columnIndex="5">
+                              <DatePicker fx:id="datePickerPartenze" prefHeight="25.0" prefWidth="191.0" GridPane.columnIndex="5">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
@@ -114,7 +114,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Arrivi">
+          <Tab fx:id="datePickerArrivi" text="Arrivi">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -159,7 +159,7 @@
                                  </GridPane.margin>
                               </TextField>
                               <Label text="Giorno:" GridPane.columnIndex="4" />
-                              <DatePicker prefHeight="25.0" prefWidth="255.0" GridPane.columnIndex="5">
+                              <DatePicker fx:id="datePickerArrivo" prefHeight="25.0" prefWidth="255.0" GridPane.columnIndex="5">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
@@ -225,7 +225,7 @@
                                  </GridPane.margin>
                               </TextField>
                               <Label text="Giorno:" GridPane.columnIndex="4" />
-                              <DatePicker prefHeight="25.0" prefWidth="255.0" GridPane.columnIndex="5">
+                              <DatePicker fx:id="datePickerTerra" prefHeight="25.0" prefWidth="255.0" GridPane.columnIndex="5">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
@@ -277,24 +277,24 @@
                            </rowConstraints>
                            <children>
                               <Label prefHeight="17.0" prefWidth="77.0" text="Destinazione:" />
-                              <TextField prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1">
+                              <TextField fx:id="destinazioneFiltro" prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </TextField>
                               <Label text="Compagnia:" GridPane.columnIndex="2" />
-                              <TextField prefHeight="25.0" prefWidth="451.0" GridPane.columnIndex="3">
+                              <TextField fx:id="compagniaFiltro" prefHeight="25.0" prefWidth="451.0" GridPane.columnIndex="3">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </TextField>
                               <Label text="Giorno:" GridPane.columnIndex="4" />
-                              <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="255.0" GridPane.columnIndex="5">
+                              <DatePicker fx:id="datePickerManutenzione" prefHeight="25.0" prefWidth="255.0" GridPane.columnIndex="5">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </DatePicker>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Cancella Filtri" GridPane.columnIndex="6">
+                              <Button mnemonicParsing="false" onAction="#cancellaRicerca" prefHeight="25.0" prefWidth="120.0" text="Cancella Filtri" GridPane.columnIndex="6">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>

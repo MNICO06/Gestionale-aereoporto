@@ -6,11 +6,18 @@
 package mainFolder.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -33,7 +40,12 @@ public class mainController {
     @FXML private Label orologio;
     @FXML private Label titolo;
     @FXML private Button accedi;
-    @FXML private DatePicker datePicker;
+    @FXML private DatePicker datePickerPartenze;
+    @FXML private DatePicker datePickerArrivo;
+    @FXML private DatePicker datePickerTerra;
+    @FXML private DatePicker datePickerManutenzione;
+    @FXML private TextField destinazioneFiltro;
+    @FXML private TextField compagniaFiltro;
 
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
     GestioneAerei gestioneAerei = GestioneAerei.getInstance();
@@ -72,7 +84,7 @@ public class mainController {
     @FXML private TableColumn<Aerei, LocalDate> colonnaFineLavoriManutenzione;
     @FXML private TableColumn<Aerei, String> colonnaHangarManutenzione;
 
-
+    private Stage infoStage;
 
     public void initialize() {
         // Creazione di un Timeline per aggiornare l'orologio ogni secondo
@@ -86,20 +98,57 @@ public class mainController {
         accedi.setDisable(true);
         accedi.setOpacity(1);
 
-        if (datePicker.getValue() == null) {
-            setData(LocalDate.now());
+        if (datePickerPartenze.getValue() == null) {
+            setDataPartenza(LocalDate.now());
+            changeDataPartnza();
+        }
+        if (datePickerArrivo.getValue() == null) {
+            setDataArrivi(LocalDate.now());
+            changeDataArrivi();
+        }
+        if (datePickerTerra.getValue() == null) {
+            setDataTerra(LocalDate.now());
+        }
+        if (datePickerManutenzione.getValue() == null) {
+            setDataManutenzione(LocalDate.now());
         }
 
         initializeTable();
+        //setupRowSelectionListener();
 
-        datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
-            changeData();
+        datePickerPartenze.valueProperty().addListener((observable, oldValue, newValue) -> {
+            changeDataPartnza();
         });
+        datePickerArrivo.valueProperty().addListener((observable, oldValue, newValue) -> {
+            changeDataArrivi();
+        });
+        /*
+        datePickerTerra.valueProperty().addListener((observable, oldValue, newValue) -> {
+            changeDataTerra();
+        });
+        datePickerManutenzione.valueProperty().addListener((observable, oldValue, newValue) -> {
+            changeDataManutenzione();
+        });
+        */
+
+        
+
+        //TODO: mettere anche ricerca compagnia e destinazione, aggiungi aereo, collegare altre due tabelle, modificare aerei
+        //per la modifica io ci mettere quando fai il doppio click una cosa simile a quella per gli utente ma con un textfield nei punti in cui si può modificare
 
     }
 
-    private void setData(LocalDate date) {
-        datePicker.setValue(date);
+    private void setDataPartenza(LocalDate date) {
+        datePickerPartenze.setValue(date);
+    }
+    private void setDataArrivi(LocalDate date) {
+        datePickerArrivo.setValue(date);
+    }
+    private void setDataTerra(LocalDate date) {
+        datePickerTerra.setValue(date);
+    }
+    private void setDataManutenzione(LocalDate date) {
+        datePickerManutenzione.setValue(date);
     }
 
 
@@ -142,12 +191,88 @@ public class mainController {
         tabellaPartenza.setItems(gestioneAerei.getElencoListaPartenze());
     }
 
-    
-    @FXML
-    public void changeData() {
-        gestioneAerei.setDataArrivo(datePicker.getValue());
-        gestioneAerei.setDataPartenza(datePicker.getValue());
+    private void setupRowSelectionListener() {
+        // Aggiunge un listener di selezione alla tabella degli arrivi
+        tabellaArrivo.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                handleDoubleClick(newSelection);
+            }
+        });
+
+        // Aggiunge un listener di selezione alla tabella delle partenze
+        tabellaPartenza.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                handleDoubleClick(newSelection);
+            }
+        });
+
     }
 
-    
+
+    @FXML
+    public void changeDataArrivi() {
+        gestioneAerei.setDataArrivo(datePickerArrivo.getValue());
+    }
+
+    @FXML
+    public void changeDataPartnza() {
+        gestioneAerei.setDataPartenza(datePickerPartenze.getValue());
+    }
+
+    @FXML
+    public void changeDataTerra() {
+
+    }
+
+    @FXML
+    public void changeDataManutenzione() {
+        
+    }
+
+
+    @FXML
+    public void cancellaRicerca() {
+        if (!destinazioneFiltro.getText().isEmpty()) {
+            destinazioneFiltro.clear();
+        }
+        if (!compagniaFiltro.getText().isEmpty()) {
+            compagniaFiltro.clear();
+        }
+    }
+
+    private void handleDoubleClick(Aerei aereo) {
+        if (infoStage != null && infoStage.isShowing()) {
+            // Chiudi la finestra delle informazioni esistente se è già aperta
+            infoStage.close();
+        }
+
+        try {
+            // Carica la seconda GUI (FXML)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/dettagliAereoAdmin.fxml"));
+            Parent root = loader.load();
+            infoStage = new Stage();
+            infoStage.setTitle("Dettagli Aereo");
+            infoStage.setScene(new Scene(root));
+
+            // Passo l'aereo alla seconda GUI
+            dettagliAereoController controller = loader.getController();
+            controller.setAereo(aereo);
+
+            // Aggiungi un listener per gestire la chiusura della finestra delle
+            // informazioni
+            infoStage.setOnCloseRequest(event -> infoStage = null);
+
+            // Imposta le coordinate della finestra
+            Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+            double xOffset = 20; // spostamento orizzontale
+            double yOffset = 20; // spostamento verticale
+            infoStage.setX(primaryScreenBounds.getMinX() + xOffset);
+            infoStage.setY(primaryScreenBounds.getMinY() + yOffset);
+
+            infoStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
