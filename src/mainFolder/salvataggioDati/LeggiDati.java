@@ -136,8 +136,60 @@ public class LeggiDati {
             e.printStackTrace();
             return null;
         }
-        
     }
+
+    public ObservableList<Aerei> leggiAereiNuovo() {
+        ObservableList<Aerei> aerei = FXCollections.observableArrayList();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+    
+        try (BufferedReader reader = new BufferedReader(new FileReader("./src/mainFolder/salvataggioDati/aerei.csv"))) {
+            String line;
+            reader.readLine(); // Salta la prima riga (intestazione)
+            while ((line = reader.readLine()) != null) {
+                String[] linea = line.split(",");
+                if (linea.length >= 12) { // Controlla se la riga contiene almeno i dati essenziali
+                    String modello = linea[0];
+                    String provenienza = linea[1];
+                    String destinazione = linea[2];
+                    String compagnia = linea[3];
+                    String codice = linea[4];
+                    int numMax = Integer.parseInt(linea[5]);
+                    LocalDate giornoArrivo = LocalDate.parse(linea[6], dateFormatter);
+                    LocalTime oraArrivo = LocalTime.parse(linea[7], timeFormatter);
+                    LocalDate giornoPartenza = LocalDate.parse(linea[8], dateFormatter);
+                    LocalTime oraPartenza = LocalTime.parse(linea[9], timeFormatter);
+                    int intervallo = Integer.parseInt(linea[10]);
+                    String stato = linea[11];
+    
+                    LocalDate inizioManutenzione = null;
+                    LocalDate fineManutenzione = null;
+                    String hangar = "";
+    
+                    if (linea.length >= 15) {
+                        inizioManutenzione = LocalDate.parse(linea[12], dateFormatter);
+                        fineManutenzione = LocalDate.parse(linea[13], dateFormatter);
+                        hangar = linea[14];
+                    }
+    
+                    //se vi è inizioManutenzione, vuol dire che ci sono anche gli altri 2 e quindi aggiungo un aereo secondo il metodo con manutenzione
+                    if (inizioManutenzione != null) {
+                        Aerei aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax, giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo, stato, inizioManutenzione, fineManutenzione, hangar);
+                        aerei.add(aereo);
+                    }
+                    else { //se no aggiungono un aereo senza usare quello con la manutenzione
+                        Aerei aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax, giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo, stato);
+                        aerei.add(aereo);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+        return aerei;
+    }
+    
 
     
 
