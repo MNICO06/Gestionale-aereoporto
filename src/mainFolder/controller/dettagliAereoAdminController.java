@@ -2,57 +2,75 @@ package mainFolder.controller;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import mainFolder.model.Aerei;
 
 public class dettagliAereoAdminController {
-    @FXML private Label nomeAereo;
 
-    @FXML private Label txtfModello;
-    @FXML private Label txtfProvenienza;
-    @FXML private Label txtfDestinazione;
-    @FXML private Label txtfCompagniaAerea;
-    // Codice Registrazione
-    @FXML private Label txtfGiornoArrivo;
-    @FXML private Label txtfOrarioArrivo;
-    @FXML private Label txtfGiornoPartenza;
-    @FXML private Label txtfOrarioPartenza;
-    @FXML private Label txtfPostiTotali;
-    @FXML private Label txtfRitardo;
-    @FXML private Label txtfGate;
+    // Modificatori
+    @FXML private ComboBox<String> modelloAereoCmbx;
+    @FXML private TextField provenienzaTxF;
+    @FXML private TextField destinazioneTxF;
+    @FXML private ComboBox<String> terminalCmbx;
+    @FXML private TextField gateTxF;
+    @FXML private TextField compagniaAereaTxF;
+    @FXML private TextField postiTotaliTxF;
+    @FXML private TextField postiOccupatiTxF;
+    @FXML private ComboBox<String> statoCmbx;
+    @FXML private DatePicker giornoArrivoDp;
+    @FXML private DatePicker giornoPartenzaDp;
+    @FXML private TextField orarioArrivoTxF;
+    @FXML private TextField orarioPartenzaTxF;
+    @FXML private Spinner<Integer> ritardoSpn;
+    // Se è in manutenzione
+    @FXML private DatePicker inizioLavoriDp;
+    @FXML private DatePicker fineLavoriDp;
+    @FXML private TextField hangarTxf;
 
-    @FXML private Label txtfTerminal;
-    @FXML private Label txtfPostiOccupati;
+    @FXML private TextField nomeAereo;
 
+    @FXML private Button salvaBtn;
+    @FXML private Button modificaBtn;
+    
     @FXML private Label orologio;
-
-    @FXML private AnchorPane anchImage;
 
 
     public void setAereo(Aerei aereo) {
         nomeAereo.setText(aereo.getModello());
-        txtfModello.setText(aereo.getModello());
-        txtfProvenienza.setText(aereo.getProvenienzaString());
-        txtfPostiTotali.setText(String.valueOf(aereo.getPostiMassimi()));
-        txtfGiornoPartenza.setText(aereo.getGiornoPartenzaString());
-        txtfRitardo.setText(String.valueOf(aereo.getRitardoInt()));
-        txtfCompagniaAerea.setText(aereo.getCompagnia());
-        txtfDestinazione.setText(aereo.getDestinazioneString());
-        txtfGate.setText(String.valueOf(aereo.getGateInt()));
-        txtfOrarioArrivo.setText(aereo.getOraArrivoString());
-        txtfGiornoArrivo.setText(aereo.getGiornoArrivoString());
-        txtfOrarioPartenza.setText(aereo.getOraPartenzaString());
-        txtfPostiOccupati.setText(String.valueOf(aereo.getNumeroPostiOccupatiInt()));
-        txtfTerminal.setText(String.valueOf(aereo.getTerminalInt()));
-
-        // Chiamo metodo che imposta l'immagine dell'aereo corretto
-        setImage(aereo.getModello(), aereo.getCompagnia());
+        modelloAereoCmbx.setValue(aereo.getModello());
+        provenienzaTxF.setText(aereo.getProvenienzaString());
+        postiTotaliTxF.setText(String.valueOf(aereo.getPostiMassimi()));
+        giornoPartenzaDp.setValue(aereo.getGiornoPartenza());
+        ritardoSpn.getValueFactory().setValue(aereo.getRitardoInt());
+        compagniaAereaTxF.setText(aereo.getCompagnia());
+        destinazioneTxF.setText(aereo.getDestinazioneString());
+        gateTxF.setText(String.valueOf(aereo.getGateInt()));
+        orarioArrivoTxF.setText(aereo.getOraArrivoString());
+        giornoArrivoDp.setValue(aereo.getGiornoArrivo());
+        orarioPartenzaTxF.setText(aereo.getOraPartenzaString());
+        postiOccupatiTxF.setText(String.valueOf(aereo.getNumeroPostiOccupatiInt()));
+        terminalCmbx.setValue(String.valueOf(aereo.getTerminalInt()));
+        statoCmbx.setValue(aereo.getStato());
+        inizioLavoriDp.setValue(aereo.getInizioLavori());
+        fineLavoriDp.setValue(aereo.getFineLavori());
+        hangarTxf.setText(aereo.getHangar());
     }
 
     @FXML
     private void initialize() {
         startClockUpdateAnimation();
+
+        // Imposto i combobox
+        // Modello aereo
+        modelloAereoCmbx.getItems().addAll("Boeing 737", "Boeing 747", "Boeing 757", "Boeing 767", "Boeing 777", "Boeing 787", "Airbus A220", "Airbus A300", "Airbus A310", "Airbus A320", "Airbus A330", "Airbus A340", "Airbus A350", "Airbus A380");
+        // Terminal
+        terminalCmbx.getItems().addAll("1");
+        // Stato
+        statoCmbx.getItems().addAll("In arrivo", "In partenza", "In manutenzione", "In attesa");
+
+        // Imposto Spinner
+        ritardoSpn.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0));
     }
 
     private void startClockUpdateAnimation() {
@@ -69,46 +87,5 @@ public class dettagliAereoAdminController {
         };
         // Avvio l'animazione
         timer.start();
-    }
-
-
-    private void setImage(String modello, String compagnia) {
-        String temp = "-fx-background-size: contain; -fx-background-repeat: no-repeat; -fx-background-position: center";
-        switch (modello+compagnia) {
-            case "Airbus A380Quatar Airways":
-                // Imposta l'immagine dell'aereo
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A380Quatar.png'); " + temp);
-                break;
-            case "Airbus A320American Airlines":
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A320AmericanAirlines.jpg');" + temp);
-                break;
-            case "Boeing 787 DreamlinerQantas":
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B787Qantas.jpeg'); "+ temp);
-                break;
-            case "Airbus A350Singapore Airlines":
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A350SingaporeAirlines.jpg');" + temp);
-                break;
-            case "Boeing 737Delta Air Lines":
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B737Delta.jpg');" + temp);
-                break;
-            case "Airbus A330Emirates":
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A330Emirates.jpg');" + temp);
-                break;
-            case "Boeing 777Korean Air":
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B777KoreanAir.jpg');" + temp);
-                break;
-            case "Airbus A380Virgin Atlantic":
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A380VirginAtlantic.jpg');" + temp);
-                break;
-            case "Boeing 757United Airlines":
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B757United.jpg');" + temp);
-                break;
-            case "Boeing 747KLM":
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B747KLM.jpg');" + temp);
-                break;
-
-            default:
-                break;
-        }
     }
 }

@@ -114,7 +114,7 @@ public class mainController {
         }
 
         initializeTable();
-        //setupRowSelectionListener();
+        setupRowSelectionListener();
 
         datePickerPartenze.valueProperty().addListener((observable, oldValue, newValue) -> {
             changeDataPartnza();

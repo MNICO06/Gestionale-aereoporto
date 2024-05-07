@@ -243,6 +243,34 @@ public class Aerei {
         return hangar.get();
     }
 
+    public String getStato() {
+        return stato.get();
+    }
+
+    public String getHangar() {
+        return hangar.get();
+    }
+
+    // getGiornoPartenza restituisce localDate
+    public LocalDate getGiornoPartenza() {
+        return giornoDiPartenza.get();
+    }
+
+    // getGiornoArrivo
+    public LocalDate getGiornoArrivo() {
+        return giornoDiArrivo.get();
+    }
+
+    // getInizioLavori
+    public LocalDate getInizioLavori() {
+        return inizioManutenzione.get();
+    }
+
+    // getFineLavori
+    public LocalDate getFineLavori() {
+        return fineManutenzione.get();
+    }
+
 
     //---------------------------setter-----------------------------------------
 
