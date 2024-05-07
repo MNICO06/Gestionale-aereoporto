@@ -91,6 +91,7 @@ public class dettagliAereoAdminController {
                 hangarTxf.setDisable(true);
             }
         });
+
     }
 
     private void startClockUpdateAnimation() {

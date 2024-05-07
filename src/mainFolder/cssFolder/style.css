@@ -1,89 +1,274 @@
 /* style.css */
+* {
+    -fx-primary-color: #3c90ea;
+    -fx-secondary-color: #4578d5;
+    -fx-tertiary-color: #04376d;
+    -fx-light-grey-color: #d1d1d1;
+    -fx-light-blue-color1: #c6f0ff5c;
+    -fx-light-blue-color2: #8fcbff9b;
+    -fx-white-color: #ffffff;
 
-.root {
-    -fx-background-color: #f0f0f0; /* Colore di sfondo */
-    background-color: #f0f0f0; /* Colore di sfondo */
-}   
-
-.tab-pane {
-    -fx-background-color: #ffffff; /* Colore di sfondo dei tab */
-    background-color: #ffffff; /* Colore di sfondo dei tab */
+    -fx-focus-color: -fx-secondary-color;
+    -fx-gradientPrimary-color: linear-gradient(from 0% 0% to 100% 200%, #00bbff, #c300ff);
+    -fx-gradientSecondary-color: linear-gradient(from 0% 0% to 100% 200%, -fx-primary-color, -fx-secondary-color);
 }
 
-.tab-pane .tab-header-background {
-    -fx-background-color: #e1ebea; /* Colore di sfondo della barra dei tab */
-    background-color: #d3d3d3; /* Colore di sfondo della barra dei tab */
+.timeLabel {
+    -fx-font-size: 32px;
+    -fx-text-fill: -fx-primary-color;
+    -fx-font-weight: bold;
+    -fx-background-color: -fx-white-color;
+    -fx-background-radius: 10;
 }
 
-.tab-pane .tab {
-    -fx-font-size: 15px; /* Dimensione del testo dei tab */
-    -fx-background-color: #ffffff8f; /* Colore di sfondo del tab */
+.titleLabel {
+    -fx-font-size: 48px;
+    -fx-text-fill: -fx-primary-color;
+    -fx-font-weight: bold;
+
 }
 
-.tab-pane .tab:selected {
-    -fx-background-color: #ffffff; /* Colore di sfondo del tab selezionato */
-    background-color: #ffffff; /* Colore di sfondo del tab selezionato */
-    -fx-text-fill: #000000; /* Colore del testo del tab selezionato */
-    -fx-border-color: #ffffff00; /* Colore del bordo del tab selezionato */
-    /*-fx-background-top-left-radius: 8; 
-    -fx-background-top-right-radius: 8; */ 
-    -fx-background-radius: 8; /* Arrotonda gli angoli del tab selezionato */
+.accediButton {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: -fx-white-color;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
 }
 
-.table-view {
-    -fx-table-cell-border-color: #7c7c7c; /* Nascondi i bordi delle celle della tabella */
-}
-
-.table-view .column-header-background {
-    -fx-background-color: #d3d3d3; /* Colore di sfondo dell'header della tabella */
-    background-color: #d3d3d3;
-}
-
-.table-row-cell {
-    -fx-background-color: #ffffff; /* Colore di sfondo delle righe della tabella */
-    background-color: #ffffff; /* Colore di sfondo delle righe della tabella */
-}
-
-.table-view .column-header {
-    -fx-font-size: 12px; /* Dimensione del testo nell'header della tabella */
-    -fx-font-weight: normal; /* Grassetto nell'header della tabella */
-    -fx-background-color: #e7eeee; /* Colore di sfondo dell'header della tabella */
-
-    /* Tra una colonna e l'altra ci deve essere un bordo*/
-    -fx-border-width: 0.1;
-    -fx-border-color: #7c7c7c;
-}
-
-.text-field {
-    -fx-font-size: 12px; /* Dimensione del testo nei campi di testo */
-    font-size: 12px; /* Dimensione del testo nei campi di testo */
-}
-
-.button {
-    -fx-font-size: 14px; /* Dimensione del testo nei pulsanti */
-    font-size: 14px; /* Dimensione del testo nei pulsanti */
-    -fx-background-color: #e1eaeb; /* Colore di sfondo dei pulsanti */
+.accediButton:hover {
+    -fx-background-color: -fx-secondary-color;
     -fx-cursor: hand;
 }
 
-.label {
-    -fx-font-size: 12px; /* Dimensione del testo nelle etichette */
-    font-size: 18px; /* Dimensione del testo nelle etichette */
+.accediButton:pressed {
+    -fx-background-color: -fx-primary-color;
 }
 
-.label.title {
-    -fx-font-size: 30px; /* Dimensione del testo nelle etichette titolo */
-    -fx-background-color: #d3d3d3; /* Colore di sfondo delle etichette titolo */
-    -fx-background-radius: 10; /* Arrotonda gli angoli delle etichette titolo */
+/* Stile per la tab pane */
+.tab-pane {
+    -fx-background-color: transparent;
 }
 
-.label.time {
-    -fx-font-size: 30px; /* Dimensione del testo nelle etichette orario */
-    -fx-background-color: #d3d3d3; /* Colore di sfondo delle etichette orario */
-    -fx-background-radius: 10; /* Arrotonda gli angoli delle etichette orario */
+.tab-pane .tab-header-background {
+    -fx-background-color: transparent;
 }
 
-.backTitle {
-    -fx-font-size: 18px; /* Dimensione del testo nelle etichette titolo */
-    -fx-background-color: #e1eaeb; /* Colore di sfondo delle etichette titolo */
+.tab-pane .tab {
+    -fx-background-color: -fx-primary-color;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 7 7 0 0;
+    -fx-background-insets: 1 1 0 1;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: -fx-secondary-color;
+    -fx-font-size: 17px;
+    -fx-focus-color: transparent;
+}
+
+.tab-pane .tab .text {
+    -fx-fill: -fx-white-color;
+}
+
+/* Stile per la TableView */
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: -fx-gradientSecondary-color;
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 11 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-white-color;
+    /* Colore del testo */
+}
+
+.table-view .table-cell {
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 2 0 2 10px;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: -fx-light-blue-color1;
+    -fx-text-background-color: -fx-white-color;
+}
+
+
+.table-row-cell:selected {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-background-color: -fx-white-color;
+}
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+
+
+.datePicker {
+    -fx-font-size: 14px;
+    -fx-background-color: -fx-white-color;
+    -fx-background-radius: 10 0 0 10;
+}
+
+.date-picker .text-field {
+    -fx-border-color: transparent;
+    -fx-background-radius: 10 0 0 10;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: -fx-primary-color;
+    -fx-background-radius: 6;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: -fx-secondary-color;
+    -fx-cursor: hand;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: white;
+}
+
+.date-picker .cell {
+    -fx-background-color: rgb(238, 238, 238);
+    -fx-background-radius: 10;
+}
+
+.date-picker .cell:hover {
+    -fx-background-color: -fx-light-grey-color;
+    -fx-text-fill: black;
+}
+
+.date-picker .cell:focused {
+    -fx-background-color: -fx-light-grey-color;
+}
+
+.date-picker .selected {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+}
+
+.date-picker .selected:focused {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+}
+
+.date-picker .selected:hover {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+}
+
+
+.date-picker-popup {
+    -fx-background-color: -fx-primary-color;
+    -fx-background-radius: 20 20 2 2;
+    -fx-border-color: transparent;
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: -fx-primary-color;
+    -fx-background-radius: 20;
+}
+
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: -fx-secondary-color;
+}
+
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+.date-picker-popup .spinner .button .left-arrow:hover,
+.date-picker-popup .spinner .button .right-arrow:hover {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+.date-picker-popup .spinner .button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 6;
+    -fx-border-color: transparent;
+}
+
+.date-picker-popup .spinner .button:hover {
+    -fx-background-color: -fx-secondary-color;
+    -fx-background-radius: 6;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+/* Stile per i date picker */
+.date-picker {
+    -fx-background-color: -fx-primary-color;
+    -fx-background-radius: 7;
+}
+
+.date-picker .text-field {
+    -fx-border-color: transparent;
+    -fx-background-radius: 7 0 0 7;
+}
+
+.date-picker .text-field {
+    -fx-background-color: -fx-white-color;
+    -fx-background-radius: 7 0 0 7;
+    -fx-border-color: -fx-primary-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 7 0 0 7;
+
+}
+
+/* Stile per i bottoni */
+.button-cancel {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: -fx-white-color;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+}
+
+.button-cancel:hover {
+    -fx-background-color: -fx-secondary-color;
+    -fx-cursor: hand;
+}
+
+.button-cancel:pressed {
+    -fx-background-color: -fx-primary-color;
+}
+
+/* Stile per i text field */
+.text-field {
+    -fx-background-color: -fx-white-color;
+    -fx-background-radius: 10;
+    -fx-border-color: -fx-primary-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
 }
