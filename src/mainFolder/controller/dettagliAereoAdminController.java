@@ -52,9 +52,16 @@ public class dettagliAereoAdminController {
         postiOccupatiTxF.setText(String.valueOf(aereo.getNumeroPostiOccupatiInt()));
         terminalCmbx.setValue(String.valueOf(aereo.getTerminalInt()));
         statoCmbx.setValue(aereo.getStato());
-        inizioLavoriDp.setValue(aereo.getInizioLavori());
-        fineLavoriDp.setValue(aereo.getFineLavori());
-        hangarTxf.setText(aereo.getHangar());
+        // Se è in manutenzione mostro i campi
+        if (aereo.getStato().equals("In manutenzione")) {
+            inizioLavoriDp.setDisable(false);
+            fineLavoriDp.setDisable(false);
+            hangarTxf.setDisable(false);
+        } else {
+            inizioLavoriDp.setDisable(true);
+            fineLavoriDp.setDisable(true);
+            hangarTxf.setDisable(true);
+        }
     }
 
     @FXML
@@ -71,6 +78,19 @@ public class dettagliAereoAdminController {
 
         // Imposto Spinner
         ritardoSpn.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0));
+
+        // Se è in manutenzione mostro i campi
+        statoCmbx.setOnAction(e -> {
+            if (statoCmbx.getValue().equals("In manutenzione")) {
+                inizioLavoriDp.setDisable(false);
+                fineLavoriDp.setDisable(false);
+                hangarTxf.setDisable(false);
+            } else {
+                inizioLavoriDp.setDisable(true);
+                fineLavoriDp.setDisable(true);
+                hangarTxf.setDisable(true);
+            }
+        });
     }
 
     private void startClockUpdateAnimation() {

@@ -255,7 +255,7 @@ public class mainController {
             infoStage.setScene(new Scene(root));
 
             // Passo l'aereo alla seconda GUI
-            dettagliAereoController controller = loader.getController();
+            dettagliAereoAdminController controller = loader.getController();
             controller.setAereo(aereo);
 
             // Aggiungi un listener per gestire la chiusura della finestra delle
