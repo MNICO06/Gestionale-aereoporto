@@ -482,3 +482,104 @@
     -fx-background-insets: 20;
 
 }
+
+/* Stile per il comboBox */
+
+.combo-box-ModAereo {
+    -fx-background-color: -fx-white-color;
+    -fx-background-radius: 7;
+    -fx-border-color: -fx-primary-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 7;
+}
+
+.combo-box-ModAereo:hover {
+    -fx-background-color: -fx-light-blue-color1;
+    -fx-cursor: hand;
+}
+
+.combo-box-ModAereo:pressed {
+    -fx-background-color: -fx-light-blue-color2;
+}
+
+.combo-box-ModAereo .text {
+    -fx-fill: black;
+}
+
+.combo-box-ModAereo .arrow {
+    -fx-background-color: -fx-primary-color;
+}
+
+/* Stile per lo spinner */
+.spinner-ModAero .increment-arrow-button,
+.spinner-ModAero .decrement-arrow-button {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: -fx-white-color;
+    -fx-background-radius: 0;
+}
+
+.spinner-ModAero .increment-arrow-button{
+    -fx-background-radius: 0 6 0 0;
+}
+
+.spinner-ModAero .decrement-arrow-button{
+    -fx-background-radius: 0 0 6 0;
+}
+
+.spinner-ModAero .increment-arrow-button .increment-arrow,
+.spinner-ModAero .decrement-arrow-button .decrement-arrow {
+    -fx-background-color: -fx-white-color;
+}
+
+.spinner-ModAero .increment-arrow-button:hover,
+.spinner-ModAero .decrement-arrow-button:hover {
+    -fx-background-color: -fx-secondary-color;
+    -fx-cursor: hand;
+}
+
+.spinner-ModAero .increment-arrow-button:pressed,
+.spinner-ModAero .decrement-arrow-button:pressed {
+    -fx-background-color: -fx-primary-color;
+}
+
+.spinner {
+    -fx-background-color: -fx-white-color;
+    -fx-border-color: -fx-primary-color;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+}
+
+.spinner .text-field {
+    -fx-border-color: -fx-white-color;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+}
+
+/* Stile per i date picker */
+.date-picker-ModAero {
+    -fx-background-color: -fx-primary-color;
+    -fx-background-radius: 7;
+}
+
+.date-picker-ModAero .text-field {
+    -fx-border-color: transparent;
+    -fx-background-radius: 7 0 0 7;
+}
+
+.date-picker-ModAero .text-field {
+    -fx-background-color: -fx-white-color;
+    -fx-background-radius: 7 0 0 7;
+    -fx-border-color: -fx-primary-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 7 0 0 7;
+
+}
+
+/* Stile per le text field */
+.text-field-ModAero {
+    -fx-background-color: -fx-white-color;
+    -fx-background-radius: 7;
+    -fx-border-color: -fx-primary-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 7;
+}
