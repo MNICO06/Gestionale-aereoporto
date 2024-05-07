@@ -18,7 +18,6 @@ import mainFolder.model.Utenti;
 import mainFolder.salvataggioDati.LeggiDati;
 
 public class loginController {
-    private String schermataPrecedente;
 
     @FXML private TextField inserisciMail;
     @FXML private PasswordField inserisciPassword;
@@ -133,6 +132,8 @@ public class loginController {
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/prenotazioneGui.fxml"));
             Parent root = loader.load();
+            prenotazioneController controller = loader.getController();
+            controller.setLogged(true);
             Stage stage = new Stage();
             stage.setTitle("Prenotazione GUI");
             stage.setScene(new Scene(root));
