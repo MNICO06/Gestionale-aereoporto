@@ -73,6 +73,58 @@ public class Aerei {
         hangar = new SimpleStringProperty(null);
     }
 
+    //questo con lo stato, quindi quello aggiornato quello sopra poi non servirà
+    public Aerei(String modello, String provenienza, String destinazione, String compagnia, String codice,
+            int numMax, LocalDate giornoDiArrivo, LocalTime oraArrivo,
+            LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato) {
+
+        this.modelloAereo = new SimpleStringProperty(modello);
+        this.provenienza = new SimpleStringProperty(provenienza);
+        this.destinazione = new SimpleStringProperty(destinazione);
+        this.compagniaAerea = new SimpleStringProperty(compagnia);
+        this.codiceRegistrazione = new SimpleStringProperty(codice);
+        this.numeroMassimoPasseggeri = numMax;
+        this.giornoDiArrivo = new SimpleObjectProperty<>(giornoDiArrivo);
+        this.oraArrivo = new SimpleObjectProperty<>(oraArrivo);
+        this.giornoDiPartenza = new SimpleObjectProperty<>(giornoPartenza);
+        this.oraPartenza = new SimpleObjectProperty<>(oraPartenza);
+        this.intervalloDiGiorni = intervallo;
+        this.ritardo = new SimpleIntegerProperty(0); // Inizializzazione di ritardo
+        this.gate = new SimpleIntegerProperty(-1); // Inizializzazione di gate
+        this.terminal = new SimpleIntegerProperty(-1); // Inizializzazione di terminal
+        this.numeroPostiOccupati = new SimpleIntegerProperty(0); // Inizializzazione di posti occupati
+        inizioManutenzione = new SimpleObjectProperty<>(null);
+        fineManutenzione = new SimpleObjectProperty<>(null);
+        this.stato = new SimpleStringProperty(stato);
+        hangar = new SimpleStringProperty(null);
+    }
+
+    //versione aggiunta erei nel caso in cui ci sia come stato quello della manutenzione
+    public Aerei(String modello, String provenienza, String destinazione, String compagnia, String codice,
+            int numMax, LocalDate giornoDiArrivo, LocalTime oraArrivo,
+            LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato, LocalDate inizioManutenzione, LocalDate fineManutenzione, String hangar) {
+
+        this.modelloAereo = new SimpleStringProperty(modello);
+        this.provenienza = new SimpleStringProperty(provenienza);
+        this.destinazione = new SimpleStringProperty(destinazione);
+        this.compagniaAerea = new SimpleStringProperty(compagnia);
+        this.codiceRegistrazione = new SimpleStringProperty(codice);
+        this.numeroMassimoPasseggeri = numMax;
+        this.giornoDiArrivo = new SimpleObjectProperty<>(giornoDiArrivo);
+        this.oraArrivo = new SimpleObjectProperty<>(oraArrivo);
+        this.giornoDiPartenza = new SimpleObjectProperty<>(giornoPartenza);
+        this.oraPartenza = new SimpleObjectProperty<>(oraPartenza);
+        this.intervalloDiGiorni = intervallo;
+        this.ritardo = new SimpleIntegerProperty(0); // Inizializzazione di ritardo
+        this.gate = new SimpleIntegerProperty(-1); // Inizializzazione di gate
+        this.terminal = new SimpleIntegerProperty(-1); // Inizializzazione di terminal
+        this.numeroPostiOccupati = new SimpleIntegerProperty(0); // Inizializzazione di posti occupati
+        this.inizioManutenzione = new SimpleObjectProperty<>(inizioManutenzione);
+        this.fineManutenzione = new SimpleObjectProperty<>(fineManutenzione);
+        this.stato = new SimpleStringProperty(stato);
+        this.hangar = new SimpleStringProperty(hangar);
+    }
+
     //---------------------------getter------------------------------------------------
 
     public String getModello() {

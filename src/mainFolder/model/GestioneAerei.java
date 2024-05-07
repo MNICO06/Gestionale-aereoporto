@@ -79,9 +79,44 @@ public class GestioneAerei {
         elencoAereiTutti.add(a);
     }
 
+    //anche in questo caso questa è la versione con lo stato
+    public void addAereo(String modello, String provenienza, String destinazione, String compagnia, String codice, 
+     int numMax, LocalDate giornoArrivo, LocalTime oraArrivo, 
+      LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato) {
+        LocalDate arrivo = giornoArrivo;
+        LocalDate partenza = giornoPartenza;
+        while (arrivo.isBefore(LocalDate.now())) {
+                arrivo = arrivo.plusDays(intervallo);
+                partenza = partenza.plusDays(intervallo);
+        }
+
+        
+        Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo, stato);
+        a.setGate(assegnaGate());
+        a.setTerminal(1); // Un unico terminal
+        elencoAereiTutti.add(a);
+    }
+
+    //versione nel caso in cui ci sia anche lo stato manutenzione (inizio, fine e hangar)
+    public void addAereo(String modello, String provenienza, String destinazione, String compagnia, String codice, 
+     int numMax, LocalDate giornoArrivo, LocalTime oraArrivo, 
+      LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato, LocalDate inizioManutenzione, LocalDate fineManutenzione, String hangar) {
+        LocalDate arrivo = giornoArrivo;
+        LocalDate partenza = giornoPartenza;
+        while (arrivo.isBefore(LocalDate.now())) {
+                arrivo = arrivo.plusDays(intervallo);
+                partenza = partenza.plusDays(intervallo);
+        }
+
+        
+        Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo, stato, inizioManutenzione, fineManutenzione, hangar);
+        a.setGate(assegnaGate());
+        a.setTerminal(1); // Un unico terminal
+        elencoAereiTutti.add(a);
+    }
+
     public void rimuoviAereo(Aerei a) {
         elencoAereiTutti.remove(a);
-
     }
 
     public int assegnaGate() {
