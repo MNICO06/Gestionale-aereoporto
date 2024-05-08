@@ -179,6 +179,7 @@ public class dettagliAereoAdminController {
         
         // Aggiungo l'aereo alla lista
         gestioneAerei.addAereo(aereo);
+        System.out.println("Aereo aggiunto");
     }
 
     @FXML
@@ -294,28 +295,41 @@ public class dettagliAereoAdminController {
         }
 
         // Se è in modifica
-        if (c=="M"){
-            // Controllo che il gate sia libero dalla lista dei gate occupati o che sia quello dell'aereo
-            if (gateOccupati.get(Integer.parseInt(gateTxF.getText())-1) && Integer.parseInt(gateTxF.getText()) != aereo.getGateInt()) {
-                // Alert per errore
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Errore");
-                alert.setHeaderText("Errore");
-                alert.setContentText("Il gate selezionato è occupato");
-                alert.showAndWait();
-                return false;
+        try {
+            int gate = Integer.parseInt(gateTxF.getText());
+            if (c=="M"){
+                // Controllo che il gate sia un numero
+
+                // Controllo che il gate sia libero dalla lista dei gate occupati o che sia quello dell'aereo
+                if (gateOccupati.get(Integer.parseInt(gateTxF.getText())-1) && Integer.parseInt(gateTxF.getText()) != aereo.getGateInt()) {
+                    // Alert per errore
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Errore");
+                    alert.setHeaderText("Errore");
+                    alert.setContentText("Il gate selezionato è occupato");
+                    alert.showAndWait();
+                    return false;
+                }
+            } else {
+                // Controllo che il gate sia libero
+                if (gateOccupati.get(Integer.parseInt(gateTxF.getText())-1)) {
+                    // Alert per errore
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Errore");
+                    alert.setHeaderText("Errore");
+                    alert.setContentText("Il gate selezionato è occupato");
+                    alert.showAndWait();
+                    return false;
+                }
             }
-        } else {
-            // Controllo che il gate sia libero
-            if (gateOccupati.get(Integer.parseInt(gateTxF.getText())-1)) {
-                // Alert per errore
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Errore");
-                alert.setHeaderText("Errore");
-                alert.setContentText("Il gate selezionato è occupato");
-                alert.showAndWait();
-                return false;
-            }
+        } catch (NumberFormatException e) {
+            // Alert per errore
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText("Errore");
+            alert.setContentText("Inserire un gate valido (numero da 1 a 70)");
+            alert.showAndWait();
+            return false;
         }
 
         // Controllo la compagnia aerea se è vuota

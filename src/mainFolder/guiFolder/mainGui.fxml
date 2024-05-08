@@ -27,7 +27,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="accedi" layoutX="709.0" layoutY="8.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="197.0" styleClass="accediButton" text="Aggiungi Aereo" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="8.0">
+            <Button layoutX="709.0" layoutY="8.0" mnemonicParsing="false" onAction="#addAereo" prefHeight="45.0" prefWidth="197.0" styleClass="accediButton" text="Aggiungi Aereo" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="8.0">
                <font>
                   <Font size="15.0" />
                </font>

@@ -40,7 +40,6 @@ public class mainController {
 
     @FXML private Label orologio;
     @FXML private Label titolo;
-    @FXML private Button accedi;
 
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
     GestioneAerei gestioneAerei = GestioneAerei.getInstance();
@@ -112,9 +111,7 @@ public class mainController {
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
-        accedi.setDisable(true);
-        accedi.setOpacity(1);
-
+        /* 
         if (datePickerPartenze.getValue() == null) {
             setDataPartenza(LocalDate.now());
             changeDataPartnza();
@@ -129,34 +126,10 @@ public class mainController {
         if (datePickerManutenzione.getValue() == null) {
             setDataManutenzione(LocalDate.now());
         }
-
-        initializeTable();
-        setupRowSelectionListener();
-
-        datePickerPartenze.valueProperty().addListener((observable, oldValue, newValue) -> {
-            changeDataPartnza();
-        });
-        datePickerArrivo.valueProperty().addListener((observable, oldValue, newValue) -> {
-            changeDataArrivi();
-        });
-        /*
-        datePickerTerra.valueProperty().addListener((observable, oldValue, newValue) -> {
-            changeDataTerra();
-        });
-        datePickerManutenzione.valueProperty().addListener((observable, oldValue, newValue) -> {
-            changeDataManutenzione();
-        });
         */
 
-        // Listener per cambiamenti nei campi di input per i filtri delle partenze
-        destFiltPartenze.textProperty().addListener((observable, oldValue, newValue) -> {
-            changeDataPartenza();
-        });
-
-        compFiltPartenze.textProperty().addListener((observable, oldValue, newValue) -> {
-            changeDataPartenza();
-        });
-        
+        initializeTable();
+        setupRowSelectionListener();        
 
         //TODO: mettere anche ricerca compagnia e destinazione, aggiungi aereo, collegare altre due tabelle, modificare aerei
         //per la modifica io ci mettere quando fai il doppio click una cosa simile a quella per gli utente ma con un textfield nei punti in cui si può modificare
@@ -291,10 +264,35 @@ public class mainController {
         }
     }
 
+    @FXML
+    public void addAereo() {
+        // Carica una schermata vuota per aggiungere un aereo
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/dettagliAereoAdmin.fxml"));
+            Parent root = loader.load();
+            infoStage = new Stage();
+            infoStage.setTitle("Aggiungi Aereo");
+            infoStage.setScene(new Scene(root));
+
+            // Aggiungi un listener per gestire la chiusura della finestra delle
+            // informazioni
+            infoStage.setOnCloseRequest(event -> infoStage = null);
+
+            // Imposta le coordinate della finestra
+            Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+            double xOffset = 20; // spostamento orizzontale
+            double yOffset = 20; // spostamento verticale
+            infoStage.setX(primaryScreenBounds.getMinX() + xOffset);
+            infoStage.setY(primaryScreenBounds.getMinY() + yOffset);
+
+            infoStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // Filtri
     /* -- tab partenze -- */
     // Listener che quando cambia il testo del campo di ricerca aggiorna la tabella
-    public void changeDataPartnza() {
-        tabellaPartenza.setItems(gestioneAerei.getElencoListaPartenze(datePickerPartenze.getValue(), destFiltPartenze.getText(), compFiltPartenze.getText()));
-    }
+    
 }
