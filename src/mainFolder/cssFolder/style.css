@@ -72,7 +72,6 @@
     -fx-fill: -fx-white-color;
 }
 
-/* Stile per la TableView */
 .table-view {
     -fx-background-color: transparent;
 }
@@ -97,7 +96,7 @@
 }
 
 .table-view .column-header .label {
-    -fx-font-size: 15px;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: -fx-white-color;
     /* Colore del testo */
@@ -114,10 +113,30 @@
     -fx-text-background-color: -fx-white-color;
 }
 
+.table-row-cell:odd {
+    -fx-background-color: -fx-light-blue-color1;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:even {
+    -fx-background-color: -fx-light-blue-color2;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
 
 .table-row-cell:selected {
     -fx-background-color: -fx-primary-color;
     -fx-text-background-color: -fx-white-color;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
 }
 
 .table-view .virtual-flow .scroll-bar .increment-button,
@@ -126,6 +145,14 @@
     -fx-padding: 2;
 }
 
+.table-view .virtual-flow .scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-light-blue-color2;
+    -fx-background-insets: 0 0 2 2;
+}
+
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color: -fx-light-blue-color2;
+}
 
 .datePicker {
     -fx-font-size: 14px;
