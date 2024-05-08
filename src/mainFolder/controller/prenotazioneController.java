@@ -110,7 +110,7 @@ public class prenotazioneController {
         colNVolo.setCellValueFactory(cellData -> cellData.getValue().getCodiceProperty());
         colGate.setCellValueFactory(cellData -> cellData.getValue().getGateProperty().asObject());
         colCompagnia.setCellValueFactory(cellData -> cellData.getValue().getCompagniaProperty());
-        colStato.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
+        colStato.setCellValueFactory(cellData -> cellData.getValue().getStatoProperty());
 
         tblVoli.setItems(gestioneAerei.getElencoListaPartenze());
     }
