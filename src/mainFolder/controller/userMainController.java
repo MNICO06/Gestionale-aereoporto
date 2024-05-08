@@ -207,8 +207,6 @@ public class userMainController {
         gestioneAerei.setDataPartenza(dataDtpk.getValue());
     }
 
-
-
     // Metodo per il tasto Cerca
     @FXML
     public void cercaAerei() {

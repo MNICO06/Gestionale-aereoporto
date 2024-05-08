@@ -111,14 +111,17 @@ public class mainController {
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
-        /* 
+        setDataArrivi(LocalDate.now());
+        setDataPartenza(LocalDate.now());
+        setDataTerra(LocalDate.now());
+        setDataManutenzione(LocalDate.now());
+
+
         if (datePickerPartenze.getValue() == null) {
             setDataPartenza(LocalDate.now());
-            changeDataPartnza();
         }
         if (datePickerArrivo.getValue() == null) {
             setDataArrivi(LocalDate.now());
-            changeDataArrivi();
         }
         if (datePickerTerra.getValue() == null) {
             setDataTerra(LocalDate.now());
@@ -126,14 +129,48 @@ public class mainController {
         if (datePickerManutenzione.getValue() == null) {
             setDataManutenzione(LocalDate.now());
         }
-        */
+
+
+        changeDataArrivo();
+        changeDataPartenza();
+
+        datePickerArrivo.valueProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoArrivi(destFiltArrivi.getText(), compFiltArrivi.getText());
+        });
+
+        datePickerPartenze.valueProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoPartenze(destFiltPartenze.getText(), compFiltPartenze.getText());
+        });
+
+        datePickerManutenzione.valueProperty().addListener((observable, oldValue, newValue) -> {
+            
+        });
+
+        datePickerManutenzione.valueProperty().addListener((observable, oldValue, newValue) -> {
+            
+        });
+
+        destFiltArrivi.textProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoArrivi(newValue, compFiltArrivi.getText());
+        });
+
+        compFiltArrivi.textProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoArrivi(destFiltArrivi.getText(), newValue);
+        });
+
+        destFiltPartenze.textProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoPartenze(newValue, compFiltPartenze.getText());
+        });
+
+        compFiltPartenze.textProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoPartenze(destFiltPartenze.getText(), newValue);
+        });
+
 
         initializeTable();
         setupRowSelectionListener();        
 
-        //TODO: mettere anche ricerca compagnia e destinazione, aggiungi aereo, collegare altre due tabelle, modificare aerei
-        //per la modifica io ci mettere quando fai il doppio click una cosa simile a quella per gli utente ma con un textfield nei punti in cui si può modificare
-
+        
     }
 
     private void setDataPartenza(LocalDate date) {
@@ -187,7 +224,7 @@ public class mainController {
     
         tabellaArrivo.setItems(gestioneAerei.getElencoListaArrivi());
         tabellaPartenza.setItems(gestioneAerei.getElencoListaPartenze());
-        // TODO: tabellaTerra.setItems(gestioneAerei.getElencoListaTerra());
+        //tabellaTerra.setItems(gestioneAerei.getElencoListaTerra());
         /*
          * tabellaTerra.setItems(gestioneAerei.getElencoListaTerra());
          * tabellaManutenzione.setItems(gestioneAerei.getElencoListaManutenzione());
@@ -212,6 +249,48 @@ public class mainController {
     }
 
     @FXML
+    public void cercaAereiGiustoPartenze(String newValue, String compagnia) {
+        changeDataPartenza();
+        gestioneAerei.aggiornaPartenzaAdmin(newValue.toLowerCase(), compagnia.toLowerCase());
+    }
+
+    @FXML
+    public void cercaAereiGiustoArrivi(String newValue, String compagnia) {
+        changeDataArrivo();
+        gestioneAerei.aggiornaArrivoAdmin(newValue.toLowerCase(), compagnia.toLowerCase());
+    }
+
+    @FXML
+    public void cercaAereiGiustoTerra(String newValue, String compagnia) {
+        
+    }
+
+    @FXML
+    public void cercaAereiGiustoManutenzione(String newValue, String compagnia) {
+        
+    }
+
+    @FXML
+    public void changeDataArrivo() {
+        gestioneAerei.setDataArrivo(datePickerArrivo.getValue());
+    }
+
+    @FXML
+    public void changeDataPartenza() {
+        gestioneAerei.setDataPartenza(datePickerPartenze.getValue());
+    }
+
+    @FXML
+    public void changeDataTerra() {
+        
+    }
+
+    @FXML
+    public void changeDataManutenzione() {
+        
+    }
+
+    @FXML
     public void cancellaRicerca() {
         // Cancella tutti i filtri
         destFiltArrivi.clear();
@@ -226,7 +305,7 @@ public class mainController {
         setDataArrivi(LocalDate.now());
         setDataPartenza(LocalDate.now());
         setDataTerra(LocalDate.now());
-        setDataManutenzione(LocalDate.now());   
+        setDataManutenzione(LocalDate.now());
     }
 
     private void handleDoubleClick(Aerei aereo) {

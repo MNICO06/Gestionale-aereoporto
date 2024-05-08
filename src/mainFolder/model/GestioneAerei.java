@@ -23,6 +23,8 @@ public class GestioneAerei {
     private ObservableList<Aerei> elencoAereiArrivo = FXCollections.observableArrayList();
     private ObservableList<Aerei> elencoAereiTutti = FXCollections.observableArrayList();
     private ObservableList<Aerei> elencoAereiDeposito = FXCollections.observableArrayList();
+    private ObservableList<Aerei> elencoAereiTerra = FXCollections.observableArrayList();
+    private ObservableList<Aerei> elencoAereiManutenzione = FXCollections.observableArrayList();
     private static ArrayList<Boolean> gate = new ArrayList<Boolean>();
 
     ScriviDati scrivi;
@@ -54,6 +56,12 @@ public class GestioneAerei {
     }
     public ObservableList<Aerei> getElencoListaPartenze() {
         return elencoAereiPartenza;
+    }
+    public ObservableList<Aerei> getElencoListaTerra() {
+        return elencoAereiTerra;
+    }
+    public ObservableList<Aerei> getElencoListaManutenzione() {
+        return elencoAereiManutenzione;
     }
 
 
@@ -211,6 +219,42 @@ public class GestioneAerei {
                 }
         }
     }
+    
+    public void aggiornaArrivoAdmin(String parola, String compagnia) {
+        elencoAereiDeposito.clear();
+
+        for (int i = 0; i < elencoAereiArrivo.size(); i++) {
+                elencoAereiDeposito.add(elencoAereiArrivo.get(i));
+        }
+
+        elencoAereiArrivo.clear();
+
+        for (Aerei aereo : elencoAereiDeposito) {
+                if (aereo.getCompagnia().toLowerCase().contains(compagnia) &&
+                aereo.getProvenienza().toLowerCase().contains(parola)) {
+                        elencoAereiArrivo.add(aereo);
+                }
+        }
+    }
+
+    public void aggiornaPartenzaAdmin(String parola, String compagnia) {
+        elencoAereiDeposito.clear();
+
+        for (int i = 0; i < elencoAereiPartenza.size(); i++) {
+                elencoAereiDeposito.add(elencoAereiPartenza.get(i));
+        }
+
+        elencoAereiPartenza.clear();
+
+        for (Aerei aereo : elencoAereiDeposito) {
+                if (aereo.getCompagnia().toLowerCase().contains(compagnia) &&
+                aereo.getDestinazione().toLowerCase().contains(parola)) {
+                        elencoAereiPartenza.add(aereo);
+                }
+        }
+    }
+
+
 
     private void bubbleSortByOraPartenza(ObservableList<Aerei> list) {
         int n = list.size();
