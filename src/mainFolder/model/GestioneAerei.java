@@ -25,7 +25,7 @@ public class GestioneAerei {
     private ObservableList<Aerei> elencoAereiArrivo = FXCollections.observableArrayList();
     private ObservableList<Aerei> elencoAereiTutti = FXCollections.observableArrayList();
     private ObservableList<Aerei> elencoAereiDeposito = FXCollections.observableArrayList();
-    private ArrayList<Boolean> gate = new ArrayList<Boolean>();
+    private static ArrayList<Boolean> gate = new ArrayList<Boolean>();
 
     ScriviDati scrivi;
     LeggiDati leggi;
@@ -42,6 +42,10 @@ public class GestioneAerei {
         for (int i = 0; i < 70; i++) {
                 gate.add(false);
         }
+    }
+
+    public ArrayList<Boolean> getGate() {
+        return gate;
     }
 
     public ObservableList<Aerei> getElencoLista() {
@@ -114,6 +118,11 @@ public class GestioneAerei {
         a.setTerminal(1); // Un unico terminal
         elencoAereiTutti.add(a);
     }
+
+    // version incui venga passato un aereo già creato
+        public void addAereo(Aerei a) {
+                elencoAereiTutti.add(a);
+        }
 
     public void rimuoviAereo(Aerei a) {
         elencoAereiTutti.remove(a);

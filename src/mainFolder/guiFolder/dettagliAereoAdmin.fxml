@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -81,7 +80,7 @@
                         <Label styleClass="labelCustom1" text="Ora arrivo" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                         <Label styleClass="labelCustom1" text="Giorno Partenza" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                         <Label styleClass="labelCustom1" text="Ora partenza" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <Label styleClass="labelCustom1" text="Ritardo" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <Label styleClass="labelCustom1" text="Ritardo (minuti)" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                         <TextField fx:id="provenienzaTxF" styleClass="text-field-ModAero" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -161,16 +160,22 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
                         </DatePicker>
-                        <Spinner fx:id="ritardoSpn" styleClass="spinner-ModAero" GridPane.columnIndex="5" GridPane.rowIndex="4">
-                           <GridPane.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </GridPane.margin>
-                        </Spinner>
                         <ComboBox fx:id="terminalCmbx" prefWidth="150.0" styleClass="combo-box-ModAereo" GridPane.columnIndex="2" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
                         </ComboBox>
+                        <TextField fx:id="ritardoTxF" styleClass="text-field-ModAero" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label styleClass="labelCustom1" text="Codice Aereo" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                        <TextField fx:id="codiceTxF" styleClass="text-field-ModAero" GridPane.columnIndex="5" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
                      </children>
                   </GridPane>
                   <GridPane>
@@ -215,8 +220,8 @@
                       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="modificaBtn" mnemonicParsing="false" prefHeight="123.0" prefWidth="231.0" styleClass="pagesButtonSx" text="Modifica" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button fx:id="salvaBtn" mnemonicParsing="false" prefHeight="114.0" prefWidth="259.0" styleClass="pagesButtonDx" text="Salva" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Button fx:id="modificaBtn" mnemonicParsing="false" onAction="#modifica" prefHeight="123.0" prefWidth="231.0" styleClass="pagesButtonSx" text="Modifica" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="salvaBtn" mnemonicParsing="false" onAction="#salva" prefHeight="114.0" prefWidth="259.0" styleClass="pagesButtonDx" text="Salva" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>
