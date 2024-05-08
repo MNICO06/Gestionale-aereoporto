@@ -66,7 +66,7 @@ public class userMainController {
     public void setCercaTxt(String cercaText) {
         // Imposto la textfield con il testo di ricerca
         cercaTxfield.setText(cercaText);
-        cercaAerei();
+        //cercaAerei();
     }
 
     public void setDataPartenze(LocalDate dataPartenze) {
@@ -117,9 +117,12 @@ public class userMainController {
         });
 
         dataDtpk.valueProperty().addListener((observable, oldValue, newValue) -> {
-            changeData();
+            cercaAereiGiusto(cercaTxfield.getText());
         });
 
+        cercaTxfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiusto(newValue);
+        });
 
     }
 
@@ -209,17 +212,23 @@ public class userMainController {
     // Metodo per il tasto Cerca
     @FXML
     public void cercaAerei() {
+
+    }
+
+    @FXML
+    public void cercaAereiGiusto(String newValue) {
+
+        changeData();
+
         if (partenzeSelected) {
-            gestioneAerei.aggiornaPartenza(cercaTxfield.getText().toLowerCase());
+            gestioneAerei.aggiornaPartenza(newValue.toLowerCase());
         }
         else {
-            gestioneAerei.aggiornaArrivo(cercaTxfield.getText().toLowerCase());
+            gestioneAerei.aggiornaArrivo(newValue.toLowerCase());
         }
-        if (cercaTxfield.getText().isEmpty()) {
-            gestioneAerei.setDataArrivo(dataDtpk.getValue());
-            gestioneAerei.setDataPartenza(dataDtpk.getValue());
-        }
+        
     }
+
 
 
     private void checkLogin() {
