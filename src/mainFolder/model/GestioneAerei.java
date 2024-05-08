@@ -325,7 +325,7 @@ public class GestioneAerei {
                 }
         }
     }
-    
+
 
     private void bubbleSortByOraPartenza(ObservableList<Aerei> list) {
         int n = list.size();

@@ -147,35 +147,25 @@ public class dettagliAereoAdminController {
         LocalDate fineLavori = fineLavoriDp.getValue();
         String hangar = hangarTxf.getText();
 
-        // Aggiungo l'aereo
-        Aerei aereo = new Aerei();
-        aereo.setModello(modello);
-        aereo.setProvenienza(provenienza);
-        aereo.setDestinazione(destinazione);
+
+        //metodi per salvare nuovo aereo (manca intervallo da aggiungere alla screen)
+        if (stato.equals("In manutenzione")) {
+            //Aerei aereo = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
+            //postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato,
+            //inizioLavori, fineLavori, hangar);
+        }
+        else {
+            //Aerei aereo = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
+            //postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato);
+        }
+
         aereo.setTerminal(terminal);
         aereo.setGate(gate);
         // Modifico la lista dei gate occupati
         gateOccupati.set(gate-1, true);
-        aereo.setCompagnia(compagnia);
-        aereo.setPostiMassimi(postiTotali);
         aereo.setNumeroPostiOccupati(postiOccupati);
-        aereo.setStato(stato);
-        aereo.setGiornoArrivo(giornoArrivo);
-        aereo.setGiornoPartenza(giornoPartenza);
-        aereo.setOraArrivo(orarioArrivo);
-        aereo.setOraPartenza(orarioPartenza);
         aereo.setRitardo(ritardo);
-        aereo.setCodice(codice);
-        // Se è in manutenzione
-        if(stato.equals("In manutenzione")){
-            aereo.setGiornoInizioManutenzione(inizioLavori);
-            aereo.setGiornoFineManutenzione(fineLavori);
-            aereo.setHangar(hangar);
-        } else {
-            aereo.setGiornoInizioManutenzione(null);
-            aereo.setGiornoFineManutenzione(null);
-            aereo.setHangar(null);
-        }
+
         
         // Aggiungo l'aereo alla lista
         gestioneAerei.addAereo(aereo);

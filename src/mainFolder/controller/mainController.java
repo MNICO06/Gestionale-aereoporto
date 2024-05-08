@@ -185,7 +185,7 @@ public class mainController {
         });
 
         initializeTable();
-        setupRowSelectionListener();        
+        setupRowSelectionListener();
         
     }
 
