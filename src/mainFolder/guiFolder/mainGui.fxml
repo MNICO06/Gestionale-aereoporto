@@ -52,7 +52,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tabellaPartenza" layoutX="10.0" layoutY="32.0" prefHeight="293.0" prefWidth="600.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tabellaPartenza" layoutX="26.0" layoutY="32.0" prefHeight="293.0" prefWidth="975.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="20.0">
                            <columns>
                               <TableColumn fx:id="colonnaOrarioPartenza" prefWidth="113.0" text="Orario" />
                               <TableColumn fx:id="colonnaRitardoPartenza" prefWidth="87.0" text="Ritardo" />
@@ -81,13 +81,13 @@
                           </rowConstraints>
                            <children>
                               <Label prefHeight="17.0" prefWidth="77.0" text="Destinazione:" />
-                              <TextField prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1">
+                              <TextField fx:id="destFiltPartenze" prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </TextField>
                               <Label text="Compagnia:" GridPane.columnIndex="2" />
-                              <TextField prefHeight="25.0" prefWidth="451.0" GridPane.columnIndex="3">
+                              <TextField fx:id="compFiltPartenze" prefHeight="25.0" prefWidth="451.0" GridPane.columnIndex="3">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
@@ -98,7 +98,7 @@
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </DatePicker>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" styleClass="button-cancel" text="Cancella Filtri" GridPane.columnIndex="6">
+                              <Button fx:id="cancPartenze" mnemonicParsing="false" onAction="#cancellaRicerca" prefHeight="25.0" prefWidth="120.0" styleClass="button-cancel" text="Cancella Filtri" GridPane.columnIndex="6">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>
@@ -114,11 +114,11 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="datePickerArrivi" text="Arrivi">
+          <Tab text="Arrivi">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tabellaArrivo" prefHeight="301.0" prefWidth="296.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tabellaArrivo" prefHeight="301.0" prefWidth="296.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="20.0">
                           <columns>
                             <TableColumn fx:id="colonnaOrarioArrivo" prefWidth="63.0" text="Orario" />
                               <TableColumn fx:id="colonnaRitardoArrivo" prefWidth="57.0" text="Ritardo" />
@@ -147,13 +147,13 @@
                            </rowConstraints>
                            <children>
                               <Label prefHeight="17.0" prefWidth="77.0" text="Destinazione:" />
-                              <TextField prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1">
+                              <TextField fx:id="destFiltArrivi" prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </TextField>
                               <Label text="Compagnia:" GridPane.columnIndex="2" />
-                              <TextField prefHeight="25.0" prefWidth="451.0" GridPane.columnIndex="3">
+                              <TextField fx:id="compFiltArrivi" prefHeight="25.0" prefWidth="451.0" GridPane.columnIndex="3">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
@@ -164,7 +164,7 @@
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </DatePicker>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Cancella Filtri" GridPane.columnIndex="6">
+                              <Button fx:id="cancArrivi" mnemonicParsing="false" onAction="#cancellaRicerca" prefHeight="25.0" prefWidth="120.0" styleClass="button-cancel" text="Cancella Filtri" GridPane.columnIndex="6">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>
@@ -184,7 +184,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tabellaTerra" prefHeight="301.0" prefWidth="296.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tabellaTerra" prefHeight="301.0" prefWidth="296.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="20.0">
                            <columns>
                               <TableColumn fx:id="colonnaOrarioTerra" prefWidth="63.0" text="Orario" />
                               <TableColumn fx:id="colonnaRitardoTerra" prefWidth="57.0" text="Ritardo" />
@@ -213,13 +213,13 @@
                            </rowConstraints>
                            <children>
                               <Label prefHeight="17.0" prefWidth="77.0" text="Destinazione:" />
-                              <TextField prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1">
+                              <TextField fx:id="destFiltTerra" prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </TextField>
                               <Label text="Compagnia:" GridPane.columnIndex="2" />
-                              <TextField prefHeight="25.0" prefWidth="451.0" GridPane.columnIndex="3">
+                              <TextField fx:id="compFiltTerra" prefHeight="25.0" prefWidth="451.0" GridPane.columnIndex="3">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
@@ -230,7 +230,7 @@
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </DatePicker>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Cancella Filtri" GridPane.columnIndex="6">
+                              <Button fx:id="cancTerra" mnemonicParsing="false" onAction="#cancellaRicerca" prefHeight="25.0" prefWidth="120.0" styleClass="button-cancel" text="Cancella Filtri" GridPane.columnIndex="6">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>
@@ -250,7 +250,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tabellaManutenzione" prefHeight="301.0" prefWidth="296.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tabellaManutenzione" prefHeight="301.0" prefWidth="296.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="20.0">
                            <columns>
                               <TableColumn fx:id="colonnaNVoloManutenzione" prefWidth="170.0" text="Volo" />
                               <TableColumn fx:id="colonnaCompagniaManutenzione" prefWidth="132.0" text="Compagnia" />
@@ -277,13 +277,13 @@
                            </rowConstraints>
                            <children>
                               <Label prefHeight="17.0" prefWidth="77.0" text="Destinazione:" />
-                              <TextField fx:id="destinazioneFiltro" prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1">
+                              <TextField fx:id="destFiltManutenzione" prefHeight="25.0" prefWidth="452.0" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </TextField>
                               <Label text="Compagnia:" GridPane.columnIndex="2" />
-                              <TextField fx:id="compagniaFiltro" prefHeight="25.0" prefWidth="451.0" GridPane.columnIndex="3">
+                              <TextField fx:id="compFiltManutenzione" prefHeight="25.0" prefWidth="451.0" GridPane.columnIndex="3">
                                  <GridPane.margin>
                                     <Insets right="15.0" />
                                  </GridPane.margin>
@@ -294,7 +294,7 @@
                                     <Insets right="15.0" />
                                  </GridPane.margin>
                               </DatePicker>
-                              <Button mnemonicParsing="false" onAction="#cancellaRicerca" prefHeight="25.0" prefWidth="120.0" text="Cancella Filtri" GridPane.columnIndex="6">
+                              <Button fx:id="cancManutenzione" mnemonicParsing="false" onAction="#cancellaRicerca" prefHeight="25.0" prefWidth="120.0" styleClass="button-cancel" text="Cancella Filtri" GridPane.columnIndex="6">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>

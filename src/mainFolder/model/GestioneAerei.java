@@ -7,9 +7,7 @@ package mainFolder.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import mainFolder.salvataggioDati.LeggiDati;

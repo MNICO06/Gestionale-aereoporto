@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.animation.Animation;
@@ -40,12 +41,6 @@ public class mainController {
     @FXML private Label orologio;
     @FXML private Label titolo;
     @FXML private Button accedi;
-    @FXML private DatePicker datePickerPartenze;
-    @FXML private DatePicker datePickerArrivo;
-    @FXML private DatePicker datePickerTerra;
-    @FXML private DatePicker datePickerManutenzione;
-    @FXML private TextField destinazioneFiltro;
-    @FXML private TextField compagniaFiltro;
 
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
     GestioneAerei gestioneAerei = GestioneAerei.getInstance();
@@ -83,6 +78,28 @@ public class mainController {
     @FXML private TableColumn<Aerei, LocalDate> colonnaInizioLavoriManutenzione;
     @FXML private TableColumn<Aerei, LocalDate> colonnaFineLavoriManutenzione;
     @FXML private TableColumn<Aerei, String> colonnaHangarManutenzione;
+
+    // Filtri
+    // Partenze
+    @FXML private DatePicker datePickerPartenze;
+    @FXML private TextField destFiltPartenze;
+    @FXML private TextField compFiltPartenze;
+    @FXML private Button cancPartenze;
+    // Arrivi
+    @FXML private DatePicker datePickerArrivo;
+    @FXML private TextField destFiltArrivi;
+    @FXML private TextField compFiltArrivi;
+    @FXML private Button cancArrivi;
+    // Terra
+    @FXML private DatePicker datePickerTerra;
+    @FXML private TextField destFiltTerra;
+    @FXML private TextField compFiltTerra;
+    @FXML private Button cancTerra;
+    // Manutenzione
+    @FXML private DatePicker datePickerManutenzione;
+    @FXML private TextField destFiltManutenzione;
+    @FXML private TextField compFiltManutenzione;
+    @FXML private Button cancManutenzione;
 
     private Stage infoStage;
 
@@ -131,6 +148,14 @@ public class mainController {
         });
         */
 
+        // Listener per cambiamenti nei campi di input per i filtri delle partenze
+        destFiltPartenze.textProperty().addListener((observable, oldValue, newValue) -> {
+            changeDataPartenza();
+        });
+
+        compFiltPartenze.textProperty().addListener((observable, oldValue, newValue) -> {
+            changeDataPartenza();
+        });
         
 
         //TODO: mettere anche ricerca compagnia e destinazione, aggiungi aereo, collegare altre due tabelle, modificare aerei
@@ -189,6 +214,11 @@ public class mainController {
     
         tabellaArrivo.setItems(gestioneAerei.getElencoListaArrivi());
         tabellaPartenza.setItems(gestioneAerei.getElencoListaPartenze());
+        // TODO: tabellaTerra.setItems(gestioneAerei.getElencoListaTerra());
+        /*
+         * tabellaTerra.setItems(gestioneAerei.getElencoListaTerra());
+         * tabellaManutenzione.setItems(gestioneAerei.getElencoListaManutenzione());
+         */
     }
 
     private void setupRowSelectionListener() {
@@ -208,36 +238,22 @@ public class mainController {
 
     }
 
-
-    @FXML
-    public void changeDataArrivi() {
-        gestioneAerei.setDataArrivo(datePickerArrivo.getValue());
-    }
-
-    @FXML
-    public void changeDataPartnza() {
-        gestioneAerei.setDataPartenza(datePickerPartenze.getValue());
-    }
-
-    @FXML
-    public void changeDataTerra() {
-
-    }
-
-    @FXML
-    public void changeDataManutenzione() {
-        
-    }
-
-
     @FXML
     public void cancellaRicerca() {
-        if (!destinazioneFiltro.getText().isEmpty()) {
-            destinazioneFiltro.clear();
-        }
-        if (!compagniaFiltro.getText().isEmpty()) {
-            compagniaFiltro.clear();
-        }
+        // Cancella tutti i filtri
+        destFiltArrivi.clear();
+        compFiltArrivi.clear();
+        destFiltPartenze.clear();
+        compFiltPartenze.clear();
+        destFiltTerra.clear();
+        compFiltTerra.clear();
+        destFiltManutenzione.clear();
+        compFiltManutenzione.clear();
+        // azzera le i datepicker
+        setDataArrivi(LocalDate.now());
+        setDataPartenza(LocalDate.now());
+        setDataTerra(LocalDate.now());
+        setDataManutenzione(LocalDate.now());   
     }
 
     private void handleDoubleClick(Aerei aereo) {
@@ -275,4 +291,10 @@ public class mainController {
         }
     }
 
+    // Filtri
+    /* -- tab partenze -- */
+    // Listener che quando cambia il testo del campo di ricerca aggiorna la tabella
+    public void changeDataPartnza() {
+        tabellaPartenza.setItems(gestioneAerei.getElencoListaPartenze(datePickerPartenze.getValue(), destFiltPartenze.getText(), compFiltPartenze.getText()));
+    }
 }
