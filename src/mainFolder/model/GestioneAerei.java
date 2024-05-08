@@ -185,6 +185,42 @@ public class GestioneAerei {
         bubbleSortByOraPartenza(elencoAereiArrivo);
     }
 
+    public void setDataTerra(LocalDate data) {
+        elencoAereiDeposito.clear();
+
+        for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                elencoAereiDeposito.add(elencoAereiTutti.get(i));
+        }
+
+        elencoAereiTerra.clear();
+
+        for (int i = 0; i < elencoAereiDeposito.size(); i++) {
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) && elencoAereiDeposito.get(i).getStato().equals("in attesa")) {
+                        elencoAereiTerra.add(elencoAereiDeposito.get(i));
+                }
+        }
+
+        bubbleSortByOraPartenza(elencoAereiTerra);
+    }
+
+    public void setDataManutenzione(LocalDate data) {
+        elencoAereiDeposito.clear();
+
+        for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                elencoAereiDeposito.add(elencoAereiTutti.get(i));
+        }
+
+        elencoAereiManutenzione.clear();
+
+        for (int i = 0; i < elencoAereiDeposito.size(); i++) {
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) && elencoAereiDeposito.get(i).getStato().equals("in manutenzione")) {
+                        elencoAereiManutenzione.add(elencoAereiDeposito.get(i));
+                }
+        }
+
+        bubbleSortByOraPartenza(elencoAereiManutenzione);
+    }
+
 
     public void aggiornaArrivo(String parola) {
         elencoAereiDeposito.clear();
@@ -254,7 +290,42 @@ public class GestioneAerei {
         }
     }
 
+    public void aggiornaTerraAdmin(String parola, String compagnia) {
+        elencoAereiDeposito.clear();
 
+        for (int i = 0; i < elencoAereiTerra.size(); i++) {
+                elencoAereiDeposito.add(elencoAereiTerra.get(i));
+        }
+
+        elencoAereiTerra.clear();
+
+        for (Aerei aereo : elencoAereiDeposito) {
+                if (aereo.getCompagnia().toLowerCase().contains(compagnia) &&
+                aereo.getDestinazione().toLowerCase().contains(parola) &&
+                aereo.getStato().equals("in attesa")) {
+                        elencoAereiTerra.add(aereo);
+                }
+        }
+    }
+
+    public void aggiornaManutenzioneAdmin(String parola, String compagnia) {
+        elencoAereiDeposito.clear();
+
+        for (int i = 0; i < elencoAereiManutenzione.size(); i++) {
+                elencoAereiDeposito.add(elencoAereiManutenzione.get(i));
+        }
+
+        elencoAereiManutenzione.clear();
+
+        for (Aerei aereo : elencoAereiDeposito) {
+                if (aereo.getCompagnia().toLowerCase().contains(compagnia) &&
+                aereo.getDestinazione().toLowerCase().contains(parola) &&
+                aereo.getStato().equals("in manutenzione")) {
+                        elencoAereiManutenzione.add(aereo);
+                }
+        }
+    }
+    
 
     private void bubbleSortByOraPartenza(ObservableList<Aerei> list) {
         int n = list.size();

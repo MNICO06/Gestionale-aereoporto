@@ -133,6 +133,8 @@ public class mainController {
 
         changeDataArrivo();
         changeDataPartenza();
+        changeDataTerra();
+        changeDataManutenzione();
 
         datePickerArrivo.valueProperty().addListener((observable, oldValue, newValue) -> {
             cercaAereiGiustoArrivi(destFiltArrivi.getText(), compFiltArrivi.getText());
@@ -143,11 +145,11 @@ public class mainController {
         });
 
         datePickerManutenzione.valueProperty().addListener((observable, oldValue, newValue) -> {
-            
+            cercaAereiGiustoManutenzione(destFiltManutenzione.getText(), compFiltManutenzione.getText());
         });
 
-        datePickerManutenzione.valueProperty().addListener((observable, oldValue, newValue) -> {
-            
+        datePickerTerra.valueProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoTerra(destFiltTerra.getText(), compFiltTerra.getText());
         });
 
         destFiltArrivi.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -166,10 +168,24 @@ public class mainController {
             cercaAereiGiustoPartenze(destFiltPartenze.getText(), newValue);
         });
 
+        destFiltManutenzione.textProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoManutenzione(newValue, compFiltPartenze.getText());
+        });
+
+        compFiltManutenzione.textProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoManutenzione(destFiltPartenze.getText(), newValue);
+        });
+
+        destFiltTerra.textProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoTerra(newValue, compFiltPartenze.getText());
+        });
+
+        compFiltTerra.textProperty().addListener((observable, oldValue, newValue) -> {
+            cercaAereiGiustoTerra(destFiltPartenze.getText(), newValue);
+        });
 
         initializeTable();
         setupRowSelectionListener();        
-
         
     }
 
@@ -224,11 +240,9 @@ public class mainController {
     
         tabellaArrivo.setItems(gestioneAerei.getElencoListaArrivi());
         tabellaPartenza.setItems(gestioneAerei.getElencoListaPartenze());
-        //tabellaTerra.setItems(gestioneAerei.getElencoListaTerra());
-        /*
-         * tabellaTerra.setItems(gestioneAerei.getElencoListaTerra());
-         * tabellaManutenzione.setItems(gestioneAerei.getElencoListaManutenzione());
-         */
+        tabellaTerra.setItems(gestioneAerei.getElencoListaTerra());
+        tabellaManutenzione.setItems(gestioneAerei.getElencoListaManutenzione());
+
     }
 
     private void setupRowSelectionListener() {
@@ -262,12 +276,14 @@ public class mainController {
 
     @FXML
     public void cercaAereiGiustoTerra(String newValue, String compagnia) {
-        
+        changeDataTerra();
+        gestioneAerei.aggiornaTerraAdmin(newValue.toLowerCase(),compagnia.toLowerCase());
     }
 
     @FXML
     public void cercaAereiGiustoManutenzione(String newValue, String compagnia) {
-        
+        changeDataManutenzione();
+        gestioneAerei.aggiornaManutenzioneAdmin(newValue.toLowerCase(),compagnia.toLowerCase());
     }
 
     @FXML
@@ -282,12 +298,12 @@ public class mainController {
 
     @FXML
     public void changeDataTerra() {
-        
+        gestioneAerei.setDataTerra(datePickerTerra.getValue());
     }
 
     @FXML
     public void changeDataManutenzione() {
-        
+        gestioneAerei.setDataManutenzione(datePickerManutenzione.getValue());
     }
 
     @FXML
