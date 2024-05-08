@@ -124,6 +124,28 @@ public class Aerei {
         this.stato = new SimpleStringProperty(stato);
         this.hangar = new SimpleStringProperty(hangar);
     }
+    
+    public Aerei() {
+        this.modelloAereo = new SimpleStringProperty();
+        this.provenienza = new SimpleStringProperty();
+        this.destinazione = new SimpleStringProperty();
+        this.compagniaAerea = new SimpleStringProperty();
+        this.codiceRegistrazione = new SimpleStringProperty();
+        this.numeroMassimoPasseggeri = 0;
+        this.giornoDiArrivo = new SimpleObjectProperty<>();
+        this.oraArrivo = new SimpleObjectProperty<>();
+        this.giornoDiPartenza = new SimpleObjectProperty<>();
+        this.oraPartenza = new SimpleObjectProperty<>();
+        this.intervalloDiGiorni = 0;
+        this.ritardo = new SimpleIntegerProperty(0); // Inizializzazione di ritardo
+        this.gate = new SimpleIntegerProperty(-1); // Inizializzazione di gate
+        this.terminal = new SimpleIntegerProperty(-1); // Inizializzazione di terminal
+        this.numeroPostiOccupati = new SimpleIntegerProperty(0); // Inizializzazione di posti occupati
+        inizioManutenzione = new SimpleObjectProperty<>(null);
+        fineManutenzione = new SimpleObjectProperty<>(null);
+        this.stato = new SimpleStringProperty("in servizio");
+        hangar = new SimpleStringProperty(null);
+    }
 
     //---------------------------getter------------------------------------------------
 
@@ -338,6 +360,10 @@ public class Aerei {
         this.numeroPostiOccupati.set(numeroPostiOccupati);
     }
 
+    public void setPostiMassimi(int postiMassimi) {
+        this.numeroPostiOccupati.set(postiMassimi);
+    }
+
     public void setGate(int gate) {
         this.gate.set(gate);
     }
@@ -398,5 +424,16 @@ public class Aerei {
         this.hangar.set(hangar);
     }
 
+    public void setModello(String modello) {
+        this.modelloAereo.set(modello);
+    }
+
+    public void setCompagnia(String compagnia) {
+        this.compagniaAerea.set(compagnia);
+    }
+
+    public void setCodice(String codice) {
+        this.codiceRegistrazione.set(codice);
+    }
     
 }
