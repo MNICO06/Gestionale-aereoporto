@@ -177,6 +177,41 @@ public class GestioneAerei {
         bubbleSortByOraPartenza(elencoAereiArrivo);
     }
 
+
+    public void aggiornaArrivo(String parola) {
+        elencoAereiDeposito.clear();
+
+        for (int i = 0; i < elencoAereiArrivo.size(); i++) {
+                elencoAereiDeposito.add(elencoAereiArrivo.get(i));
+        }
+
+        elencoAereiArrivo.clear();
+
+        for (Aerei aereo : elencoAereiDeposito) {
+                if (aereo.getCompagnia().toLowerCase().contains(parola) ||
+                aereo.getProvenienza().toLowerCase().contains(parola)) {
+                        elencoAereiArrivo.add(aereo);
+                }
+        }
+    }
+
+    public void aggiornaPartenza(String parola) {
+        elencoAereiDeposito.clear();
+
+        for (int i = 0; i < elencoAereiPartenza.size(); i++) {
+                elencoAereiDeposito.add(elencoAereiPartenza.get(i));
+        }
+
+        elencoAereiPartenza.clear();
+
+        for (Aerei aereo : elencoAereiDeposito) {
+                if (aereo.getCompagnia().toLowerCase().contains(parola) ||
+                aereo.getDestinazione().toLowerCase().contains(parola)) {
+                        elencoAereiPartenza.add(aereo);
+                }
+        }
+    }
+
     private void bubbleSortByOraPartenza(ObservableList<Aerei> list) {
         int n = list.size();
         for (int i = 0; i < n - 1; i++) {
@@ -200,56 +235,6 @@ public class GestioneAerei {
         }
 
         scrivi.scriviAerei(elencoAereiTutti);
-    }
-
-    public void filterPartenze(String searchTerm, LocalDate searchDate) {
-            elencoAereiDeposito.clear();
-
-            for (Aerei aereo : elencoAereiPartenza) {
-                    // Check if the modello or provenienza matches the search term and the
-                    // giornoPartenza matches the search date
-                    if ((aereo.getModello().toLowerCase().contains(searchTerm) ||
-                        aereo.getDestinazione().toLowerCase().contains(searchTerm) ||
-                        aereo.getProvenienza().toLowerCase().contains(searchTerm) ||
-                        aereo.getCompagnia().toLowerCase().contains(searchTerm) ||
-                        aereo.getCodice().toLowerCase().contains(searchTerm)) &&
-                        aereo.getGiornoPartenzaProperty().getValue().isEqual(searchDate)) {
-                                elencoAereiDeposito.add(aereo);
-                    }
-            }
-
-            elencoAereiPartenza.clear();
-
-            for (int i = 0; i < elencoAereiDeposito.size(); i++) {
-                elencoAereiPartenza.add(elencoAereiDeposito.get(i));    
-            }
-
-            bubbleSortByOraPartenza(elencoAereiDeposito);
-    }
-
-    public void filterArrivi(String searchTerm, LocalDate searchDate) {
-            elencoAereiDeposito.clear();
-
-            for (Aerei aereo : elencoAereiArrivo) {
-                    // Check if the modello or destinazione matches the search term and the
-                    // giornoArrivo matches the search date
-                    if ((aereo.getModello().toLowerCase().contains(searchTerm) ||
-                        aereo.getDestinazione().toLowerCase().contains(searchTerm) ||
-                        aereo.getProvenienza().toLowerCase().contains(searchTerm) ||
-                        aereo.getCompagnia().toLowerCase().contains(searchTerm) ||
-                        aereo.getCodice().toLowerCase().contains(searchTerm))&& 
-                        aereo.getGiornoArrivoProperty().getValue().isEqual(searchDate)) {
-                                elencoAereiDeposito.add(aereo);
-                    }
-            }
-
-            elencoAereiArrivo.clear();
-
-            for (int i = 0; i < elencoAereiDeposito.size(); i++) {
-                elencoAereiArrivo.add(elencoAereiDeposito.get(i));
-            }
-
-            bubbleSortByOraPartenza(elencoAereiArrivo);
     }
 
     public ObservableList<Aerei> getFilteredPartenze() {

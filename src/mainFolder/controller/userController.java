@@ -255,8 +255,9 @@ public class userController {
                 // Altro controllo
                 if(controlloRicerca()){
                     // Passo anche i valori da cercare e la data
-                    controller.setCercaTxt(cercaTxt.getText());
                     controller.setDataPartenze(dataPartenze.getValue());
+                    controller.setCercaTxt(cercaTxt.getText());
+                    
                 }
                 // Chiudi la prima GUI (Finestra)
                 Stage primaryStage = (Stage) cercaBtn.getScene().getWindow();

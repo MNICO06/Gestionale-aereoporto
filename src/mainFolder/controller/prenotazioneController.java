@@ -92,7 +92,7 @@ public class prenotazioneController {
         changeData();
 
         dpDataPartenza.valueProperty().addListener((observable, oldValue, newValue) -> {
-            changeData();
+            changepartenza(txtDestinazione.getText());
         });
         
         cbClasse.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -101,6 +101,9 @@ public class prenotazioneController {
             }
         });
 
+        txtDestinazione.textProperty().addListener((observable, oldValue, newValue) -> {
+            changepartenza(newValue);
+        });
     }
 
     public void initializeTable() {
@@ -110,7 +113,7 @@ public class prenotazioneController {
         colNVolo.setCellValueFactory(cellData -> cellData.getValue().getCodiceProperty());
         colGate.setCellValueFactory(cellData -> cellData.getValue().getGateProperty().asObject());
         colCompagnia.setCellValueFactory(cellData -> cellData.getValue().getCompagniaProperty());
-        colStato.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
+        colStato.setCellValueFactory(cellData -> cellData.getValue().getStatoProperty());
 
         tblVoli.setItems(gestioneAerei.getElencoListaPartenze());
     }
@@ -145,8 +148,12 @@ public class prenotazioneController {
 
     @FXML
     public void changeData() {
-        gestioneAerei.setDataArrivo(dpDataPartenza.getValue());
         gestioneAerei.setDataPartenza(dpDataPartenza.getValue());
+    }
+
+    public void changepartenza(String newValue) {
+        gestioneAerei.setDataPartenza(dpDataPartenza.getValue());
+        gestioneAerei.aggiornaPartenza(newValue.toLowerCase());
     }
 
     private void checkLogin() {

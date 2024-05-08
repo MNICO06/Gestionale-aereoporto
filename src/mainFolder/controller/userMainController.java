@@ -66,12 +66,13 @@ public class userMainController {
     public void setCercaTxt(String cercaText) {
         // Imposto la textfield con il testo di ricerca
         cercaTxfield.setText(cercaText);
-        
+        //cercaAerei();
     }
 
     public void setDataPartenze(LocalDate dataPartenze) {
         // Imposto il datepicker con la data di ricerca
         dataDtpk.setValue(dataPartenze);
+        changeData();
     }
 
     // Metodo per impostare quali valori devono essere visualizzati (arrivi o partenze)
@@ -116,15 +117,11 @@ public class userMainController {
         });
 
         dataDtpk.valueProperty().addListener((observable, oldValue, newValue) -> {
-            changeData();
+            cercaAereiGiusto(cercaTxfield.getText());
         });
 
-        // On change detected in the search textfield
         cercaTxfield.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() == 0) {
-                // Reset filter
-                gestioneAerei.resetFilter();                
-            }
+            cercaAereiGiusto(newValue);
         });
 
     }
@@ -154,7 +151,7 @@ public class userMainController {
         colCodiceArrivi.setCellValueFactory(cellData -> cellData.getValue().getCodiceProperty());
         colGateArrivi.setCellValueFactory(cellData -> cellData.getValue().getGateProperty().asObject());
         colCompagniaArrivi.setCellValueFactory(cellData -> cellData.getValue().getCompagniaProperty());
-        colStatoArrivi.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
+        colStatoArrivi.setCellValueFactory(cellData -> cellData.getValue().getStatoProperty());
     
         // Inizializzazione delle colonne della tabella degli arrivi
         colOrarioPartenza.setCellValueFactory(cellData -> cellData.getValue().getOraPartenzaProperty());
@@ -163,7 +160,7 @@ public class userMainController {
         colCodicePartenze.setCellValueFactory(cellData -> cellData.getValue().getCodiceProperty());
         colGatePartenze.setCellValueFactory(cellData -> cellData.getValue().getGateProperty().asObject());
         colCompagniaPartenze.setCellValueFactory(cellData -> cellData.getValue().getCompagniaProperty());
-        colStatoPartenze.setCellValueFactory(cellData -> cellData.getValue().getDestinazioneProperty());
+        colStatoPartenze.setCellValueFactory(cellData -> cellData.getValue().getStatoProperty());
 
         tableArrivi.setItems(gestioneAerei.getElencoListaArrivi());
         tablePartenze.setItems(gestioneAerei.getElencoListaPartenze());
@@ -209,6 +206,30 @@ public class userMainController {
         gestioneAerei.setDataArrivo(dataDtpk.getValue());
         gestioneAerei.setDataPartenza(dataDtpk.getValue());
     }
+
+
+
+    // Metodo per il tasto Cerca
+    @FXML
+    public void cercaAerei() {
+
+    }
+
+    @FXML
+    public void cercaAereiGiusto(String newValue) {
+
+        changeData();
+
+        if (partenzeSelected) {
+            gestioneAerei.aggiornaPartenza(newValue.toLowerCase());
+        }
+        else {
+            gestioneAerei.aggiornaArrivo(newValue.toLowerCase());
+        }
+        
+    }
+
+
 
     private void checkLogin() {
         if (gestioneUtenti.isLogged()) {
@@ -299,20 +320,5 @@ public class userMainController {
         }
     }
 
-    // Metodo per il tasto Cerca
-    @FXML
-    private void cercaAerei() {
-        // 1. Retrieve search criteria
-        String searchTerm = cercaTxfield.getText().toLowerCase(); // Convert to lowercase
-        LocalDate searchDate = dataDtpk.getValue();
-
-        // 2. Filter airplanes based on search criteria
-        if (partenzeSelected) {
-            // Filter departures
-            gestioneAerei.filterPartenze(searchTerm, searchDate);
-        } else {
-            // Filter arrivals
-            gestioneAerei.filterArrivi(searchTerm, searchDate);
-        }
-    }
+    
 }
