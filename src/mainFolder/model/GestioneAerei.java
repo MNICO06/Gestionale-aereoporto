@@ -349,7 +349,7 @@ public class GestioneAerei {
                 aereo.getGiornoArrivoLocalDate(), aereo.getOraArrivoLocalTime(), aereo.getGiornoPartenzaLocalDate(), aereo.getOraPartenzaLocalTime(), aereo.getIntervallo());
         }
 
-        scrivi.scriviAerei(elencoAereiTutti);
+        scrivi.scriviAereiFine(elencoAereiTutti);
     }
 
     public ObservableList<Aerei> getFilteredPartenze() {

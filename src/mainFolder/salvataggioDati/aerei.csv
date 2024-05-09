@@ -1,12 +1,12 @@
-Modello,Provenienza,Destinazione,Compagnia,Codice,NumMax,GiornoArrivo,OraArrivo,GiornoPartenza,OraPartenza,Intervallo
-Airbus A380,MXP,FCO,Quatar Airways,ABC123,0,11/05/2024,09:45:00,11/05/2024,09:00:00,3
-Boeing 747,JFK,LHR,British Airways,BA123,0,09/05/2024,12:30:00,09/05/2024,13:45:00,2
-Airbus A320,LAX,ORD,American Airlines,AA456,0,09/05/2024,08:15:00,09/05/2024,10:00:00,2
-Boeing 787 Dreamliner,HND,SYD,Qantas,QF789,0,09/05/2024,14:00:00,09/05/2024,23:30:00,1
-Airbus A350,CDG,SIN,Singapore Airlines,SQ123,0,09/05/2024,10:45:00,09/05/2024,19:15:00,1
-Boeing 737,ATL,MCO,Delta Air Lines,DL456,0,09/05/2024,11:30:00,09/05/2024,13:00:00,2
-Airbus A330,FRA,DXB,Emirates,EK789,0,09/05/2024,09:00:00,09/05/2024,16:45:00,1
-Boeing 777,SFO,ICN,Korean Air,KE789,0,09/05/2024,13:45:00,09/05/2024,22:30:00,1
-Airbus A380,LHR,JFK,Virgin Atlantic,VS123,0,09/05/2024,16:30:00,08/05/2024,20:15:00,3
-Boeing 757,SEA,DEN,United Airlines,UA456,0,09/05/2024,08:45:00,09/05/2024,11:30:00,2
-Boeing 747,MUC,AMS,KLM,KL123,0,09/05/2024,10:00:00,09/05/2024,12:45:00,2
+Modello,Provenienza,Destinazione,Compagnia,Codice,NumMax,GiornoArrivo,OraArrivo,GiornoPartenza,OraPartenza,Intervallo,stato,inizioManutenzione,fineManutenzione,hangar
+Airbus A380,MilanMXP,RomeFCO,Quatar Airways,ABC123,0,11/05/2024,09:45:00,11/05/2024,09:00:00,3,in servizio
+Boeing 747,NewJorkJFK,LondonLHR,British Airways,BA123,0,09/05/2024,12:30:00,09/05/2024,13:45:00,2,in servizio
+Airbus A320,LosAngelesLAX,ChicagoORD,American Airlines,AA456,0,09/05/2024,08:15:00,09/05/2024,10:00:00,2,in servizio
+Boeing 787 Dreamliner,TokyoHND,SydneySYD,Qantas,QF789,0,09/05/2024,14:00:00,09/05/2024,23:30:00,1,in servizio
+Airbus A350,ParisCDG,SingaporeSIN,Singapore Airlines,SQ123,0,09/05/2024,10:45:00,09/05/2024,19:15:00,1,in servizio
+Boeing 737,AtlantaATL,OrlandoMCO,Delta Air Lines,DL456,0,09/05/2024,11:30:00,09/05/2024,13:00:00,2,in servizio
+Airbus A330,FrankfurtFRA,DubaiDXB,Emirates,EK789,0,09/05/2024,09:00:00,09/05/2024,16:45:00,1,in servizio
+Boeing 777,SanFranciscoSFO,SeulICN,Korean Air,KE789,0,09/05/2024,13:45:00,09/05/2024,22:30:00,1,in servizio
+Airbus A380,LondonLHR,NewYorkJFK,Virgin Atlantic,VS123,0,09/05/2024,16:30:00,08/05/2024,20:15:00,3,in servizio
+Boeing 757,SeattleSEA,DenverDEN,United Airlines,UA456,0,09/05/2024,08:45:00,09/05/2024,11:30:00,2,in servizio
+Boeing 747,MunichMUC,AmsterdamAMS,KLM,KL123,0,09/05/2024,10:00:00,09/05/2024,12:45:00,2,in servizio

@@ -254,24 +254,24 @@ public class dettagliAereoAdminController {
             alert.showAndWait();
             return false;
         }
-        // Controllo la provenienza se è lunga 3 caratteri o se è scritta in maiuscolo
-        if (provenienzaTxF.getText().length() != 3 || !provenienzaTxF.getText().equals(provenienzaTxF.getText().toUpperCase())) {
+        // Controllo la provenienza se inserita correttamente
+        if (provenienzaTxF.getText().isEmpty()) {
             // Alert per errore
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Errore");
             alert.setHeaderText("Errore");
-            alert.setContentText("Inserire una provenienza valida, 3 caratteri in maiuscolo");
+            alert.setContentText("Inserire una provenienza valida");
             alert.showAndWait();
             return false;
         }
 
-        // Controllo la destinazione se è lunga 3 caratteri o se è scritta in maiuscolo
-        if (destinazioneTxF.getText().length() != 3 || !destinazioneTxF.getText().equals(destinazioneTxF.getText().toUpperCase())) {
+        // Controllo la destinazione se inserita correttamente
+        if (destinazioneTxF.getText().isEmpty()) {
             // Alert per errore
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Errore");
             alert.setHeaderText("Errore");
-            alert.setContentText("Inserire una destinazione valida, 3 caratteri in maiuscolo");
+            alert.setContentText("Inserire una destinazione valida");
             alert.showAndWait();
             return false;
         }
