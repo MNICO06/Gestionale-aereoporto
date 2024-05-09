@@ -66,6 +66,7 @@ public class dettagliAereoAdminController {
         terminalCmbx.setValue(String.valueOf(aereo.getTerminalInt()));
         statoCmbx.setValue(aereo.getStato());
         codiceTxF.setText(aereo.getCodice());
+        intervalloTxF.setText(String.valueOf(aereo.getIntervallo()));
         // Se è in manutenzione mostro i campi
         if (aereo.getStato().equals("In manutenzione")) {
             inizioLavoriDp.setDisable(false);
@@ -147,17 +148,18 @@ public class dettagliAereoAdminController {
         LocalDate inizioLavori = inizioLavoriDp.getValue();
         LocalDate fineLavori = fineLavoriDp.getValue();
         String hangar = hangarTxf.getText();
+        int intervallo = Integer.parseInt(intervalloTxF.getText());
 
 
         //metodi per salvare nuovo aereo (manca intervallo da aggiungere alla screen)
         if (stato.equals("In manutenzione")) {
-            //Aerei aereo = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
-            //postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato,
-            //inizioLavori, fineLavori, hangar);
+            Aerei aereo = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
+            postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato,
+            inizioLavori, fineLavori, hangar);
         }
         else {
-            //Aerei aereo = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
-            //postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato);
+            Aerei aereo = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
+            postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato);
         }
 
         aereo.setTerminal(terminal);
@@ -385,6 +387,28 @@ public class dettagliAereoAdminController {
             alert.setTitle("Errore");
             alert.setHeaderText("Errore");
             alert.setContentText("Selezionare uno stato");
+            alert.showAndWait();
+            return false;
+        }
+
+        // Controllo che l'intervallo sia un numero e maggiore di 0
+        try {
+            int intervallo = Integer.parseInt(intervalloTxF.getText());
+            if (intervallo < 0) {
+                // Alert per errore
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Errore");
+                alert.setHeaderText("Errore");
+                alert.setContentText("Inserire un intervallo valido,\nnuemro maggiore di 0");
+                alert.showAndWait();
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            // Alert per errore
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText("Errore");
+            alert.setContentText("Inserire un intervallo valido,\nnumero maggiore di 0");
             alert.showAndWait();
             return false;
         }
