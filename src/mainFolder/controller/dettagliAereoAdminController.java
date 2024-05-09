@@ -27,7 +27,8 @@ public class dettagliAereoAdminController {
     @FXML private TextField orarioArrivoTxF;
     @FXML private TextField orarioPartenzaTxF;
     @FXML private TextField ritardoTxF;
-    @FXML private TextField codiceTxF;    
+    @FXML private TextField codiceTxF;  
+    @FXML private TextField intervalloTxF;  
     // Se è in manutenzione
     @FXML private DatePicker inizioLavoriDp;
     @FXML private DatePicker fineLavoriDp;

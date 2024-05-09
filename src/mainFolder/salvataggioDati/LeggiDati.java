@@ -17,8 +17,7 @@ import mainFolder.model.Utenti;
 
 public class LeggiDati {
 
-    public void LeggiDati() {
-
+    public LeggiDati() {
     }
 
     public ArrayList<Utenti> leggiUtente() {

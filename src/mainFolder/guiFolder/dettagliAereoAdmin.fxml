@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="608.0" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.dettagliAereoAdminController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="608.0" stylesheets="@../cssFolder/userStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainFolder.controller.dettagliAereoAdminController">
    <top>
       <AnchorPane prefHeight="85.0" prefWidth="674.0" BorderPane.alignment="CENTER">
          <children>
@@ -57,6 +57,7 @@
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints maxHeight="40.0" minHeight="32.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="32.0" prefHeight="40.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="40.0" minHeight="32.0" prefHeight="40.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="40.0" minHeight="32.0" prefHeight="40.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="40.0" minHeight="32.0" prefHeight="40.0" vgrow="SOMETIMES" />
@@ -172,6 +173,12 @@
                         </TextField>
                         <Label styleClass="labelCustom1" text="Codice Aereo" GridPane.columnIndex="4" GridPane.rowIndex="8" />
                         <TextField fx:id="codiceTxF" styleClass="text-field-ModAero" GridPane.columnIndex="5" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label styleClass="labelCustom1" text="Intervallo Giorni" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <TextField fx:id="intervalloTxF" styleClass="text-field-ModAero" GridPane.columnIndex="2" GridPane.rowIndex="9">
                            <GridPane.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
