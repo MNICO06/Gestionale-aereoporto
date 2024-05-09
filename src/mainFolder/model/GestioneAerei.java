@@ -38,7 +38,7 @@ public class GestioneAerei {
         caricaDati();
         // Faccio partire il thread
         Controllo controllo = new Controllo();
-        controllo.start();
+        //controllo.start();
     }
 
     public void riempiGate() {

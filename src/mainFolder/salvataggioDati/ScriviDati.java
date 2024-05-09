@@ -73,7 +73,7 @@ public class ScriviDati {
 
     public void scriviAereiFine(ObservableList<Aerei> aerei) {
         try (FileWriter writer = new FileWriter("./src/mainFolder/salvataggioDati/aerei.csv")) {
-            String formatString = "%s,%s,%s,%s,%s,%d,%s,%s,%s,%s,%d,%s";
+            String formatString = "%s,%s,%s,%s,%s,%d,%s,%s,%s,%s,%d,%s,%d,%d";
             // Scrivi l'intestazione
             // ritatdo e posti occupati da salvare
 
