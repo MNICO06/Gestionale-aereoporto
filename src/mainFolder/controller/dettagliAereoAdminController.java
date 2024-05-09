@@ -150,15 +150,15 @@ public class dettagliAereoAdminController {
         String hangar = hangarTxf.getText();
         int intervallo = Integer.parseInt(intervalloTxF.getText());
 
-
+        Aerei aereoTmp;
         //metodi per salvare nuovo aereo (manca intervallo da aggiungere alla screen)
         if (stato.equals("In manutenzione")) {
-            Aerei aereo = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
+            aereoTmp = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
             postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato,
             inizioLavori, fineLavori, hangar);
         }
         else {
-            Aerei aereo = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
+            aereoTmp = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
             postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato);
         }
 
@@ -171,7 +171,7 @@ public class dettagliAereoAdminController {
 
         
         // Aggiungo l'aereo alla lista
-        gestioneAerei.addAereo(aereo);
+        gestioneAerei.addAereo(aereoTmp);
         System.out.println("Aereo aggiunto");
     }
 
@@ -229,6 +229,9 @@ public class dettagliAereoAdminController {
             aereo.setGiornoFineManutenzione(null);
             aereo.setHangar(null);
         }     
+
+        // Scrivo i dati su file
+        gestioneAerei.aggiornaLista();
 
     }
 
@@ -289,7 +292,7 @@ public class dettagliAereoAdminController {
 
         // Se è in modifica
         try {
-            int gate = Integer.parseInt(gateTxF.getText());
+            Integer.parseInt(gateTxF.getText());
             if (c=="M"){
                 // Controllo che il gate sia un numero
 

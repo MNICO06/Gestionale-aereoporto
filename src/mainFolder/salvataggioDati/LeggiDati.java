@@ -101,41 +101,6 @@ public class LeggiDati {
         }
     }
 
-    public ObservableList<Aerei> leggiAerei() {
-        ObservableList<Aerei> aerei = FXCollections.observableArrayList();
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("./src/mainFolder/salvataggioDati/aerei.csv"))) {
-            String line;
-            reader.readLine();
-            while((line = reader.readLine()) != null) {
-                String[] linea = line.split(",");
-                if(linea.length == 11) {
-                    String modello = linea[0];
-                    String provenienza = linea[1];
-                    String destinazione = linea[2];
-                    String compagnia = linea[3];
-                    String codice = linea[4];
-                    int numMax = Integer.parseInt(linea[5]);
-                    LocalDate giornoArrivo = LocalDate.parse(linea[6], dateFormatter);
-                    LocalTime oraArrivo = LocalTime.parse(linea[7], timeFormatter);
-                    LocalDate giornoPartenza = LocalDate.parse(linea[8], dateFormatter);
-                    LocalTime oraPartenza = LocalTime.parse(linea[9], timeFormatter);
-                    int intervallo = Integer.parseInt(linea[10]);
-
-                    Aerei aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax, giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo);
-                    aerei.add(aereo);
-                }
-            }
-
-            return aerei;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     public ObservableList<Aerei> leggiAereiNuovo() {
         ObservableList<Aerei> aerei = FXCollections.observableArrayList();
