@@ -106,13 +106,13 @@ public class LeggiDati {
         ObservableList<Aerei> aerei = FXCollections.observableArrayList();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-    
+
         try (BufferedReader reader = new BufferedReader(new FileReader("./src/mainFolder/salvataggioDati/aerei.csv"))) {
             String line;
             reader.readLine(); // Salta la prima riga (intestazione)
             while ((line = reader.readLine()) != null) {
                 String[] linea = line.split(",");
-                if (linea.length >= 12) { // Controlla se la riga contiene almeno i dati essenziali
+                if (linea.length >= 14) { // Controlla se la riga contiene almeno i dati essenziali
                     String modello = linea[0];
                     String provenienza = linea[1];
                     String destinazione = linea[2];
@@ -125,24 +125,33 @@ public class LeggiDati {
                     LocalTime oraPartenza = LocalTime.parse(linea[9], timeFormatter);
                     int intervallo = Integer.parseInt(linea[10]);
                     String stato = linea[11];
-    
+                    int numPostiOccupati = Integer.parseInt(linea[12]);
+                    int ritardo = Integer.parseInt(linea[13]);
+
                     LocalDate inizioManutenzione = null;
                     LocalDate fineManutenzione = null;
                     String hangar = "";
-    
-                    if (linea.length >= 15) {
-                        inizioManutenzione = LocalDate.parse(linea[12], dateFormatter);
-                        fineManutenzione = LocalDate.parse(linea[13], dateFormatter);
-                        hangar = linea[14];
+
+                    if (linea.length >= 17) {
+                        inizioManutenzione = LocalDate.parse(linea[14], dateFormatter);
+                        fineManutenzione = LocalDate.parse(linea[15], dateFormatter);
+                        hangar = linea[16];
                     }
-    
-                    //se vi è inizioManutenzione, vuol dire che ci sono anche gli altri 2 e quindi aggiungo un aereo secondo il metodo con manutenzione
+
+                    // se vi è inizioManutenzione, vuol dire che ci sono anche gli altri 2 e quindi
+                    // aggiungo un aereo secondo il metodo con manutenzione
                     if (inizioManutenzione != null) {
-                        Aerei aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax, giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo, stato, inizioManutenzione, fineManutenzione, hangar);
+                        Aerei aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax,
+                                giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo, stato,
+                                inizioManutenzione, fineManutenzione, hangar);
+                        aereo.setNumeroPostiOccupati(numPostiOccupati);
+                        aereo.setRitardo(ritardo);
                         aerei.add(aereo);
-                    }
-                    else { //se no aggiungono un aereo senza usare quello con la manutenzione
-                        Aerei aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax, giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo, stato);
+                    } else { // se no aggiungono un aereo senza usare quello con la manutenzione
+                        Aerei aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax,
+                                giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo, stato);
+                        aereo.setNumeroPostiOccupati(numPostiOccupati);
+                        aereo.setRitardo(ritardo);
                         aerei.add(aereo);
                     }
                 }
@@ -150,12 +159,6 @@ public class LeggiDati {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    
         return aerei;
-    }
-    
-
-    
-
-    
+    }  
 }

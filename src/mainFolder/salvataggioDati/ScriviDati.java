@@ -75,37 +75,58 @@ public class ScriviDati {
         try (FileWriter writer = new FileWriter("./src/mainFolder/salvataggioDati/aerei.csv")) {
             String formatString = "%s,%s,%s,%s,%s,%d,%s,%s,%s,%s,%d,%s";
             // Scrivi l'intestazione
+            // ritatdo e posti occupati da salvare
 
-            
-            writer.write("Modello,Provenienza,Destinazione,Compagnia,Codice,NumMax,GiornoArrivo,OraArrivo,GiornoPartenza,OraPartenza,Intervallo,stato,inizioManutenzione,fineManutenzione,hangar\n");
+            writer.write(
+                    "Modello,Provenienza,Destinazione,Compagnia,Codice,NumMax,GiornoArrivo,OraArrivo,GiornoPartenza,OraPartenza,Intervallo,Stato,PostiOccupati,Ritardo,InizioManutenzione,FineManutenzione,Hangar\n");
 
             // Scrivi i dati degli aerei
             for (Aerei aereo : aerei) {
-                if (aereo.getInizioManutenzione() != null && aereo.getFineManutenzione() != null && aereo.getHangar() != null) {
+                if (aereo.getInizioManutenzione() != null && aereo.getFineManutenzione() != null
+                        && aereo.getHangar() != null) {
                     formatString += ",%s,%s,%s";
+
+                    writer.write(String.format(formatString + "\n",
+                            aereo.getModello(),
+                            aereo.getProvenienzaString(),
+                            aereo.getDestinazioneString(),
+                            aereo.getCompagnia(),
+                            aereo.getCodice(),
+                            aereo.getNumeroPostiOccupatiInt(),
+                            aereo.getGiornoArrivoString(),
+                            aereo.getOraArrivoString(),
+                            aereo.getGiornoPartenzaString(),
+                            aereo.getOraPartenzaString(),
+                            aereo.getIntervallo(),
+                            aereo.getStato(),
+                            aereo.getNumeroPostiOccupatiInt(),
+                            aereo.getRitardoInt(),
+                            aereo.getInizioManutenzioneString(),
+                            aereo.getFineManutenzioneString(),
+                            aereo.getHangar()));
+                } else {
+                    writer.write(String.format(formatString + "\n",
+                            aereo.getModello(),
+                            aereo.getProvenienzaString(),
+                            aereo.getDestinazioneString(),
+                            aereo.getCompagnia(),
+                            aereo.getCodice(),
+                            aereo.getNumeroPostiOccupatiInt(),
+                            aereo.getGiornoArrivoString(),
+                            aereo.getOraArrivoString(),
+                            aereo.getGiornoPartenzaString(),
+                            aereo.getOraPartenzaString(),
+                            aereo.getIntervallo(),
+                            aereo.getStato(),
+                            aereo.getNumeroPostiOccupatiInt(),
+                            aereo.getRitardoInt()));
                 }
 
-                writer.write(String.format(formatString + "\n",
-                    aereo.getModello(),
-                    aereo.getProvenienzaString(),
-                    aereo.getDestinazioneString(),
-                    aereo.getCompagnia(),
-                    aereo.getCodice(),
-                    aereo.getNumeroPostiOccupatiInt(),
-                    aereo.getGiornoArrivoString(),
-                    aereo.getOraArrivoString(),
-                    aereo.getGiornoPartenzaString(),
-                    aereo.getOraPartenzaString(),
-                    aereo.getIntervallo(),
-                    aereo.getStato(),
-                    // Aggiungi i valori di manutenzione e hangar solo se sono presenti
-                    (aereo.getInizioManutenzione() != null) ? aereo.getInizioManutenzione() : "",
-                    (aereo.getFineManutenzione() != null) ? aereo.getFineManutenzione() : "",
-                    (aereo.getHangar() != null) ? aereo.getHangar() : ""));
             }
+
         } catch (IOException e) {
             e.printStackTrace();
-        }       
+        }
 
     }
 }
