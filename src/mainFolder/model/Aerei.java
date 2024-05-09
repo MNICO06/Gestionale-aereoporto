@@ -10,6 +10,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import mainFolder.controller.registratiController;
 
 public class Aerei {
     private final StringProperty modelloAereo;
@@ -395,6 +396,44 @@ public class Aerei {
 
     public void setCodice(String codice) {
         this.codiceRegistrazione.set(codice);
+    }
+
+    // Getter e setter per lo stato
+
+    public boolean isInVolo() {
+        // Se il tempo di arrivo è 5 minuti prima o dopo dell'ora attuale, l'aereo è in volo
+        LocalTime oraAttuale = LocalTime.now();
+        LocalTime oraArrivo = getOraArrivoLocalTime();
+        if (oraAttuale.isAfter(oraArrivo.minusMinutes(5)) && oraAttuale.isBefore(oraArrivo.plusMinutes(5))) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isInPartenza() {
+        // Se il tempo di partenza è 5 minuti prima o dopo dell'ora attuale, l'aereo è in partenza
+        LocalTime oraAttuale = LocalTime.now();
+        LocalTime oraPartenza = getOraPartenzaLocalTime();
+        if (oraAttuale.isAfter(oraPartenza.minusMinutes(5)) && oraAttuale.isBefore(oraPartenza.plusMinutes(5))) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isInAttesa() {
+        // Se l'aereo non è ne in arrivo ne in partenza, allora è a terra in attesa
+        return !isInVolo() && !isInPartenza();
+    }
+
+    public boolean isInManutenzione() {
+        // Se l'aereo è a terra e se il giorno attuale è compreso tra l'inizio e la fine della manutenzione
+        LocalDate oggi = LocalDate.now();
+        LocalDate inizio = getInizioManutenzioneLocalDate();
+        LocalDate fine = getFineManutenzioneLocalDate();
+        if (oggi.isAfter(inizio) && oggi.isBefore(fine)) {
+            return true;
+        }
+        return false;
     }
     
 }
