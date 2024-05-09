@@ -20,7 +20,7 @@ public class Aerei {
     private StringProperty stato;
     private StringProperty hangar;
 
-    private final int numeroMassimoPasseggeri;
+    private int numeroMassimoPasseggeri;
     private IntegerProperty numeroPostiOccupati;
     private IntegerProperty gate;
     private IntegerProperty terminal;
@@ -322,7 +322,7 @@ public class Aerei {
     }
 
     public void setPostiMassimi(int postiMassimi) {
-        this.numeroPostiOccupati.set(postiMassimi);
+        this.numeroMassimoPasseggeri = postiMassimi;
     }
 
     public void setGate(int gate) {

@@ -168,19 +168,19 @@ public class mainController {
         });
 
         destFiltManutenzione.textProperty().addListener((observable, oldValue, newValue) -> {
-            cercaAereiGiustoManutenzione(newValue, compFiltPartenze.getText());
+            cercaAereiGiustoManutenzione(newValue, compFiltManutenzione.getText());
         });
 
         compFiltManutenzione.textProperty().addListener((observable, oldValue, newValue) -> {
-            cercaAereiGiustoManutenzione(destFiltPartenze.getText(), newValue);
+            cercaAereiGiustoManutenzione(destFiltManutenzione.getText(), newValue);
         });
 
         destFiltTerra.textProperty().addListener((observable, oldValue, newValue) -> {
-            cercaAereiGiustoTerra(newValue, compFiltPartenze.getText());
+            cercaAereiGiustoTerra(newValue, compFiltTerra.getText());
         });
 
         compFiltTerra.textProperty().addListener((observable, oldValue, newValue) -> {
-            cercaAereiGiustoTerra(destFiltPartenze.getText(), newValue);
+            cercaAereiGiustoTerra(destFiltTerra.getText(), newValue);
         });
 
         initializeTable();

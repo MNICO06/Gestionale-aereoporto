@@ -76,6 +76,7 @@ public class ScriviDati {
             String formatString = "%s,%s,%s,%s,%s,%d,%s,%s,%s,%s,%d,%s,%d,%d";
             // Scrivi l'intestazione
             // ritatdo e posti occupati da salvare
+            System.out.println("Scrivo aerei");
 
             writer.write(
                     "Modello,Provenienza,Destinazione,Compagnia,Codice,NumMax,GiornoArrivo,OraArrivo,GiornoPartenza,OraPartenza,Intervallo,Stato,PostiOccupati,Ritardo,InizioManutenzione,FineManutenzione,Hangar\n");
@@ -92,7 +93,7 @@ public class ScriviDati {
                             aereo.getDestinazioneString(),
                             aereo.getCompagnia(),
                             aereo.getCodice(),
-                            aereo.getNumeroPostiOccupatiInt(),
+                            aereo.getPostiMassimi(),
                             aereo.getGiornoArrivoString(),
                             aereo.getOraArrivoString(),
                             aereo.getGiornoPartenzaString(),
@@ -111,7 +112,7 @@ public class ScriviDati {
                             aereo.getDestinazioneString(),
                             aereo.getCompagnia(),
                             aereo.getCodice(),
-                            aereo.getNumeroPostiOccupatiInt(),
+                            aereo.getPostiMassimi(),
                             aereo.getGiornoArrivoString(),
                             aereo.getOraArrivoString(),
                             aereo.getGiornoPartenzaString(),
