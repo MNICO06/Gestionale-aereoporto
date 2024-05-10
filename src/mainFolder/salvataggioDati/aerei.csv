@@ -1,12 +1,12 @@
 Modello,Provenienza,Destinazione,Compagnia,Codice,NumMax,GiornoArrivo,OraArrivo,GiornoPartenza,OraPartenza,Intervallo,Stato,PostiOccupati,Ritardo,InizioManutenzione,FineManutenzione,Hangar
-Airbus A380,MilanMXP,RomeFCO,Quatar Airways,ABC123,0,11/05/2024,09:45:00,11/05/2024,09:00:00,3,In attesa,0,0
-Boeing 747,NewJorkJFK,LondonLHR,British Airways,BA123,0,11/05/2024,12:30:00,11/05/2024,13:45:00,2,In attesa,0,0
-Airbus A320,LosAngelesLAX,ChicagoORD,American Airlines,AA456,0,11/05/2024,08:15:00,11/05/2024,10:00:00,2,in attesa,0,0
-Boeing 787 Dreamliner,TokyoHND,SydneySYD,Qantas,QF789,0,10/05/2024,14:00:00,10/05/2024,23:30:00,1,In attesa,0,0
-Airbus A350,ParisCDG,SingaporeSIN,Singapore Airlines,SQ123,340,10/05/2024,10:45:00,10/05/2024,09:15:00,1,In manutenzione,0,0,09/05/2024,11/05/2024,122
-Boeing 737,AtlantaATL,OrlandoMCO,Delta Air Lines,DL456,0,11/05/2024,11:30:00,11/05/2024,13:00:00,2,In attesa,0,0
-Airbus A330,FrankfurtFRA,DubaiDXB,Emirates,EK789,0,10/05/2024,09:00:00,10/05/2024,16:45:00,1,In attesa,0,0
-Boeing 777,SanFranciscoSFO,SeulICN,Korean Air,KE789,0,10/05/2024,13:45:00,10/05/2024,22:30:00,1,In attesa,0,0
-Airbus A380,LondonLHR,NewYorkJFK,Virgin Atlantic,VS123,0,12/05/2024,16:30:00,11/05/2024,20:15:00,3,In attesa,0,0
-Boeing 757,SeattleSEA,DenverDEN,United Airlines,UA456,0,11/05/2024,08:45:00,11/05/2024,11:30:00,2,In attesa,0,0
-Boeing 747,MunichMUC,AmsterdamAMS,KLM,KL123,0,11/05/2024,10:00:00,11/05/2024,12:45:00,2,In attesa,0,0
+Airbus A380,MilanMXP,RomeFCO,Quatar Airways,AB123,200,11/05/2024,09:45:00,11/05/2024,19:00:00,3,In partenza,0,0
+Boeing 747,NewJorkJFK,LondonLHR,British Airways,BA123,200,11/05/2024,10:30:00,11/05/2024,13:45:00,2,In partenza,0,0
+Airbus A320,LosAngelesLAX,ChicagoORD,American Airlines,AA456,200,11/05/2024,08:15:00,11/05/2024,10:00:00,2,In attesa,0,0
+Boeing 787 Dreamliner,TokyoHND,SydneySYD,Qantas,QF789,200,10/05/2024,13:00:00,10/05/2024,14:30:00,1,In attesa,0,0
+Airbus A350,ParisCDG,SingaporeSIN,Singapore Airlines,SQ123,200,10/05/2024,21:45:00,10/05/2024,13:15:00,1,In arrivo,0,0
+Boeing 737,AtlantaATL,OrlandoMCO,Delta Air Lines,DL456,200,11/05/2024,11:30:00,11/05/2024,13:00:00,2,In arrivo,0,0
+Airbus A330,FrankfurtFRA,DubaiDXB,Emirates,EK789,200,10/05/2024,16:00:00,10/05/2024,19:45:00,1,In partenza,0,0
+Boeing 777,SanFranciscoSFO,SeulICN,Korean Air,KE789,200,10/05/2024,20:45:00,10/05/2024,23:30:00,1,In partenza,0,0
+Airbus A380,LondonLHR,NewYorkJFK,Virgin Atlantic,VS123,200,12/05/2024,16:30:00,11/05/2024,20:15:00,3,In arrivo,0,0
+Boeing 757,SeattleSEA,DenverDEN,United Airlines,UA456,200,11/05/2024,08:45:00,11/05/2024,11:30:00,2,In arrivo,0,0
+Boeing 747,MunichMUC,AmsterdamAMS,KLM,KL123,200,11/05/2024,19:00:00,11/05/2024,12:45:00,2,In arrivo,0,0
