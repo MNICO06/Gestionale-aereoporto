@@ -314,8 +314,7 @@ public class GestioneAerei {
 
         for (Aerei aereo : elencoAereiDeposito) {
                 if (aereo.getCompagnia().toLowerCase().contains(compagnia) &&
-                aereo.getDestinazione().toLowerCase().contains(parola) &&
-                aereo.getStato().equals("in attesa")) {
+                aereo.getDestinazione().toLowerCase().contains(parola)) {
                         elencoAereiTerra.add(aereo);
                 }
         }
@@ -332,8 +331,7 @@ public class GestioneAerei {
 
         for (Aerei aereo : elencoAereiDeposito) {
                 if (aereo.getCompagnia().toLowerCase().contains(compagnia) &&
-                aereo.getDestinazione().toLowerCase().contains(parola) &&
-                aereo.getStato().equals("In manutenzione")) {
+                aereo.getDestinazione().toLowerCase().contains(parola)) {
                         elencoAereiManutenzione.add(aereo);
                 }
         }

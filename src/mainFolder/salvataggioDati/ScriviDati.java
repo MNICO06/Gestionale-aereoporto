@@ -73,7 +73,7 @@ public class ScriviDati {
 
     public void scriviAereiFine(ObservableList<Aerei> aerei) {
         try (FileWriter writer = new FileWriter("./src/mainFolder/salvataggioDati/aerei.csv")) {
-            String formatString = "%s,%s,%s,%s,%s,%d,%s,%s,%s,%s,%d,%s,%d,%d";
+            
             // Scrivi l'intestazione
             // ritatdo e posti occupati da salvare
             System.out.println("Scrivo aerei");
@@ -85,8 +85,7 @@ public class ScriviDati {
             for (Aerei aereo : aerei) {
                 if (aereo.getInizioManutenzione() != null && aereo.getFineManutenzione() != null
                         && aereo.getHangar() != null) {
-                    formatString += ",%s,%s,%s";
-
+                    String formatString = "%s,%s,%s,%s,%s,%d,%s,%s,%s,%s,%d,%s,%d,%d,%s,%s,%s";
                     writer.write(String.format(formatString + "\n",
                             aereo.getModello(),
                             aereo.getProvenienzaString(),
@@ -106,6 +105,7 @@ public class ScriviDati {
                             aereo.getFineManutenzioneString(),
                             aereo.getHangar()));
                 } else {
+                    String formatString = "%s,%s,%s,%s,%s,%d,%s,%s,%s,%s,%d,%s,%d,%d";
                     writer.write(String.format(formatString + "\n",
                             aereo.getModello(),
                             aereo.getProvenienzaString(),

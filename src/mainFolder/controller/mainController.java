@@ -274,6 +274,20 @@ public class mainController {
             }
         });
 
+        // Aggiunge un listener di selezione alla tabella degli aerei a terra
+        tabellaTerra.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                handleDoubleClick(newSelection);
+            }
+        });
+
+        // Aggiunge un listener di selezione alla tabella degli aerei in manutenzione
+        tabellaManutenzione.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                handleDoubleClick(newSelection);
+            }
+        });
+
     }
 
     @FXML
