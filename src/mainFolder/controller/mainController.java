@@ -345,6 +345,7 @@ public class mainController {
         }
 
         try {
+            gestioneAerei.setAereiInArrivo(destFiltArrivi.getText(), compFiltArrivi.getText(), datePickerArrivo.getValue());
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/dettagliAereoAdmin.fxml"));
             Parent root = loader.load();
@@ -399,9 +400,5 @@ public class mainController {
             e.printStackTrace();
         }
     }
-
-    // Filtri
-    /* -- tab partenze -- */
-    // Listener che quando cambia il testo del campo di ricerca aggiorna la tabella
     
 }

@@ -27,6 +27,12 @@ public class GestioneAerei {
     private ObservableList<Aerei> elencoAereiManutenzione = FXCollections.observableArrayList();
     private static ArrayList<Boolean> gate = new ArrayList<Boolean>();
 
+    private String compArrivi;
+    private String destArrivi;
+    private LocalDate dateArrivi;
+
+
+
     ScriviDati scrivi;
     LeggiDati leggi;
 
@@ -157,7 +163,7 @@ public class GestioneAerei {
         elencoAereiPartenza.clear();
 
         for (int i = 0; i < elencoAereiDeposito.size(); i++) {
-                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data)) {
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) && elencoAereiDeposito.get(i).getStato().equals("In partenza")){
                         elencoAereiPartenza.add(elencoAereiDeposito.get(i));
                 }
         }
@@ -176,7 +182,8 @@ public class GestioneAerei {
         elencoAereiArrivo.clear();
 
         for (int i = 0; i < elencoAereiDeposito.size(); i++) {
-                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data)) {
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) &&
+                elencoAereiDeposito.get(i).getStato().equals("In arrivo")){
                         elencoAereiArrivo.add(elencoAereiDeposito.get(i));
                 }
         }
@@ -194,7 +201,8 @@ public class GestioneAerei {
         elencoAereiTerra.clear();
 
         for (int i = 0; i < elencoAereiDeposito.size(); i++) {
-                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) && elencoAereiDeposito.get(i).getStato().equals("In attesa")) {
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) && 
+                elencoAereiDeposito.get(i).getStato().equals("In attesa")) {
                         elencoAereiTerra.add(elencoAereiDeposito.get(i));
                 }
         }
@@ -261,6 +269,7 @@ public class GestioneAerei {
     }
     
     public void aggiornaArrivoAdmin(String parola, String compagnia) {
+        System.out.println("Aggiorno arrivo admin");
         elencoAereiDeposito.clear();
 
         for (int i = 0; i < elencoAereiArrivo.size(); i++) {
@@ -324,7 +333,7 @@ public class GestioneAerei {
         for (Aerei aereo : elencoAereiDeposito) {
                 if (aereo.getCompagnia().toLowerCase().contains(compagnia) &&
                 aereo.getDestinazione().toLowerCase().contains(parola) &&
-                aereo.getStato().equals("in manutenzione")) {
+                aereo.getStato().equals("In manutenzione")) {
                         elencoAereiManutenzione.add(aereo);
                 }
         }
@@ -401,4 +410,76 @@ public class GestioneAerei {
                 resetArrivi();
                 resetPartenze();
         }
+
+        public void setAereiInArrivo(String comp, String dest, LocalDate date) {
+                compArrivi = comp;
+                destArrivi = dest;
+                dateArrivi = date;
+        }
+
+        public String getCompArrivi() {
+                return compArrivi;
+        }
+        public String getDestArrivi() {
+                return destArrivi;
+        }
+        public LocalDate getDateArrivi() {
+                return dateArrivi;
+        }
+
+        // Ora per le partenze
+        public void setAereiInPartenza(String comp, String dest, LocalDate date) {
+                compArrivi = comp;
+                destArrivi = dest;
+                dateArrivi = date;
+        }
+
+        public String getCompPartenza() {
+                return compArrivi;
+        }
+
+        public String getDestPartenza() {
+                return destArrivi;
+        }
+
+        public LocalDate getDatePartenza() {
+                return dateArrivi;
+        }
+
+        public void setAereiInTerra(String comp, String dest, LocalDate date) {
+                compArrivi = comp;
+                destArrivi = dest;
+                dateArrivi = date;
+        }
+
+        public String getCompTerra() {
+                return compArrivi;
+        }
+
+        public String getDestTerra() {
+                return destArrivi;
+        }
+
+        public LocalDate getDateTerra() {
+                return dateArrivi;
+        }
+
+        public void setAereiInManutenzione(String comp, String dest, LocalDate date) {
+                compArrivi = comp;
+                destArrivi = dest;
+                dateArrivi = date;
+        }
+
+        public String getCompManutenzione() {
+                return compArrivi;
+        }
+
+        public String getDestManutenzione() {
+                return destArrivi;
+        }
+
+        public LocalDate getDateManutenzione() {
+                return dateArrivi;
+        }
+
 }
