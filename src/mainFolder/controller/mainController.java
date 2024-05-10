@@ -36,6 +36,7 @@ import java.util.Date;
  * @author molte
  */
 public class mainController {
+    private static mainController mainIstance;
 
     @FXML private Label orologio;
     @FXML private Label titolo;
@@ -100,6 +101,13 @@ public class mainController {
     @FXML private Button cancManutenzione;
 
     private Stage infoStage;
+
+    public static mainController getInstance() {
+        if(mainIstance == null) {
+            mainIstance = new mainController();
+        }
+        return mainIstance;
+    }
 
     public void initialize() {
         // Creazione di un Timeline per aggiornare l'orologio ogni secondo
@@ -185,7 +193,14 @@ public class mainController {
 
         initializeTable();
         setupRowSelectionListener();
-        
+    }
+
+    // Metodo per aggiornare le tabelle
+    public void aggiornaTabelle() {
+        cercaAereiGiustoArrivi(destFiltArrivi.getText(), compFiltArrivi.getText());
+        cercaAereiGiustoPartenze(destFiltPartenze.getText(), compFiltPartenze.getText());
+        cercaAereiGiustoTerra(destFiltTerra.getText(), compFiltTerra.getText());
+        cercaAereiGiustoManutenzione(destFiltManutenzione.getText(), compFiltManutenzione.getText());
     }
 
     private void setDataPartenza(LocalDate date) {

@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import mainFolder.model.Aerei;
 import mainFolder.model.GestioneAerei;
+import mainFolder.controller.mainController;
 
 public class dettagliAereoAdminController {
 
@@ -44,6 +45,7 @@ public class dettagliAereoAdminController {
     // Lista gate occupati
     GestioneAerei gestioneAerei = GestioneAerei.getInstance();
     ArrayList<Boolean> gateOccupati = gestioneAerei.getGate();
+    mainController controllerIstance = mainController.getInstance();
 
     // Aereo da modificare
     private Aerei aereo;
@@ -81,6 +83,7 @@ public class dettagliAereoAdminController {
 
     @FXML
     private void initialize() {
+
         startClockUpdateAnimation();
 
         // Imposto i combobox
@@ -173,6 +176,9 @@ public class dettagliAereoAdminController {
         // Aggiungo l'aereo alla lista
         gestioneAerei.addAereo(aereoTmp);
         System.out.println("Aereo aggiunto");
+
+        // Aggiorna la lista
+        // controllerIstance.aggiornaTabelle();
     }
 
     @FXML
@@ -233,6 +239,8 @@ public class dettagliAereoAdminController {
         // Scrivo i dati su file
         gestioneAerei.aggiornaLista();
 
+        // Aggiorna la lista
+        //controllerIstance.aggiornaTabelle();
     }
 
     private boolean controllaValori(String c) {

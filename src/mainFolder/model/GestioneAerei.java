@@ -194,7 +194,7 @@ public class GestioneAerei {
         elencoAereiTerra.clear();
 
         for (int i = 0; i < elencoAereiDeposito.size(); i++) {
-                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) && elencoAereiDeposito.get(i).getStato().equals("in attesa")) {
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) && elencoAereiDeposito.get(i).getStato().equals("In attesa")) {
                         elencoAereiTerra.add(elencoAereiDeposito.get(i));
                 }
         }
@@ -215,7 +215,7 @@ public class GestioneAerei {
                     LocalDate inizioM = elencoAereiDeposito.get(i).getInizioLavori();
                     LocalDate fineM = elencoAereiDeposito.get(i).getFineLavori();
 
-                    if (elencoAereiDeposito.get(i).getStato().equals("in manutenzione")) {
+                    if (elencoAereiDeposito.get(i).getStato().equals("In manutenzione")) {
                             if (data.isAfter(inizioM) && data.isBefore(fineM)) {
                                     elencoAereiManutenzione.add(elencoAereiDeposito.get(i));
                             }
