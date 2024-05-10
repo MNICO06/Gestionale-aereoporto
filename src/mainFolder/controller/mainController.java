@@ -346,6 +346,9 @@ public class mainController {
 
         try {
             gestioneAerei.setAereiInArrivo(destFiltArrivi.getText(), compFiltArrivi.getText(), datePickerArrivo.getValue());
+            gestioneAerei.setAereiInPartenze(destFiltPartenze.getText(), compFiltPartenze.getText(), datePickerPartenze.getValue());
+            gestioneAerei.setAereiInTerra(destFiltTerra.getText(), compFiltTerra.getText(), datePickerTerra.getValue());
+            gestioneAerei.setAereiInManutenzioni(destFiltManutenzione.getText(), compFiltManutenzione.getText(), datePickerManutenzione.getValue());
             // Carica la seconda GUI (FXML)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../guiFolder/dettagliAereoAdmin.fxml"));
             Parent root = loader.load();

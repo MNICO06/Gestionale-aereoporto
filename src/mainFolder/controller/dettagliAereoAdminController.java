@@ -240,6 +240,16 @@ public class dettagliAereoAdminController {
 
         gestioneAerei.setDataArrivo(gestioneAerei.getDateArrivi());
         gestioneAerei.aggiornaArrivoAdmin(gestioneAerei.getDestArrivi(),gestioneAerei.getCompArrivi());
+
+        gestioneAerei.setDataPartenza(gestioneAerei.getDatePartenze());
+        gestioneAerei.aggiornaPartenzaAdmin(gestioneAerei.getDestPartenze(),gestioneAerei.getCompPartenze());
+
+        gestioneAerei.setDataManutenzione(gestioneAerei.getDateManutenzioni());
+        gestioneAerei.aggiornaManutenzioneAdmin(gestioneAerei.getDestManutenzioni(),gestioneAerei.getCompManutenzioni());
+
+        gestioneAerei.setDataTerra(gestioneAerei.getDateTerra());
+        gestioneAerei.aggiornaTerraAdmin(gestioneAerei.getDestTerra(),gestioneAerei.getCompTerra());
+
     }
 
     private boolean controllaValori(String c) {

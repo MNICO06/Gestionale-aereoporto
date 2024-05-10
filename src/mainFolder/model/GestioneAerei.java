@@ -428,21 +428,21 @@ public class GestioneAerei {
         }
 
         // Ora per le partenze
-        public void setAereiInPartenza(String comp, String dest, LocalDate date) {
+        public void setAereiInPartenze(String comp, String dest, LocalDate date) {
                 compArrivi = comp;
                 destArrivi = dest;
                 dateArrivi = date;
         }
 
-        public String getCompPartenza() {
+        public String getCompPartenze() {
                 return compArrivi;
         }
 
-        public String getDestPartenza() {
+        public String getDestPartenze() {
                 return destArrivi;
         }
 
-        public LocalDate getDatePartenza() {
+        public LocalDate getDatePartenze() {
                 return dateArrivi;
         }
 
@@ -464,21 +464,21 @@ public class GestioneAerei {
                 return dateArrivi;
         }
 
-        public void setAereiInManutenzione(String comp, String dest, LocalDate date) {
+        public void setAereiInManutenzioni(String comp, String dest, LocalDate date) {
                 compArrivi = comp;
                 destArrivi = dest;
                 dateArrivi = date;
         }
 
-        public String getCompManutenzione() {
+        public String getCompManutenzioni() {
                 return compArrivi;
         }
 
-        public String getDestManutenzione() {
+        public String getDestManutenzioni() {
                 return destArrivi;
         }
 
-        public LocalDate getDateManutenzione() {
+        public LocalDate getDateManutenzioni() {
                 return dateArrivi;
         }
 
