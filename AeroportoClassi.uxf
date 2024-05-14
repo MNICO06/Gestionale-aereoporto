@@ -1,0 +1,152 @@
+<diagram program="umletino" version="15.1"><zoom_level>5</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>390</x><y>20</y><w>160</w><h>200</h></coordinates><panel_attributes>Aerei
+--
+- MODELLOAEREO: StringProperty
+- provenienza: StringProperty
+- destinazione: StringProperty
+- COMPAGNIAAEREA: StringProperty
+- CODICEREGISTRAZIONE: StringProperty
+- stato: StringProperty
+- hangar: StringProperty
+- numeroMassimoPasseggeri: int
+- numeroPostiOccupati: IntegerProperty
+- gate: IntegerProperty
+- terminal: IntegerProperty
+- ritardo: IntegerProperty
+- giornoDiArrivo: ObjectProperty&lt;LocalDate&gt;
+- oraArrivo: ObjectProperty&lt;LocalTime&gt;
+- giornoDiPartenza: ObjectProperty&lt;LocalDate&gt;
+- oraPartenza: ObjectProperty&lt;LocalTime&gt;
+- intervalloDiGiorni: int
+- inizioManutenzione: ObjectProperty&lt;LocalDate&gt;
+- fineManutenzione: ObjectProperty&lt;LocalDate&gt;
+--
++ Tutti getter e setter
++ isInVolo(): boolean
++ isInPartenza(): boolean
++ isInAttesa(): boolean
++ isInManutenzione(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>0</y><w>220</w><h>400</h></coordinates><panel_attributes>GestioneAerei
+bg=red
+--
+_- instance: GestioneAerei_
+- elencoAereiPartenza: ObservableList&lt;Aerei&gt;
+- elencoAereiArrivo: ObservableList&lt;Aerei&gt;
+- elencoAereiTutti: ObservableList&lt;Aerei&gt;
+- elencoAereiDeposito: ObservableList&lt;Aerei&gt;
+- elencoAereiTerra: ObservableList&lt;Aerei&gt;
+- elencoAereiManutenzione: ObservableList&lt;Aerei&gt;
+_- gate: ArrayList&lt;Boolean&gt;_
+- compArrivi: String
+- destArrivi: String
+- dateArrivi: LocalDate
+- scrivi: ScriviDati
+- leggi: LeggiDati
+--
++ riempiGate(): void
++ getInstance(): GestioneAerei
++ addAereo(modello: String, provenienza: String, destinazione: String, 
+   compagnia: String, codice: String, numMax: int, giornoArrivo: LocalDate, 
+   oraArrivo: LocalTime, giornoPartenza: LocalDate, oraPartenza: LocalTime, 
+   intervallo: int, stato: String)
++ addAereo(modello: String, provenienza: String, destinazione: String, 
+   compagnia: String, codice: String, numMax: int, giornoArrivo: LocalDate, 
+   oraArrivo: LocalTime, giornoPartenza: LocalDate, oraPartenza: LocalTime, 
+   intervallo: int, stato: String, inizioManutenzione: LocalDate, 
+   fineManutenzione: LocalDate, hangar: String)
++ addAereo(a: Aerei)
++ aggiornaLista()
++ rimuoviAereo(a: Aerei)
++ assegnaGate(): int
++ setDataPartenza(data: LocalDate)
++ setDataPartenzaAdmin(data: LocalDate)
++ setDataArrivoAdmin(data: LocalDate)
++ setDataArrivo(data: LocalDate)
++ setDataTerra(data: LocalDate)
++ setDataManutenzione(data: LocalDate)
++ aggiornaArrivo(parola: String)
++ aggiornaPartenza(parola: String)
++ aggiornaArrivoAdmin(parola: String, compagnia: String)
++ aggiornaPartenzaAdmin(parola: String, compagnia: String)
++ aggiornaTerraAdmin(parola: String, compagnia: String)
++ aggiornaManutenzioneAdmin(parola: String, compagnia: String)
++ resetPartenze()
++ resetArrivi()
++ resetFilter()
++ setAereiInArrivo(comp: String, dest: String, date: LocalDate)
++ getCompArrivi(): String
++ getDestArrivi(): String
++ getDateArrivi(): LocalDate
++ setAereiInPartenze(comp: String, dest: String, date: LocalDate)
++ getCompPartenze(): String
++ getDestPartenze(): String
++ getDatePartenze(): LocalDate
++ setAereiInTerra(comp: String, dest: String, date: LocalDate)
++ getCompTerra(): String
++ getDestTerra(): String
++ getDateTerra(): LocalDate
++ setAereiInManutenzioni(comp: String, dest: String, date: LocalDate)
++ getCompManutenzioni(): String
++ getDestManutenzioni(): String
++ getDateManutenzioni(): LocalDate
+- bubbleSortByOraPartenza(list: ObservableList&lt;Aerei&gt;): void
+- caricaDati(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>345</x><y>75</y><w>55</w><h>25</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*
+</panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>395</x><y>420</y><w>165</w><h>220</h></coordinates><panel_attributes>Utenti
+--
++ mail: String
++ password: String
++ nome: String
++ cognome: String
++ numeroCellulare: String
++ nazioneResidenza: String
++ cittaResidenza: String
++ viaResidenza: String
++ codiceCarta: String
++ scadenza: String
++ nascita: String
+--
++ Utenti(nome: String, cognome: String, mail: String, 
+    nascita: String, password: String, numCell: String, 
+    nazione: String, citta: String, via: String, 
+    codice: String, scadenza: String)
++ Utenti(mail: String, password: String)
++ getMail(): String
++ getPassword(): String
++ getNome(): String
++ getCognome(): String
++ getNascita(): String
++ getNumeroCellulare(): String
++ getNazioneResidenza(): String
++ getCittaResidenza(): String
++ getViaResidenza(): String
++ getCodiceCarta(): String
++ getScadenza(): String
++ setMail(mail: String): void
++ setPassword(password: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>420</y><w>220</w><h>220</h></coordinates><panel_attributes>GestioneUtenti
+bg=red
+--
+_- instance: GestioneUtenti_
++ listaUtenti: ArrayList&lt;Utenti&gt;
+- scrivi: ScriviDati
+- leggo: LeggiDati
+- schermataPrecedente: String
+- loggato: boolean
+- indice: int
+--
++ GestioneUtenti()
++ getInstance(): GestioneUtenti
++ addUtenti(nome: String, cognome: String, mail: String, 
+   nascita: String, password: String, numCell: String, 
+   nazione: String, citta: String, via: String, codice: String, 
+   scadenza: String): void
++ aggiornaLista(): void
++ scriviUtenti(): void
++ getUtenti(): ArrayList&lt;Utenti&gt;
++ setLogin(indice: int): void
++ isLogged(): boolean
++ getIndice(): int
++ getSchermataPrecedente(): String
++ setSchermataPrecedente(schermataPrecedente: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>345</x><y>450</y><w>60</w><h>25</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*
+</panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element></diagram>
