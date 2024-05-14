@@ -115,7 +115,6 @@
                      <children>
                         <DatePicker fx:id="dataDtpk" prefHeight="31.0" prefWidth="137.0" promptText="Data" styleClass="datePicker" />
                         <TextField id="ricercaTextFieldSecond" fx:id="cercaTxfield" prefHeight="31.0" prefWidth="252.0" promptText="Ricerca" styleClass="ricercaTextField" />
-                        <Button id="cercaButtonSecond" fx:id="cercaBtn" mnemonicParsing="false" onAction="#cercaAerei" styleClass="cercaButton" text="Cerca" />
                      </children>
                   </HBox>
                </children>

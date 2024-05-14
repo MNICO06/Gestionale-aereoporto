@@ -75,36 +75,33 @@ public class dettagliAereoController {
 
     private void setImage(String modello, String compagnia) {
         String temp = "-fx-background-size: contain; -fx-background-repeat: no-repeat; -fx-background-position: center";
-        switch (modello+compagnia) {
-            case "Airbus A380Quatar Airways":
+        switch (modello) {
+            case "Airbus A380":
                 // Imposta l'immagine dell'aereo
                 anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A380Quatar.png'); " + temp);
                 break;
-            case "Airbus A320American Airlines":
+            case "Airbus A320":
                 anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A320AmericanAirlines.jpg');" + temp);
                 break;
-            case "Boeing 787 DreamlinerQantas":
+            case "Boeing 787 Dreamliner":
                 anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B787Qantas.jpeg'); "+ temp);
                 break;
-            case "Airbus A350Singapore Airlines":
+            case "Airbus A350":
                 anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A350SingaporeAirlines.jpg');" + temp);
                 break;
-            case "Boeing 737Delta Air Lines":
+            case "Boeing 737":
                 anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B737Delta.jpg');" + temp);
                 break;
-            case "Airbus A330Emirates":
+            case "Airbus A330":
                 anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A330Emirates.jpg');" + temp);
                 break;
-            case "Boeing 777Korean Air":
+            case "Boeing 777":
                 anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B777KoreanAir.jpg');" + temp);
                 break;
-            case "Airbus A380Virgin Atlantic":
-                anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/A380VirginAtlantic.jpg');" + temp);
-                break;
-            case "Boeing 757United Airlines":
+            case "Boeing 757":
                 anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B757United.jpg');" + temp);
                 break;
-            case "Boeing 747KLM":
+            case "Boeing 747":
                 anchImage.setStyle("-fx-background-image: url('mainFolder/immagini/B747KLM.jpg');" + temp);
                 break;
 
