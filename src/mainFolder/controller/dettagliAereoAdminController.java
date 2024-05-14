@@ -557,7 +557,8 @@ public class dettagliAereoAdminController {
         }
 
         //* Cotnrolli logigi *//
-        // Controllo che il giorno di arrivo sia precedente o lo stesso giorno di partenza 
+        // Controllo che il giorno di arrivo sia precedente o lo stesso giorno di
+        // partenza
         if (giornoArrivoDp.getValue().isAfter(giornoPartenzaDp.getValue())) {
             // Alert per errore
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -572,15 +573,33 @@ public class dettagliAereoAdminController {
 
             // Controllo che l'orario di arrivo sia minore di quello di partenza
             // e che la differenza sia almeno di un'ora
-            if (orarioArrivo.isBefore(orarioPartenza) && orarioArrivo.plusHours(1).isBefore(orarioPartenza)) {
+            if (orarioPartenza.isAfter(orarioArrivo) && orarioPartenza.minusHours(1).isAfter(orarioArrivo)) {
                 // Alert per errore
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Errore");
                 alert.setHeaderText("Errore");
                 alert.setContentText(
-                        "L'orario di arrivo non può essere successivo di meno di 1 ora all'orario di partenza");
+                        "L'orario di partenza non può essere successivo di meno di 1 ora all'orario di arrivo");
                 alert.showAndWait();
                 return false;
+            }
+        } else {
+            LocalTime orarioArrivo = LocalTime.parse(orarioArrivoTxF.getText());
+            LocalTime orarioPartenza = LocalTime.parse(orarioPartenzaTxF.getText());
+
+            // Controllo solo se l'orario di partenza è dopo la mezzanotte
+            if (orarioPartenza.isAfter(LocalTime.MIDNIGHT)) {
+                // Controllo che l'orario di partenza sia maggiore di 1 ora dal tempo di arrivo
+                if (orarioPartenza.minusHours(1).isAfter(orarioArrivo)) {
+                    // Alert per errore
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Errore");
+                    alert.setHeaderText("Errore");
+                    alert.setContentText(
+                            "L'orario di partenza non può essere successivo di meno di 1 ora all'orario di arrivo");
+                    alert.showAndWait();
+                    return false;
+                }
             }
         }
 
