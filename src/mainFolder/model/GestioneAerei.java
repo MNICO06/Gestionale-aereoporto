@@ -19,6 +19,7 @@ import mainFolder.salvataggioDati.ScriviDati;
  */
 public class GestioneAerei {
     private static GestioneAerei instance;
+    // Semaphores for the gates
     private ObservableList<Aerei> elencoAereiPartenza = FXCollections.observableArrayList();
     private ObservableList<Aerei> elencoAereiArrivo = FXCollections.observableArrayList();
     private ObservableList<Aerei> elencoAereiTutti = FXCollections.observableArrayList();
@@ -42,9 +43,7 @@ public class GestioneAerei {
         riempiGate();
         //poi da fare apertura dati
         caricaDati();
-        // Faccio partire il thread
-        //Controllo controllo = new Controllo();
-        //controllo.start();
+        
     }
 
     public void riempiGate() {
@@ -96,10 +95,15 @@ public class GestioneAerei {
         Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo, stato);
         a.setGate(assegnaGate());
         a.setTerminal(1); // Un unico terminal
-        elencoAereiTutti.add(a);
+        synchronized (elencoAereiTutti) {
+                elencoAereiTutti.add(a);
+        }
+        
 
         // Scrivi i dati su file
-        scrivi.scriviAereiFine(elencoAereiTutti);
+        synchronized (elencoAereiTutti) {
+                scrivi.scriviAereiFine(elencoAereiTutti);
+        }
     }
 
     //versione nel caso in cui ci sia anche lo stato manutenzione (inizio, fine e hangar)
@@ -117,26 +121,38 @@ public class GestioneAerei {
         Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo, stato, inizioManutenzione, fineManutenzione, hangar);
         a.setGate(assegnaGate());
         a.setTerminal(1); // Un unico terminal
-        elencoAereiTutti.add(a);
+        synchronized (elencoAereiTutti) {
+                elencoAereiTutti.add(a);
+        }
 
         // Scrivi i dati su file
-        scrivi.scriviAereiFine(elencoAereiTutti);
+        synchronized (elencoAereiTutti) {
+                scrivi.scriviAereiFine(elencoAereiTutti);
+        }
+        
     }
 
     // version incui venga passato un aereo già creato
         public void addAereo(Aerei a) {
-                elencoAereiTutti.add(a);
-
+                synchronized (elencoAereiTutti) {
+                        elencoAereiTutti.add(a);
+                        scrivi.scriviAereiFine(elencoAereiTutti);
+                }
                 // Scrivi i dati su file
-                scrivi.scriviAereiFine(elencoAereiTutti);
+                
 }       
 
         public void aggiornaLista() {
-                scrivi.scriviAereiFine(elencoAereiTutti);
+                synchronized (elencoAereiTutti) {
+                        scrivi.scriviAereiFine(elencoAereiTutti);
+                }
+                
         }
 
     public void rimuoviAereo(Aerei a) {
-        elencoAereiTutti.remove(a);
+        synchronized (elencoAereiTutti) {
+                elencoAereiTutti.remove(a);
+        }
     }
 
     public int assegnaGate() {
@@ -155,11 +171,11 @@ public class GestioneAerei {
     //basta chiamare questo metodo con la date voluta e cambia la lista visualizzata con appunto la data pssata
     public void setDataPartenza(LocalDate data) {
         elencoAereiDeposito.clear();
-
-        for (int i = 0; i < elencoAereiTutti.size(); i++) {
-                elencoAereiDeposito.add(elencoAereiTutti.get(i));
+        synchronized (elencoAereiTutti) {
+                for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                        elencoAereiDeposito.add(elencoAereiTutti.get(i));
+                }
         }
-
         elencoAereiPartenza.clear();
 
         for (int i = 0; i < elencoAereiDeposito.size(); i++) {
@@ -174,9 +190,10 @@ public class GestioneAerei {
     //basta chiamare questo metodo con la date voluta e cambia la lista visualizzata con appunto la data pssata
     public void setDataArrivo(LocalDate data) {
         elencoAereiDeposito.clear();
-
-        for (int i = 0; i < elencoAereiTutti.size(); i++) {
-                elencoAereiDeposito.add(elencoAereiTutti.get(i));
+        synchronized (elencoAereiTutti) {
+                for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                        elencoAereiDeposito.add(elencoAereiTutti.get(i));
+                }
         }
 
         elencoAereiArrivo.clear();
@@ -194,8 +211,10 @@ public class GestioneAerei {
     public void setDataTerra(LocalDate data) {
         elencoAereiDeposito.clear();
 
-        for (int i = 0; i < elencoAereiTutti.size(); i++) {
-                elencoAereiDeposito.add(elencoAereiTutti.get(i));
+        synchronized (elencoAereiTutti) {
+                for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                        elencoAereiDeposito.add(elencoAereiTutti.get(i));
+                }
         }
 
         elencoAereiTerra.clear();
@@ -211,11 +230,13 @@ public class GestioneAerei {
     }
 
     public void setDataManutenzione(LocalDate data) {
-            elencoAereiDeposito.clear();
+        elencoAereiDeposito.clear();
+        synchronized (elencoAereiTutti) {
 
             for (int i = 0; i < elencoAereiTutti.size(); i++) {
                     elencoAereiDeposito.add(elencoAereiTutti.get(i));
             }
+        }
 
             elencoAereiManutenzione.clear();
 
@@ -385,9 +406,11 @@ public class GestioneAerei {
         // Reset partenze
         public void resetPartenze() {
                 elencoAereiPartenza.clear();
+                synchronized (elencoAereiTutti) {
 
                 for (int i = 0; i < elencoAereiTutti.size(); i++) {
                 elencoAereiPartenza.add(elencoAereiTutti.get(i));
+                }
                 }
 
                 bubbleSortByOraPartenza(elencoAereiPartenza);
@@ -396,9 +419,10 @@ public class GestioneAerei {
         // Reset arrivi
         public void resetArrivi() {
                 elencoAereiArrivo.clear();
-
+                synchronized (elencoAereiTutti) {
                 for (int i = 0; i < elencoAereiTutti.size(); i++) {
                 elencoAereiArrivo.add(elencoAereiTutti.get(i));
+                }
                 }
 
                 bubbleSortByOraPartenza(elencoAereiArrivo);
