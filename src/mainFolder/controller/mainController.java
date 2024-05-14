@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.util.Duration;
 import mainFolder.model.Aerei;
 import mainFolder.model.GestioneAerei;
@@ -118,6 +119,13 @@ public class mainController {
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(60), event -> {
+            // Chiamare il metodo per aggiornare le tabelle
+            aggiornaStato();
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE); // Esegui all'infinito
+        timeline.play();
+
         setDataArrivi(LocalDate.now());
         setDataPartenza(LocalDate.now());
         setDataTerra(LocalDate.now());
@@ -201,6 +209,29 @@ public class mainController {
         cercaAereiGiustoPartenze(destFiltPartenze.getText(), compFiltPartenze.getText());
         cercaAereiGiustoTerra(destFiltTerra.getText(), compFiltTerra.getText());
         cercaAereiGiustoManutenzione(destFiltManutenzione.getText(), compFiltManutenzione.getText());
+    }
+
+    public void aggiornaStato() {
+        synchronized (gestioneAerei.getElencoLista()) {
+            Platform.runLater(() -> {
+                for (Aerei aerei : gestioneAerei.getElencoLista()) {
+                    if (aerei.isInVolo()) {
+                        aerei.setStato("In arrivo");
+                    } else if (aerei.isInPartenza()) {
+                        aerei.setStato("In partenza");
+                    } else if (aerei.isInAttesa()) {
+                        aerei.setStato("In attesa");
+                    } else if (aerei.isInManutenzione()) {
+                        aerei.setStato("In manutenzione");
+                    }
+                    if (aerei.isAggiornato()) {
+                        aggiornaTabelle();
+                        aerei.setAggiornato(false);
+                        //riaggiorno la tabella
+                    }
+                }
+            });
+        }
     }
 
     private void setDataPartenza(LocalDate date) {
@@ -316,12 +347,12 @@ public class mainController {
 
     @FXML
     public void changeDataArrivo() {
-        gestioneAerei.setDataArrivo(datePickerArrivo.getValue());
+        gestioneAerei.setDataArrivoAdmin(datePickerArrivo.getValue());
     }
 
     @FXML
     public void changeDataPartenza() {
-        gestioneAerei.setDataPartenza(datePickerPartenze.getValue());
+        gestioneAerei.setDataPartenzaAdmin(datePickerPartenze.getValue());
     }
 
     @FXML

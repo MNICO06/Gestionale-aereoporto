@@ -44,6 +44,9 @@ public class Aerei {
     private boolean caricoBagagli = false;
     private boolean imbarco = false;
 
+    private boolean aggiornato = false;
+
+
     // questo con lo stato, quindi quello aggiornato quello sopra poi non servirà
     public Aerei(String modello, String provenienza, String destinazione, String compagnia, String codice,
             int numMax, LocalDate giornoDiArrivo, LocalTime oraArrivo,
@@ -404,6 +407,12 @@ public class Aerei {
         LocalTime oraAttuale = LocalTime.now();
         LocalTime oraArrivo = getOraArrivoLocalTime();
         if (oraAttuale.isAfter(oraArrivo.minusMinutes(5)) && oraAttuale.isBefore(oraArrivo.plusMinutes(5))) {
+            if (stato.get().equals("In arrivo")) {
+                aggiornato = false;
+            }
+            else {
+                aggiornato = true;
+            }
             return true;
         }
         return false;
@@ -414,6 +423,12 @@ public class Aerei {
         LocalTime oraAttuale = LocalTime.now();
         LocalTime oraPartenza = getOraPartenzaLocalTime();
         if (oraAttuale.isAfter(oraPartenza.minusMinutes(5)) && oraAttuale.isBefore(oraPartenza.plusMinutes(5))) {
+            if (stato.get().equals("In partenza")) {
+                aggiornato = false;
+            }
+            else {
+                aggiornato = true;
+            }
             return true;
         }
         return false;
@@ -421,6 +436,12 @@ public class Aerei {
 
     public boolean isInAttesa() {
         // Se l'aereo non è ne in arrivo ne in partenza, allora è a terra in attesa
+        if (stato.get().equals("In attesa")) {
+            aggiornato = false;
+        }
+        else {
+            aggiornato = true;
+        }
         return !isInVolo() && !isInPartenza();
     }
 
@@ -430,9 +451,22 @@ public class Aerei {
         LocalDate inizio = getInizioManutenzioneLocalDate();
         LocalDate fine = getFineManutenzioneLocalDate();
         if (oggi.isAfter(inizio) && oggi.isBefore(fine)) {
+            if (stato.get().equals("In manutenzione")) {
+                aggiornato = false;
+            }
+            else {
+                aggiornato = true;
+            }
             return true;
         }
         return false;
     }
-    
+
+    public void setAggiornato(boolean aggiornato) {
+        this.aggiornato = aggiornato;
+    }
+
+    public boolean isAggiornato() {
+        return aggiornato;
+    }
 }

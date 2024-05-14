@@ -32,8 +32,6 @@ public class GestioneAerei {
     private String destArrivi;
     private LocalDate dateArrivi;
 
-
-
     ScriviDati scrivi;
     LeggiDati leggi;
 
@@ -179,7 +177,27 @@ public class GestioneAerei {
         elencoAereiPartenza.clear();
 
         for (int i = 0; i < elencoAereiDeposito.size(); i++) {
-                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) && elencoAereiDeposito.get(i).getStato().equals("In partenza")){
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) && 
+                (elencoAereiDeposito.get(i).getStato().equals("In partenza") ||elencoAereiDeposito.get(i).getStato().equals("In attesa"))){
+                        elencoAereiPartenza.add(elencoAereiDeposito.get(i));
+                }
+        }
+
+        bubbleSortByOraPartenza(elencoAereiPartenza);
+    }
+
+    public void setDataPartenzaAdmin(LocalDate data) {
+        elencoAereiDeposito.clear();
+        synchronized (elencoAereiTutti) {
+                for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                        elencoAereiDeposito.add(elencoAereiTutti.get(i));
+                }
+        }
+        elencoAereiPartenza.clear();
+
+        for (int i = 0; i < elencoAereiDeposito.size(); i++) {
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) && 
+                elencoAereiDeposito.get(i).getStato().equals("In partenza")){
                         elencoAereiPartenza.add(elencoAereiDeposito.get(i));
                 }
         }
@@ -188,7 +206,7 @@ public class GestioneAerei {
     }
 
     //basta chiamare questo metodo con la date voluta e cambia la lista visualizzata con appunto la data pssata
-    public void setDataArrivo(LocalDate data) {
+    public void setDataArrivoAdmin(LocalDate data) {
         elencoAereiDeposito.clear();
         synchronized (elencoAereiTutti) {
                 for (int i = 0; i < elencoAereiTutti.size(); i++) {
@@ -201,6 +219,26 @@ public class GestioneAerei {
         for (int i = 0; i < elencoAereiDeposito.size(); i++) {
                 if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) &&
                 elencoAereiDeposito.get(i).getStato().equals("In arrivo")){
+                        elencoAereiArrivo.add(elencoAereiDeposito.get(i));
+                }
+        }
+
+        bubbleSortByOraPartenza(elencoAereiArrivo);
+    }
+
+    public void setDataArrivo(LocalDate data) {
+        elencoAereiDeposito.clear();
+        synchronized (elencoAereiTutti) {
+                for (int i = 0; i < elencoAereiTutti.size(); i++) {
+                        elencoAereiDeposito.add(elencoAereiTutti.get(i));
+                }
+        }
+
+        elencoAereiArrivo.clear();
+
+        for (int i = 0; i < elencoAereiDeposito.size(); i++) {
+                if (elencoAereiDeposito.get(i).getGiornoArrivoProperty().getValue().isEqual(data) &&
+                (elencoAereiDeposito.get(i).getStato().equals("In arrivo") ||elencoAereiDeposito.get(i).getStato().equals("In attesa"))){
                         elencoAereiArrivo.add(elencoAereiDeposito.get(i));
                 }
         }
@@ -290,7 +328,6 @@ public class GestioneAerei {
     }
     
     public void aggiornaArrivoAdmin(String parola, String compagnia) {
-        System.out.println("Aggiorno arrivo admin");
         elencoAereiDeposito.clear();
 
         for (int i = 0; i < elencoAereiArrivo.size(); i++) {
