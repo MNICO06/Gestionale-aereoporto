@@ -25,7 +25,15 @@
     -fx-font-size: 48px;
     -fx-text-fill: -fx-primary-color;
     -fx-font-weight: bold;
+}
 
+.titleLabelSecond {
+    -fx-font-size: 50px;
+    -fx-text-fill: -fx-primary-color;
+    -fx-font-weight: 700;
+    -fx-background-color: -fx-white-color;
+    -fx-background-radius: 14;
+    -fx-background-insets: 10 10 4 10;
 }
 
 .accediButton {
@@ -69,7 +77,7 @@
 .ricercaTextField {
     -fx-font-size: 24px;
     -fx-background-color: -fx-white-color;
-    -fx-background-radius: 0;
+    -fx-background-radius: 0 10 10 0;
 }
 
 .ricercaTextField#ricercaTextFieldSecond {
@@ -143,7 +151,7 @@
 }
 
 .date-picker-popup .month-year-pane .label {
-    -fx-text-fill: white;
+    -fx-text-fill: -fx-primary-color
 }
 
 .date-picker-popup .week-number-cell {
@@ -152,7 +160,7 @@
 
 .date-picker-popup .spinner .button .left-arrow,
 .date-picker-popup .spinner .button .right-arrow {
-    -fx-background-color: white;
+    -fx-background-color: -fx-white-color;
     -fx-border-color: transparent;
 }
 
@@ -163,16 +171,23 @@
 }
 
 .date-picker-popup .spinner .button {
-    -fx-background-color: transparent;
-    -fx-background-radius: 6;
-    -fx-border-color: transparent;
+    -fx-background-color: -fx-primary-color;
+    -fx-background-radius: 7;
+    -fx-border-color: white;
+    -fx-border-radius: 6;
 }
 
 .date-picker-popup .spinner .button:hover {
     -fx-background-color: -fx-secondary-color;
-    -fx-background-radius: 6;
+    -fx-background-radius: 7;
     -fx-border-color: transparent;
     -fx-cursor: hand;
+}
+
+.customDatePicker {
+    -fx-font-size: 14px;
+    -fx-background-color: -fx-white-color;
+    -fx-background-radius: 7;
 }
 
 .toggle-button {
@@ -438,17 +453,22 @@
     -fx-background-color: -fx-gradientSecondary-color;
 }
 
+.customComboBox .combo-box-popup .list-view .list-cell {
+    -fx-background-color: -fx-gradientSecondary-color;
+    -fx-background-radius: 5;
+}
+
+.customComboBox .combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: -fx-secondary-color;
+}
+
 .customTextField {
     -fx-font-size: 15px;
     -fx-background-color: -fx-white-color;
     -fx-background-radius: 7;
 }
 
-.customDatePicker {
-    -fx-font-size: 14px;
-    -fx-background-color: -fx-white-color;
-    -fx-background-radius: 7;
-}
+
 
 .labelCustom1 {
     -fx-text-fill: -fx-secondary-color;

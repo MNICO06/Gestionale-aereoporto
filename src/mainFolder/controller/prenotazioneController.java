@@ -84,7 +84,7 @@ public class prenotazioneController {
         initializeTable();
         setupRowSelectionListener();
         cbClasse.getItems().addAll("Prima classe", "Seconda classe");
-
+        
         if (dpDataPartenza.getValue() == null) {
             dpDataPartenza.setValue(LocalDate.now());
         }
