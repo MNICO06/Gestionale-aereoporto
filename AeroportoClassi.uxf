@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>20</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>1040</x><y>80</y><w>640</w><h>800</h></coordinates><panel_attributes>Aerei
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>10</x><y>620</y><w>320</w><h>400</h></coordinates><panel_attributes>Aerei
 --
 - MODELLOAEREO: StringProperty
 - provenienza: StringProperty
@@ -24,8 +24,7 @@
 + isInVolo(): boolean
 + isInPartenza(): boolean
 + isInAttesa(): boolean
-+ isInManutenzione(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>880</w><h>1600</h></coordinates><panel_attributes>GestioneAerei
-bg=red
++ isInManutenzione(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>150</y><w>360</w><h>400</h></coordinates><panel_attributes>GestioneAerei
 --
 _- instance: GestioneAerei_
 - elencoAereiPartenza: ObservableList&lt;Aerei&gt;
@@ -41,57 +40,20 @@ _- gate: ArrayList&lt;Boolean&gt;_
 - scrivi: ScriviDati
 - leggi: LeggiDati
 --
-+ riempiGate(): void
 + getInstance(): GestioneAerei
-+ addAereo(modello: String, provenienza: String, destinazione: String, 
-   compagnia: String, codice: String, numMax: int, giornoArrivo: LocalDate, 
-   oraArrivo: LocalTime, giornoPartenza: LocalDate, oraPartenza: LocalTime, 
-   intervallo: int, stato: String)
-+ addAereo(modello: String, provenienza: String, destinazione: String, 
-   compagnia: String, codice: String, numMax: int, giornoArrivo: LocalDate, 
-   oraArrivo: LocalTime, giornoPartenza: LocalDate, oraPartenza: LocalTime, 
-   intervallo: int, stato: String, inizioManutenzione: LocalDate, 
-   fineManutenzione: LocalDate, hangar: String)
-+ addAereo(a: Aerei)
-+ aggiornaLista()
-+ rimuoviAereo(a: Aerei)
++ addAereo(Aerei)
++ rimuoviAereo(Aerei)
++ riempiGate(): void
 + assegnaGate(): int
-+ setDataPartenza(data: LocalDate)
-+ setDataPartenzaAdmin(data: LocalDate)
-+ setDataArrivoAdmin(data: LocalDate)
-+ setDataArrivo(data: LocalDate)
-+ setDataTerra(data: LocalDate)
-+ setDataManutenzione(data: LocalDate)
-+ aggiornaArrivo(parola: String)
-+ aggiornaPartenza(parola: String)
-+ aggiornaArrivoAdmin(parola: String, compagnia: String)
-+ aggiornaPartenzaAdmin(parola: String, compagnia: String)
-+ aggiornaTerraAdmin(parola: String, compagnia: String)
-+ aggiornaManutenzioneAdmin(parola: String, compagnia: String)
-+ resetPartenze()
-+ resetArrivi()
-+ resetFilter()
++ aggiornaLISTE
++ resetFILTRI
 + setAereiInArrivo(comp: String, dest: String, date: LocalDate)
-+ getCompArrivi(): String
-+ getDestArrivi(): String
-+ getDateArrivi(): LocalDate
-+ setAereiInPartenze(comp: String, dest: String, date: LocalDate)
-+ getCompPartenze(): String
-+ getDestPartenze(): String
-+ getDatePartenze(): LocalDate
-+ setAereiInTerra(comp: String, dest: String, date: LocalDate)
-+ getCompTerra(): String
-+ getDestTerra(): String
-+ getDateTerra(): LocalDate
-+ setAereiInManutenzioni(comp: String, dest: String, date: LocalDate)
-+ getCompManutenzioni(): String
-+ getDestManutenzioni(): String
-+ getDateManutenzioni(): LocalDate
 - bubbleSortByOraPartenza(list: ObservableList&lt;Aerei&gt;): void
-- caricaDati(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>860</x><y>300</y><w>220</w><h>100</h></coordinates><panel_attributes>lt=-
-m1=1
-m2=0..*
-</panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1060</x><y>1680</y><w>660</w><h>880</h></coordinates><panel_attributes>Utenti
+- caricaDati(): void
++ GETTER E SETTER</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>160</x><y>540</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1= 1
+m2= 0..*
+</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1010</x><y>600</y><w>330</w><h>440</h></coordinates><panel_attributes>Utenti
 --
 + mail: String
 + password: String
@@ -122,8 +84,7 @@ m2=0..*
 + getCodiceCarta(): String
 + getScadenza(): String
 + setMail(mail: String): void
-+ setPassword(password: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1680</y><w>880</w><h>880</h></coordinates><panel_attributes>GestioneUtenti
-bg=red
++ setPassword(password: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>920</x><y>60</y><w>440</w><h>440</h></coordinates><panel_attributes>GestioneUtenti
 --
 _- instance: GestioneUtenti_
 + listaUtenti: ArrayList&lt;Utenti&gt;
@@ -146,7 +107,26 @@ _- instance: GestioneUtenti_
 + isLogged(): boolean
 + getIndice(): int
 + getSchermataPrecedente(): String
-+ setSchermataPrecedente(schermataPrecedente: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>860</x><y>1800</y><w>240</w><h>100</h></coordinates><panel_attributes>lt=-
++ setSchermataPrecedente(schermataPrecedente: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1160</x><y>490</y><w>50</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=0..*
-</panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>0</y><w>190</w><h>50</h></coordinates><panel_attributes>MainApp
+--
+-gestioneAerei: GestioneAerei</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>0</y><w>190</w><h>130</h></coordinates><panel_attributes>FXMLController
+--
+--
+- accediPage(): void
+- userMainPafe(): void
+- prenotaPage(): void
+- cercaPage(): void
+- infoPage(): void
+- homePage():void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>10</y><w>90</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;30</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>20</y><w>190</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;10;10;20;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>30</y><w>280</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;260;10;260;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>360</y><w>280</w><h>70</h></coordinates><panel_attributes>LeggiDati
+--
+--
++ leggiUtente(): ArrayList&lt;Utenti&gt;
++ leggiAerei(): ArrayList&lt;Aerei&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>240</y><w>280</w><h>70</h></coordinates><panel_attributes>ScriviDati
+--
+--
++ scriviUtenti(utenti: ArrayList&lt;Utenti&gt;): void
++ scriviAerei(aerei: ObservableList&lt;Aerei&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>250</y><w>180</w><h>30</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;160;10</additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>390</y><w>180</w><h>30</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;160;10</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>250</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>380</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element></diagram>

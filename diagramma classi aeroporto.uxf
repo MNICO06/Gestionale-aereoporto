@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>10</x><y>100</y><w>300</w><h>360</h></coordinates><panel_attributes>Aereo
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>50</x><y>90</y><w>300</w><h>360</h></coordinates><panel_attributes>Aereo
 -
 -modello: String final
 -provenienza: StringProperty
@@ -19,7 +19,7 @@
 Aereo(modello, provenienza, destinazione
 compagnia, codice, numMax, giornoArrivo,
 oraArrivo, giornoPartenza, oraPartenza)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>100</y><w>210</w><h>190</h></coordinates><panel_attributes>Utente
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>90</y><w>210</w><h>190</h></coordinates><panel_attributes>Utente
 -
 -nome: String
 -nognome: String
@@ -30,7 +30,7 @@ oraArrivo, giornoPartenza, oraPartenza)
 -paeseResidenza: String
 -viaResidenza: String
 -codiceCarta: String
--scadenzaCarta: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>100</y><w>240</w><h>210</h></coordinates><panel_attributes>GestioneAerei
+-scadenzaCarta: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>90</y><w>240</w><h>210</h></coordinates><panel_attributes>GestioneAerei
 -
 -listaAerei: ObservableList&lt;Aereo&gt;
 -
