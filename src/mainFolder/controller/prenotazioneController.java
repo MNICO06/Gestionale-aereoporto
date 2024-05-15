@@ -3,8 +3,12 @@ package mainFolder.controller;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -104,6 +108,14 @@ public class prenotazioneController {
         txtDestinazione.textProperty().addListener((observable, oldValue, newValue) -> {
             changepartenza(newValue);
         });
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(60), event -> {
+            // Chiamare il metodo per aggiornare le tabelle
+            aggiornaStato();
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE); // Esegui all'infinito
+        timeline.play();
+        
     }
 
     public void initializeTable() {
@@ -144,6 +156,29 @@ public class prenotazioneController {
                 handleDoubleClick(newSelection);
             }
         });
+    }
+
+    public void aggiornaStato() {
+        synchronized (gestioneAerei.getElencoLista()) {
+            Platform.runLater(() -> {
+                for (Aerei aerei : gestioneAerei.getElencoLista()) {
+                    if (aerei.isInVolo()) {
+                        aerei.setStato("In arrivo");
+                    } else if (aerei.isInPartenza()) {
+                        aerei.setStato("In partenza");
+                    } else if (aerei.isInAttesa()) {
+                        aerei.setStato("In attesa");
+                    } else if (aerei.isInManutenzione()) {
+                        aerei.setStato("In manutenzione");
+                    }
+                    if (aerei.isAggiornato()) {
+                        changepartenza(txtDestinazione.getText());
+                        aerei.setAggiornato(false);
+                        //riaggiorno la tabella
+                    }
+                }
+            });
+        }
     }
 
     @FXML
