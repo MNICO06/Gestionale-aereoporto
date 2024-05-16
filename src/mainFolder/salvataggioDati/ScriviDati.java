@@ -75,9 +75,6 @@ public class ScriviDati {
         try (FileWriter writer = new FileWriter("./src/mainFolder/salvataggioDati/aerei.csv")) {
             
             // Scrivi l'intestazione
-            // ritatdo e posti occupati da salvare
-            System.out.println("Scrivo aerei");
-
             writer.write(
                     "Modello,Provenienza,Destinazione,Compagnia,Codice,NumMax,GiornoArrivo,OraArrivo,GiornoPartenza,OraPartenza,Intervallo,Stato,PostiOccupati,Ritardo,InizioManutenzione,FineManutenzione,Hangar\n");
 

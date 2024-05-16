@@ -64,6 +64,39 @@
     -fx-background-color: transparent;
 }
 
+.myCheckBox .box {
+        -fx-background-color: -fx-white-color;
+        -fx-background-radius: 20;
+}
+
+.myCheckBox:selected .mark {
+        -fx-background-color: transparent;
+}
+
+.myCheckBox:selected .box {
+        -fx-background-color: -fx-white-color;
+        -fx-background-image: url('../immagini/eye.png');
+}
+
+.myCheckBox .box {
+        -fx-background-color: -fx-white-color;
+        -fx-background-radius: 20;
+        -fx-background-image: url('../immagini/eyeClosed.png');
+        -fx-background-repeat: no-repeat;
+        -fx-background-position: center;
+        -fx-background-size: 25px 25px;
+                /* Imposta la dimensione dell'immagine */
+}
+
+.myCheckBox:selected .box {
+        -fx-background-color: -fx-white-color;
+        -fx-background-image: url('../immagini/eye.png');
+        -fx-background-repeat: no-repeat;
+        -fx-background-position: center;
+        -fx-background-size: 25px 25px;
+                /* Imposta la dimensione dell'immagine */
+}
+
 .date-picker {
         -fx-background-color: transparent;
         -fx-background-radius: 20;       
