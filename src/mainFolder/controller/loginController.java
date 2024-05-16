@@ -12,6 +12,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import mainFolder.model.GestioneUtenti;
 import mainFolder.model.Utenti;
@@ -45,8 +47,17 @@ public class loginController {
         inserisciPassword.setEditable(true);
 
         gestioneUtenti.aggiornaLista();
+
+        // Listener per il tasto ENTER su inserisciMail e inserisciPassword
+        inserisciMail.setOnKeyPressed(this::handleKeyPress);
+        inserisciPassword.setOnKeyPressed(this::handleKeyPress);
     }
-    
+
+    private void handleKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            login();
+        }
+    }
     
     @FXML
     public void visualizza() {
