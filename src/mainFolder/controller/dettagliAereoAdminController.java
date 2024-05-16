@@ -43,6 +43,7 @@ public class dettagliAereoAdminController {
 
     // Lista gate occupati
     GestioneAerei gestioneAerei = GestioneAerei.getInstance();
+    mainController mainControllerInst = mainController.getInstance();
     ArrayList<Boolean> gateOccupati = gestioneAerei.getGate();
 
     // Aereo da modificare
@@ -259,6 +260,40 @@ public class dettagliAereoAdminController {
         gestioneAerei.setDataTerra(gestioneAerei.getDateTerra());
         gestioneAerei.aggiornaTerraAdmin(gestioneAerei.getDestTerra(),gestioneAerei.getCompTerra());
 
+    }
+
+    @FXML
+    public void rimuoviAereo() {
+        String cssConfirm = getClass().getResource("../cssFolder/alertConfirm.css").toExternalForm();
+        String css = getClass().getResource("../cssFolder/alert.css").toExternalForm();
+        // Rimuove l'aereo selezionato
+        Aerei aereo = this.aereo;
+        if (aereo != null) {
+            // Chiedo all'utente se è sicuro di voler rimuovere l'aereo
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Conferma rimozione");
+            alert.setHeaderText("Sei sicuro di voler rimuovere l'aereo?");
+            alert.setContentText("L'aereo verrà rimosso definitivamente");
+            alert.getDialogPane().getScene().getStylesheets().add(cssConfirm);
+            alert.showAndWait();
+            if (alert.getResult().getText().equals("OK")) {
+                gestioneAerei.rimuoviAereo(aereo);
+                // Aggiorno le tabelle
+                mainControllerInst.aggiornaTabelle();
+                // Salvo le modifiche
+                gestioneAerei.scriviDati();
+            }
+        }
+
+        // Se nessun aereo è selezionato mando un alert
+        if (aereo == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Attenzione");
+            alert.setHeaderText("Nessun aereo selezionato");
+            alert.setContentText("Seleziona un aereo da rimuovere");
+            alert.getDialogPane().getScene().getStylesheets().add(css);
+            alert.showAndWait();
+        }
     }
 
     private boolean controllaValori(String c) {

@@ -219,6 +219,8 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.0" minWidth="1.0" prefWidth="1.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.0" minWidth="1.0" prefWidth="1.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
@@ -227,8 +229,9 @@
                       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="modificaBtn" mnemonicParsing="false" onAction="#modifica" prefHeight="123.0" prefWidth="231.0" styleClass="pagesButtonSx" text="Modifica" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button fx:id="salvaBtn" mnemonicParsing="false" onAction="#salva" prefHeight="114.0" prefWidth="259.0" styleClass="pagesButtonDx" text="Salva" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Button fx:id="modificaBtn" mnemonicParsing="false" onAction="#modifica" prefHeight="123.0" prefWidth="231.0" styleClass="pagesButtonInternal" text="Modifica" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Button fx:id="salvaBtn" mnemonicParsing="false" onAction="#salva" prefHeight="114.0" prefWidth="259.0" styleClass="pagesButtonDx" text="Salva" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#rimuoviAereo" prefHeight="164.0" prefWidth="322.0" styleClass="cancellaButton" text="Cancella" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>

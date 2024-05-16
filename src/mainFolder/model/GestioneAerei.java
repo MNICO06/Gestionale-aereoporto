@@ -541,4 +541,8 @@ public class GestioneAerei {
                 return dateArrivi;
         }
 
+        // metodo che scrive i dati su file
+        public void scriviDati() {
+                scrivi.scriviAereiFine(elencoAereiTutti);
+        }
 }

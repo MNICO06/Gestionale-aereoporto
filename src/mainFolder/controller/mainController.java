@@ -10,12 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.animation.Animation;
@@ -39,12 +34,21 @@ import java.util.Date;
 public class mainController {
     private static mainController mainIstance;
 
-    @FXML private Label orologio;
-    @FXML private Label titolo;
-
     GestioneUtenti gestioneUtenti = GestioneUtenti.getInstance();
     GestioneAerei gestioneAerei = GestioneAerei.getInstance();
+    
+    @FXML private Label orologio;
+    @FXML private Label titolo;    
 
+    // Tab pane
+    @FXML private TabPane tabPane;
+    // 4 tab
+    @FXML private Tab tabArrivi;
+    @FXML private Tab tabPartenze;
+    @FXML private Tab tabTerra;
+    @FXML private Tab tabManutenzione;
+    
+    // Tabella
     @FXML private TableView<Aerei> tabellaArrivo;
     @FXML private TableColumn<Aerei, LocalTime> colonnaOrarioArrivo;
     @FXML private TableColumn<Aerei, Integer> colonnaRitardoArrivo;
@@ -201,14 +205,30 @@ public class mainController {
 
         initializeTable();
         setupRowSelectionListener();
+
+        // Listener su cambio di tab
+        tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // Chiudo la finestra delle informazioni se è aperta
+            if (infoStage != null && infoStage.isShowing()) {
+                infoStage.close();
+            }
+        });
     }
 
     // Metodo per aggiornare le tabelle
     public void aggiornaTabelle() {
-        cercaAereiGiustoArrivi(destFiltArrivi.getText(), compFiltArrivi.getText());
-        cercaAereiGiustoPartenze(destFiltPartenze.getText(), compFiltPartenze.getText());
-        cercaAereiGiustoTerra(destFiltTerra.getText(), compFiltTerra.getText());
-        cercaAereiGiustoManutenzione(destFiltManutenzione.getText(), compFiltManutenzione.getText());
+        if (destFiltArrivi != null && compFiltArrivi != null) {
+            cercaAereiGiustoArrivi(destFiltArrivi.getText(), compFiltArrivi.getText());
+        }
+        if (destFiltPartenze != null && compFiltPartenze != null) {
+            cercaAereiGiustoPartenze(destFiltPartenze.getText(), compFiltPartenze.getText());
+        }
+        if (destFiltTerra != null && compFiltTerra != null) {
+            cercaAereiGiustoTerra(destFiltTerra.getText(), compFiltTerra.getText());
+        }
+        if (destFiltManutenzione != null && compFiltManutenzione != null) {
+            cercaAereiGiustoManutenzione(destFiltManutenzione.getText(), compFiltManutenzione.getText());
+        }
     }
 
     public void aggiornaStato() {
@@ -449,4 +469,46 @@ public class mainController {
         }
     }
     
+    @FXML
+    public void rimuoviAereo() {
+        String cssConfirm = getClass().getResource("../cssFolder/alertConfirm.css").toExternalForm();
+        String css = getClass().getResource("../cssFolder/alert.css").toExternalForm();
+        // Rimuove l'aereo selezionato in base al tab selezionato
+        Aerei aereo = null;
+        if (tabPane.getSelectionModel().getSelectedItem().equals(tabArrivi)) {
+            aereo = tabellaArrivo.getSelectionModel().getSelectedItem();
+        } else if (tabPane.getSelectionModel().getSelectedItem().equals(tabPartenze)) {
+            aereo = tabellaPartenza.getSelectionModel().getSelectedItem();
+        } else if (tabPane.getSelectionModel().getSelectedItem().equals(tabTerra)) {
+            aereo = tabellaTerra.getSelectionModel().getSelectedItem();
+        } else if (tabPane.getSelectionModel().getSelectedItem().equals(tabManutenzione)) {
+            aereo = tabellaManutenzione.getSelectionModel().getSelectedItem();
+        }
+        if (aereo != null) {
+            // Chiedo all'utente se è sicuro di voler rimuovere l'aereo
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Conferma rimozione");
+            alert.setHeaderText("Sei sicuro di voler rimuovere l'aereo?");
+            alert.setContentText("L'aereo verrà rimosso definitivamente");
+            alert.getDialogPane().getScene().getStylesheets().add(cssConfirm);
+            alert.showAndWait();
+            if (alert.getResult().getText().equals("OK")) {
+                gestioneAerei.rimuoviAereo(aereo);
+                aggiornaTabelle();
+                // Salvo le modifiche
+                gestioneAerei.scriviDati();
+            }
+        }
+
+        // Se nessun aereo è selezionato mando un alert
+        if (aereo == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Attenzione");
+            alert.setHeaderText("Nessun aereo selezionato");
+            alert.setContentText("Seleziona un aereo da rimuovere");
+            alert.getDialogPane().getScene().getStylesheets().add(css);
+            alert.showAndWait();
+        }
+    }
+
 }
