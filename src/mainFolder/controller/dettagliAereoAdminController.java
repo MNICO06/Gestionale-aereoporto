@@ -163,12 +163,12 @@ public class dettagliAereoAdminController {
             postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato);
         }
 
-        aereo.setTerminal(terminal);
-        aereo.setGate(gate);
+        aereoTmp.setTerminal(terminal);
+        aereoTmp.setGate(gate);
         // Modifico la lista dei gate occupati
         gateOccupati.set(gate-1, true);
-        aereo.setNumeroPostiOccupati(postiOccupati);
-        aereo.setRitardo(ritardo);
+        aereoTmp.setNumeroPostiOccupati(postiOccupati);
+        aereoTmp.setRitardo(ritardo);
 
         
         // Aggiungo l'aereo alla lista
