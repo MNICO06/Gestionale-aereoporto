@@ -207,12 +207,15 @@ public class mainController {
         setupRowSelectionListener();
 
         // Listener su cambio di tab
+        //TODO: problema quando apri admin in questo caso
+        /*
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             // Chiudo la finestra delle informazioni se è aperta
             if (infoStage != null && infoStage.isShowing()) {
                 infoStage.close();
             }
         });
+        */
     }
 
     // Metodo per aggiornare le tabelle

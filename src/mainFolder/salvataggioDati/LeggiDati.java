@@ -137,22 +137,19 @@ public class LeggiDati {
                         hangar = linea[16];
                     }
 
+                    Aerei aereo;
                     // se vi è inizioManutenzione, vuol dire che ci sono anche gli altri 2 e quindi
                     // aggiungo un aereo secondo il metodo con manutenzione
                     if (inizioManutenzione != null) {
-                        Aerei aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax,
+                        aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax,
                                 giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo, stato,
-                                inizioManutenzione, fineManutenzione, hangar);
-                        aereo.setNumeroPostiOccupati(numPostiOccupati);
-                        aereo.setRitardo(ritardo);
-                        aerei.add(aereo);
+                                inizioManutenzione, fineManutenzione, hangar, ritardo, numPostiOccupati);
+                        
                     } else { // se no aggiungono un aereo senza usare quello con la manutenzione
-                        Aerei aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax,
-                                giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo, stato);
-                        aereo.setNumeroPostiOccupati(numPostiOccupati);
-                        aereo.setRitardo(ritardo);
-                        aerei.add(aereo);
+                        aereo = new Aerei(modello, provenienza, destinazione, compagnia, codice, numMax,
+                                giornoArrivo, oraArrivo, giornoPartenza, oraPartenza, intervallo, stato, ritardo, numPostiOccupati);
                     }
+                    aerei.add(aereo);
                 }
             }
         } catch (IOException e) {
