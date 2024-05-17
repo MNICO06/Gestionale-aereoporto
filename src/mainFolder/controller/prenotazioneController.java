@@ -50,7 +50,9 @@ public class prenotazioneController {
     private final String testoErrorePersone = "ERRORE! bisogna scegliere le persone";
     private final String testoErroreClasse = "ERRORE! bisogna segliere la classe";
     private final String testoErroreSelezionato = "ERRORE! bisogna segliere un aereo";
+    private final String testoErrorePosti = "ERRORE! non ci sono abbastanza posti";
     private boolean isSelected = false;
+    private Aerei aereoSelezionato = null;
     private int nBagagli;
     private int nAdulti;
     private int nBambini;
@@ -204,8 +206,10 @@ public class prenotazioneController {
         //da resettare poi tutti i campi
         if (controllaTutto()) {
             segnala.setText(testoConferma);
+            aereoSelezionato.setNumeroPostiOccupati(aereoSelezionato.getNumeroPostiOccupatiInt() + nAdulti + nBambini);
             segnala.setStyle("-fx-text-fill: black;");
             resetCampi();
+            gestioneAerei.scriviDati();
             
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
             lblPrezzo.setText("0");
@@ -214,19 +218,28 @@ public class prenotazioneController {
         }
     }
 
-
-
     public void resetCampi() {
         lblAdulti.setText("0");
         lblBambini.setText("0");
         lblBagagli.setText("0");
+        nBagagli = 0;
+        nAdulti = 0;
+        nBambini = 0;
+        prezzoTot = 0;
     }
 
     public boolean controllaTutto() {
         if (isLogged && isSelected) {
             if (nAdulti > 0 || nBambini > 0) {
                 if (cbClasse.getValue() != null) {
-                    return true;
+                    if (aereoSelezionato.getPostiMassimi() >= (aereoSelezionato.getNumeroPostiOccupatiInt() + nAdulti + nBambini)) {
+                        return true;
+                    }
+                    else {
+                        segnala.setText(testoErrorePosti);
+                        segnala.setStyle("-fx-text-fill: red;");
+                        rimuoviErrore();
+                    }
                 }
                 else {
                     segnala.setText(testoErroreClasse);
@@ -325,6 +338,7 @@ public class prenotazioneController {
 
     private void handleDoubleClick(Aerei aereo) {
         isSelected = true;
+        aereoSelezionato = aereo;
         if (infoStage != null && infoStage.isShowing()) {
             // Chiudi la finestra delle informazioni esistente se è già aperta
             infoStage.close();
