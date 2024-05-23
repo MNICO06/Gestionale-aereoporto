@@ -157,24 +157,21 @@ public class dettagliAereoAdminController {
         if (stato.equals("In manutenzione")) {
             aereoTmp = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
             postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato,
-            inizioLavori, fineLavori, hangar);
+            inizioLavori, fineLavori, hangar, ritardo, postiOccupati);
         }
         else {
             aereoTmp = new Aerei (modello, provenienza, destinazione, compagnia, codice, 
-            postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato);
+            postiTotali, giornoArrivo, orarioArrivo, giornoPartenza, orarioPartenza, intervallo, stato, ritardo, postiOccupati);
         }
 
         aereoTmp.setTerminal(terminal);
         aereoTmp.setGate(gate);
         // Modifico la lista dei gate occupati
         gateOccupati.set(gate-1, true);
-        aereoTmp.setNumeroPostiOccupati(postiOccupati);
-        aereoTmp.setRitardo(ritardo);
 
         
         // Aggiungo l'aereo alla lista
         gestioneAerei.addAereo(aereoTmp);
-        System.out.println("Aereo aggiunto");
 
         gestioneAerei.setDataArrivo(gestioneAerei.getDateArrivi());
         gestioneAerei.aggiornaArrivoAdmin(gestioneAerei.getDestArrivi(), gestioneAerei.getCompArrivi());

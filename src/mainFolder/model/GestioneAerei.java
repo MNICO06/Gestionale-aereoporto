@@ -81,7 +81,7 @@ public class GestioneAerei {
     //anche in questo caso questa è la versione con lo stato
     public void addAereo(String modello, String provenienza, String destinazione, String compagnia, String codice, 
      int numMax, LocalDate giornoArrivo, LocalTime oraArrivo, 
-      LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato) {
+      LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato, int ritardo, int numPosti) {
         LocalDate arrivo = giornoArrivo;
         LocalDate partenza = giornoPartenza;
         while (arrivo.isBefore(LocalDate.now())) {
@@ -90,7 +90,7 @@ public class GestioneAerei {
         }
 
         
-        Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo, stato);
+        Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo, stato, ritardo, numPosti);
         a.setGate(assegnaGate());
         a.setTerminal(1); // Un unico terminal
         synchronized (elencoAereiTutti) {
@@ -107,7 +107,7 @@ public class GestioneAerei {
     //versione nel caso in cui ci sia anche lo stato manutenzione (inizio, fine e hangar)
     public void addAereo(String modello, String provenienza, String destinazione, String compagnia, String codice, 
      int numMax, LocalDate giornoArrivo, LocalTime oraArrivo, 
-      LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato, LocalDate inizioManutenzione, LocalDate fineManutenzione, String hangar) {
+      LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato, LocalDate inizioManutenzione, LocalDate fineManutenzione, String hangar, int ritardo, int numPosti) {
         LocalDate arrivo = giornoArrivo;
         LocalDate partenza = giornoPartenza;
         while (arrivo.isBefore(LocalDate.now())) {
@@ -116,7 +116,7 @@ public class GestioneAerei {
         }
 
         
-        Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo, stato, inizioManutenzione, fineManutenzione, hangar);
+        Aerei a = new Aerei (modello, provenienza, destinazione, compagnia, codice, numMax, arrivo, oraArrivo, partenza, oraPartenza, intervallo, stato, inizioManutenzione, fineManutenzione, hangar, ritardo, numPosti);
         a.setGate(assegnaGate());
         a.setTerminal(1); // Un unico terminal
         synchronized (elencoAereiTutti) {
@@ -137,7 +137,6 @@ public class GestioneAerei {
                         scrivi.scriviAereiFine(elencoAereiTutti);
                 }
                 // Scrivi i dati su file
-                
 }       
 
         public void aggiornaLista() {
@@ -223,7 +222,7 @@ public class GestioneAerei {
                 }
         }
 
-        bubbleSortByOraPartenza(elencoAereiArrivo);
+        bubbleSortByOraArivo(elencoAereiArrivo);
     }
 
     public void setDataArrivo(LocalDate data) {
@@ -243,7 +242,7 @@ public class GestioneAerei {
                 }
         }
 
-        bubbleSortByOraPartenza(elencoAereiArrivo);
+        bubbleSortByOraArivo(elencoAereiArrivo);
     }
 
     public void setDataTerra(LocalDate data) {
@@ -411,20 +410,35 @@ public class GestioneAerei {
         }
     }
 
+    private void bubbleSortByOraArivo(ObservableList<Aerei> list) {
+        int n = list.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                // Confronto le ore di partenza degli aerei
+                if (list.get(j).getOraArrivoProperty().getValue().isAfter(list.get(j + 1).getOraArrivoProperty().getValue())) {
+                    // Scambio gli elementi se l'ora di partenza del primo aereo è successiva a quella del secondo aereo
+                    Aerei temp = list.get(j);
+                    list.set(j, list.get(j + 1));
+                    list.set(j + 1, temp);
+                }
+            }
+        }
+    }
+
     private void caricaDati() {
         
         for (Aerei aereo : leggi.leggiAereiNuovo()) {
                 if(aereo.getInizioManutenzione() == null ){
                         addAereo(aereo.getModello(), aereo.getProvenienza(),aereo.getDestinazione(), aereo.getCompagnia(), aereo.getCodice(), aereo.getPostiMassimi(), 
                         aereo.getGiornoArrivoLocalDate(), aereo.getOraArrivoLocalTime(), aereo.getGiornoPartenzaLocalDate(), aereo.getOraPartenzaLocalTime(), 
-                        aereo.getIntervallo(), aereo.getStato());
+                        aereo.getIntervallo(), aereo.getStato(), aereo.getRitardoInt(), aereo.getNumeroPostiOccupatiInt());
                 } else {
                         addAereo(aereo.getModello(), aereo.getProvenienza(), aereo.getDestinazione(),
                                         aereo.getCompagnia(), aereo.getCodice(), aereo.getPostiMassimi(),
                                         aereo.getGiornoArrivoLocalDate(), aereo.getOraArrivoLocalTime(),
                                         aereo.getGiornoPartenzaLocalDate(), aereo.getOraPartenzaLocalTime(),
                                         aereo.getIntervallo(), aereo.getStato(), aereo.getInizioManutenzioneLocalDate(),
-                                         aereo.getFineManutenzioneLocalDate(), aereo.getHangar());    
+                                         aereo.getFineManutenzioneLocalDate(), aereo.getHangar(), aereo.getRitardoInt(), aereo.getNumeroPostiOccupatiInt());    
                 }
         }
 
@@ -462,7 +476,7 @@ public class GestioneAerei {
                 }
                 }
 
-                bubbleSortByOraPartenza(elencoAereiArrivo);
+                bubbleSortByOraArivo(elencoAereiArrivo);
         }
 
         public void resetFilter() {

@@ -1,13 +1,13 @@
 Modello,Provenienza,Destinazione,Compagnia,Codice,NumMax,GiornoArrivo,OraArrivo,GiornoPartenza,OraPartenza,Intervallo,Stato,PostiOccupati,Ritardo,InizioManutenzione,FineManutenzione,Hangar
-Airbus A380,MilanMXP,RomeFCO,Quatar Airways,AB123,347,16/05/2024,20:45:00,22/05/2024,21:52:00,3,In attesa,0,0,15/05/2024,19/05/2024,hangar 12
+Airbus A380,MilanMXP,RomeFCO,Quatar Airways,AB123,347,19/05/2024,20:45:00,19/05/2024,21:00:00,3,In attesa,340,0
 Boeing 747,NewJorkJFK,LondonLHR,British Airways,BA123,200,17/05/2024,10:30:00,17/05/2024,13:45:00,2,In attesa,0,0
-Airbus A320,LosAngelesLAX,ChicagoORD,American Airlines,AA456,200,16/05/2024,10:40:00,16/05/2024,20:00:00,2,In attesa,0,0
-Boeing 787 Dreamliner,TokyoHND,SydneySYD,Qantas,QF789,200,16/05/2024,13:00:00,16/05/2024,14:40:00,1,In attesa,0,0
-Airbus A350,ParisCDG,SingaporeSIN,Singapore Airlines,SQ123,200,16/05/2024,21:45:00,16/05/2024,13:15:00,1,In attesa,0,0
+Airbus A320,LosAngelesLAX,ChicagoORD,American Airlines,AA456,200,18/05/2024,10:40:00,18/05/2024,20:00:00,2,In attesa,0,0
+Boeing 787 Dreamliner,TokyoHND,SydneySYD,Qantas,QF789,200,17/05/2024,13:00:00,17/05/2024,14:40:00,1,In attesa,0,0
+Airbus A350,ParisCDG,SingaporeSIN,Singapore Airlines,SQ123,200,17/05/2024,21:45:00,17/05/2024,13:15:00,1,In attesa,0,0
 Boeing 737,AtlantaATL,OrlandoMCO,Delta Air Lines,DL456,200,17/05/2024,11:30:00,17/05/2024,13:00:00,2,In attesa,0,0
-Airbus A330,FrankfurtFRA,DubaiDXB,Emirates,EM789,200,16/05/2024,16:00:00,16/05/2024,19:45:00,1,In attesa,0,0
-Boeing 777,SanFranciscoSFO,SeulICN,Korean Air,KE789,200,16/05/2024,20:45:00,16/05/2024,23:30:00,1,In attesa,0,0
+Airbus A330,FrankfurtFRA,DubaiDXB,Emirates,EM789,200,17/05/2024,16:00:00,17/05/2024,19:45:00,1,In attesa,0,0
+Boeing 777,SanFranciscoSFO,SeulICN,Korean Air,KE789,200,17/05/2024,20:45:00,17/05/2024,23:30:00,1,In attesa,0,0
 Airbus A380,LondonLHR,NewYorkJFK,Virgin Atlantic,VS123,200,18/05/2024,16:30:00,17/05/2024,20:15:00,3,In attesa,0,0
 Boeing 757,SeattleSEA,DenverDEN,United Airlines,UA456,200,17/05/2024,08:45:00,17/05/2024,11:30:00,2,In attesa,0,0
 Boeing 747,MunichMUC,AmsterdamAMS,KLM,KL123,200,17/05/2024,19:00:00,17/05/2024,12:45:00,2,In attesa,0,0
-Boeing 747,FCORome,MXPMilan,Emirates,EM892,111,16/05/2024,22:00:00,17/05/2024,10:25:00,1,In partenza,0,0
+Boeing 747,FCORome,MXPMilan,Emirates,EM892,111,17/05/2024,22:00:00,18/05/2024,10:25:00,1,In attesa,0,0

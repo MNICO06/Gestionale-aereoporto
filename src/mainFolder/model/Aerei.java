@@ -50,11 +50,14 @@ public class Aerei {
     // questo con lo stato, quindi quello aggiornato quello sopra poi non servirà
     public Aerei(String modello, String provenienza, String destinazione, String compagnia, String codice,
             int numMax, LocalDate giornoDiArrivo, LocalTime oraArrivo,
-            LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato) {
+            LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato, int ritardo, int numPosti) {
 
         while (giornoDiArrivo.isBefore(LocalDate.now())) {
             giornoDiArrivo = giornoDiArrivo.plusDays(intervallo);
             giornoPartenza = giornoPartenza.plusDays(intervallo);
+            //nel caso in cui cambia il giorno, resetta anche il ritardo e il numero di posti occupati
+            ritardo = 0;
+            numPosti = 0;
         }
 
         this.modelloAereo = new SimpleStringProperty(modello);
@@ -68,14 +71,14 @@ public class Aerei {
         this.giornoDiPartenza = new SimpleObjectProperty<>(giornoPartenza);
         this.oraPartenza = new SimpleObjectProperty<>(oraPartenza);
         this.intervalloDiGiorni = intervallo;
-        this.ritardo = new SimpleIntegerProperty(0); // Inizializzazione di ritardo
         this.gate = new SimpleIntegerProperty(-1); // Inizializzazione di gate
         this.terminal = new SimpleIntegerProperty(-1); // Inizializzazione di terminal
-        this.numeroPostiOccupati = new SimpleIntegerProperty(0); // Inizializzazione di posti occupati
         inizioManutenzione = new SimpleObjectProperty<>(null);
         fineManutenzione = new SimpleObjectProperty<>(null);
         this.stato = new SimpleStringProperty(stato);
         hangar = new SimpleStringProperty(null);
+        this.ritardo = new SimpleIntegerProperty(ritardo);
+        this.numeroPostiOccupati = new SimpleIntegerProperty(numPosti);
     }
 
     // versione aggiunta erei nel caso in cui ci sia come stato quello della
@@ -83,7 +86,7 @@ public class Aerei {
     public Aerei(String modello, String provenienza, String destinazione, String compagnia, String codice,
             int numMax, LocalDate giornoDiArrivo, LocalTime oraArrivo,
             LocalDate giornoPartenza, LocalTime oraPartenza, int intervallo, String stato, LocalDate inizioManutenzione,
-            LocalDate fineManutenzione, String hangar) {
+            LocalDate fineManutenzione, String hangar, int ritardo, int numPosti) {
 
         while (giornoDiArrivo.isBefore(LocalDate.now())) {
             giornoDiArrivo = giornoDiArrivo.plusDays(intervallo);
@@ -101,14 +104,14 @@ public class Aerei {
         this.giornoDiPartenza = new SimpleObjectProperty<>(giornoPartenza);
         this.oraPartenza = new SimpleObjectProperty<>(oraPartenza);
         this.intervalloDiGiorni = intervallo;
-        this.ritardo = new SimpleIntegerProperty(0); // Inizializzazione di ritardo
         this.gate = new SimpleIntegerProperty(-1); // Inizializzazione di gate
         this.terminal = new SimpleIntegerProperty(-1); // Inizializzazione di terminal
-        this.numeroPostiOccupati = new SimpleIntegerProperty(0); // Inizializzazione di posti occupati
         this.inizioManutenzione = new SimpleObjectProperty<>(inizioManutenzione);
         this.fineManutenzione = new SimpleObjectProperty<>(fineManutenzione);
         this.stato = new SimpleStringProperty(stato);
         this.hangar = new SimpleStringProperty(hangar);
+        this.ritardo = new SimpleIntegerProperty(ritardo);
+        this.numeroPostiOccupati = new SimpleIntegerProperty(numPosti);
     }
 
     //---------------------------getter------------------------------------------------
