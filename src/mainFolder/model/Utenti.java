@@ -1,7 +1,5 @@
 package mainFolder.model;
 
-
-
 public class Utenti {
 
     public String mail;
@@ -15,7 +13,6 @@ public class Utenti {
     public String codiceCarta;
     public String scadenza;
     public String nascita;
-
 
     public Utenti (String nome,String cognome, String mail, String nascita,  String password, String numCell, String nazione, 
      String citta, String via, String codice, String scadenza) {
@@ -88,7 +85,4 @@ public class Utenti {
     public void setPassword (String password){
         this.password = password;
     }
-
-
-
 }
